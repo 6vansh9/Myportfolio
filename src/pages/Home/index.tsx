@@ -53,7 +53,7 @@ export default function Home() {
 
       <MaxWidthContainer>
         <Footer />
-      </MaxWidthContainer>
+      </MaxWidthContainer> 
     </div>
   );
 }

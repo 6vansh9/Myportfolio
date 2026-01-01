@@ -39,11 +39,11 @@ const techStack = [
 
 export default function TechStack() {
 	return (
-		<div className="flex w-full flex-col items-start justify-start gap-5">
+		<div className="flex w-full min-w-0 flex-col items-start justify-start gap-5 overflow-hidden">
 			<p className="text-xs text-zinc-600 uppercase tracking-widest hover:text-white transition-colors">
 				TECH STACK
 			</p>
-			<div className="flex w-full flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
+			<div className="flex w-full min-w-0 flex-wrap gap-3 sm:gap-4 justify-start">
 				{techStack.map(({ name, url, icon }) => (
 					<Tooltip key={name} text={name}>
 						<a href={url} target="_blank" rel="noopener noreferrer">

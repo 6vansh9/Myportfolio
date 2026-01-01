@@ -188,8 +188,3 @@ body #root {
     @apply bg-background text-foreground;
   }
 }
-
-/* Mobile devices */
-@media screen and (max-width: 600px) {
-  body #root {min-width: 320px;}
-}
