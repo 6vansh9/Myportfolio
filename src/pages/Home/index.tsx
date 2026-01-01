@@ -1,7 +1,7 @@
-
 import MaxWidthContainer from "@/components/MaxWidthContainer";
 import Header from "./Header";
 import Intro from "./Intro";
+import Bio from "./Bio";
 import SpotifyNowPlaying from "@/components/SpotifyNowPlaying";
 import GithubHeatmap from "./GithubHeatmap";
 import TechStack from "./TechStack";
@@ -10,7 +10,6 @@ import Experience from "./Experience";
 import Contact from "./Contact";
 import Quote from "./Quote";
 import Footer from "./Footer";
-
 
 export default function Home() {
   return (
@@ -21,6 +20,10 @@ export default function Home() {
 
       <MaxWidthContainer>
         <Intro />
+      </MaxWidthContainer>
+
+      <MaxWidthContainer>
+        <Bio />
       </MaxWidthContainer>
 
       <MaxWidthContainer>
