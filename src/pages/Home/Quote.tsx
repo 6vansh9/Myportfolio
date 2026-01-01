@@ -87,7 +87,7 @@ export default function Quote() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % quotes.length);
-    }, 10000); // 10 seconds
+    }, 30000); // 30 seconds
     return () => clearInterval(interval);
   }, []);
 

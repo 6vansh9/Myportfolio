@@ -5,6 +5,7 @@ import SplashScreen from "@/components/SplashScreen";
 import StarfieldBackground from "@/components/StarfieldBackground";
 import Home from "./Home";
 import About from "./About";
+import Apps from "./Apps";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -27,6 +28,8 @@ export default function App() {
               <Route path="/" element={<Home />} />
 
               <Route path="/about" element={<About />} />
+
+              <Route path="/apps" element={<Apps />} />
 
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
