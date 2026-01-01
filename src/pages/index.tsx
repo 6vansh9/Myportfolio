@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import SplashScreen from "@/components/SplashScreen";
 import StarfieldBackground from "@/components/StarfieldBackground";
 import Home from "./Home";
+import About from "./About";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -17,20 +18,20 @@ export default function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <BrowserRouter>
-      {loading && <SplashScreen />}
-      {!loading && (
-        <>
-          <StarfieldBackground />
-          <Routes>
-            <Route path="/" element={<Home />} />
+        {loading && <SplashScreen />}
+        {!loading && (
+          <>
+            <StarfieldBackground />
 
-            <Route
-              path="*"
-              element={<Navigate to="/"/>}
-            />
-          </Routes>
-        </>
-      )}
+            <Routes>
+              <Route path="/" element={<Home />} />
+
+              <Route path="/about" element={<About />} />
+
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </>
+        )}
       </BrowserRouter>
     </ThemeProvider>
   );

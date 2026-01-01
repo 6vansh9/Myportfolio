@@ -1,5 +1,5 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
-import Header from "./Header";
+import Header from "../../components/Header";
 import Intro from "./Intro";
 import Bio from "./Bio";
 import SpotifyNowPlaying from "@/components/SpotifyNowPlaying";
@@ -9,7 +9,7 @@ import FeaturedProjects from "./FeaturedProjects";
 import Experience from "./Experience";
 import Contact from "./Contact";
 import Quote from "./Quote";
-import Footer from "./Footer";
+import Footer from "../../components/Footer";
 
 export default function Home() {
   return (
