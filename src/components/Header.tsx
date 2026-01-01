@@ -86,8 +86,8 @@ export default function Header() {
                       key={link.path}
                       to={link.path}
                       aria-current={isActive ? "page" : undefined}
-                      className={`relative cursor-pointer font-mono text-base transition-colors ease-in-out before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-0 before:bg-gray-400 before:transition-[width] before:duration-700 before:ease-in-out hover:text-white hover:before:w-full ${
-                        isActive ? "text-white before:w-full" : "text-gray-500"
+                      className={`relative cursor-pointer font-mono text-base transition-colors ease-in-out before:absolute before:bottom-0 before:left-0 before:h-[1px] before:w-0 before:bg-gray-400 before:transition-[width] before:duration-300 before:ease-in-out hover:text-white hover:before:w-full ${
+                        isActive ? "text-white" : "text-gray-500"
                       }`}
                     >
                       {link.name}
