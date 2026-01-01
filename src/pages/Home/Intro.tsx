@@ -40,7 +40,7 @@ export default function Intro() {
       <div className="flex w-full flex-row items-center gap-5">
         <img
           src="/assets/avatar.jpg"
-          alt="Photo by Drew Beamer"
+          alt="Photo of Gautam Vhavle"
           className="h-20 w-20 rounded-lg object-cover"
         />
         <div className="flex w-full flex-col gap-2">
@@ -74,6 +74,7 @@ export default function Intro() {
       {/* Info Grid */}
       <div className="w-full">
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+          
           {/* Left Column */}
           <div className="flex flex-col gap-2">
             <InfoItem icon={<FaCode className="text-zinc-400" />}>
