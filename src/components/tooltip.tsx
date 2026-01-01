@@ -17,11 +17,15 @@ export const Tooltip = ({
   className = "",
 }: TooltipProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
-    return () => {
-      setIsVisible(false);
+    const checkScreen = () => {
+      setIsDesktop(window.innerWidth >= 1024); // Tailwind's 'lg' breakpoint
     };
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
   }, []);
 
   const positions: Record<string, string> = {
@@ -39,6 +43,11 @@ export const Tooltip = ({
     right:
       "absolute right-full top-1/2 -translate-y-1/2 -mr-px border-t-[6px] border-b-[6px] border-r-[6px] border-t-transparent border-b-transparent border-r-zinc-800",
   };
+
+  if (!isDesktop) {
+    // Disable tooltip on mobile/tablet
+    return <>{children}</>;
+  }
 
   return (
     <div
