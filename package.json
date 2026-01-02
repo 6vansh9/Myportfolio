@@ -41,6 +41,7 @@
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
     "nanoid": "^5.1.6",
+    "ogl": "^1.0.11",
     "react": "^19.2.0",
     "react-activity-calendar": "^3.0.5",
     "react-dom": "^19.2.0",

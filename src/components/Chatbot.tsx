@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Send, Bot, User, Loader2, X } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Message {
   id: string;
@@ -145,7 +147,7 @@ export default function Chatbot() {
           isOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-4 opacity-0"
-        } /* Mobile: Full screen with padding */ /* Desktop: Bottom-right corner */ top-0 right-0 bottom-0 left-0 p-2 sm:top-auto sm:right-6 sm:bottom-6 sm:left-auto sm:h-[550px] sm:w-[400px] sm:p-0`}
+        } top-0 right-0 bottom-0 left-0 p-2 sm:top-auto sm:right-6 sm:bottom-6 sm:left-auto sm:h-[550px] sm:w-[400px] sm:p-0`}
       >
         <div className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-zinc-700/50 bg-zinc-900/95 shadow-2xl backdrop-blur-md sm:h-[550px]">
           {/* Header */}
@@ -198,15 +200,129 @@ export default function Chatbot() {
                     )}
                   </div>
                   <div
-                    className={`max-w-[80%] rounded-2xl px-3 py-2 sm:px-4 ${
+                    className={`max-w-[85%] rounded-2xl px-3 py-2 sm:px-4 ${
                       message.role === "user"
                         ? "bg-primary text-primary-foreground"
                         : "bg-zinc-800 text-zinc-200"
                     }`}
                   >
-                    <p className="text-xs whitespace-pre-wrap sm:text-sm">
-                      {message.content}
-                    </p>
+                    {message.role === "assistant" ? (
+                      <div className="prose prose-sm prose-invert max-w-none text-xs sm:text-sm">
+                        <ReactMarkdown
+                          remarkPlugins={[remarkGfm]}
+                          components={{
+                            // Headings
+                            h1: ({ children }) => (
+                              <h1 className="mb-2 mt-3 text-base font-bold text-zinc-100 sm:text-lg">
+                                {children}
+                              </h1>
+                            ),
+                            h2: ({ children }) => (
+                              <h2 className="mb-2 mt-3 text-sm font-bold text-zinc-100 sm:text-base">
+                                {children}
+                              </h2>
+                            ),
+                            h3: ({ children }) => (
+                              <h3 className="mb-1 mt-2 text-xs font-semibold text-zinc-200 sm:text-sm">
+                                {children}
+                              </h3>
+                            ),
+                            // Paragraphs
+                            p: ({ children }) => (
+                              <p className="mb-2 leading-relaxed text-zinc-300">
+                                {children}
+                              </p>
+                            ),
+                            // Links
+                            a: ({ href, children }) => (
+                              <a
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:text-primary/80 underline transition-colors"
+                              >
+                                {children}
+                              </a>
+                            ),
+                            // Lists
+                            ul: ({ children }) => (
+                              <ul className="mb-2 ml-4 list-disc space-y-1 text-zinc-300">
+                                {children}
+                              </ul>
+                            ),
+                            ol: ({ children }) => (
+                              <ol className="mb-2 ml-4 list-decimal space-y-1 text-zinc-300">
+                                {children}
+                              </ol>
+                            ),
+                            li: ({ children }) => (
+                              <li className="text-zinc-300">{children}</li>
+                            ),
+                            // Code
+                            code: ({ className, children }) => {
+                              const isInline = !className;
+                              return isInline ? (
+                                <code className="rounded bg-zinc-700/50 px-1 py-0.5 text-xs text-primary">
+                                  {children}
+                                </code>
+                              ) : (
+                                <code className="block overflow-x-auto rounded-lg bg-zinc-950 p-2 text-xs text-zinc-300">
+                                  {children}
+                                </code>
+                              );
+                            },
+                            pre: ({ children }) => (
+                              <pre className="my-2 overflow-x-auto rounded-lg bg-zinc-950 p-2 text-xs">
+                                {children}
+                              </pre>
+                            ),
+                            // Blockquote
+                            blockquote: ({ children }) => (
+                              <blockquote className="border-primary/50 my-2 border-l-2 pl-3 text-zinc-400 italic">
+                                {children}
+                              </blockquote>
+                            ),
+                            // Strong & Emphasis
+                            strong: ({ children }) => (
+                              <strong className="font-semibold text-zinc-100">
+                                {children}
+                              </strong>
+                            ),
+                            em: ({ children }) => (
+                              <em className="text-zinc-300 italic">{children}</em>
+                            ),
+                            // Horizontal Rule
+                            hr: () => (
+                              <hr className="my-3 border-zinc-700" />
+                            ),
+                            // Table
+                            table: ({ children }) => (
+                              <div className="my-2 overflow-x-auto">
+                                <table className="min-w-full text-xs">
+                                  {children}
+                                </table>
+                              </div>
+                            ),
+                            th: ({ children }) => (
+                              <th className="border border-zinc-700 bg-zinc-800 px-2 py-1 text-left text-zinc-200">
+                                {children}
+                              </th>
+                            ),
+                            td: ({ children }) => (
+                              <td className="border border-zinc-700 px-2 py-1 text-zinc-300">
+                                {children}
+                              </td>
+                            ),
+                          }}
+                        >
+                          {message.content}
+                        </ReactMarkdown>
+                      </div>
+                    ) : (
+                      <p className="text-xs whitespace-pre-wrap sm:text-sm">
+                        {message.content}
+                      </p>
+                    )}
                   </div>
                 </div>
               ))}
