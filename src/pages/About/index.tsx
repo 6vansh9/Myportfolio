@@ -1,14 +1,11 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
 import MarkdownViewer from "./MarkdownViewer";
 import aboutContent from '@/content/about.md?raw';
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function About() {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-9">
-      <Header />
-
       <div className="h-[120px]" />
 
       <MaxWidthContainer>

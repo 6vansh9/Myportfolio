@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
+import Header from "@/components/Header";
 import PageRoutes from "@/pages/PageRoutes";
 import SplashScreen from "@/components/SplashScreen";
 import StarfieldBackground from "@/components/StarfieldBackground";
@@ -16,10 +17,12 @@ export default function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      
       <BrowserRouter>
         {loading && <SplashScreen />}
         {!loading && (
           <>
+            <Header />
             <CanvasCursor />
             <StarfieldBackground />
             <PageRoutes />
