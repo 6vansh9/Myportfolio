@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import PageRoutes from "@/pages/PageRoutes";
 import SplashScreen from "@/components/SplashScreen";
 import StarfieldBackground from "@/components/StarfieldBackground";
+import CanvasCursor from "@/components/CanvasCursor";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -19,6 +20,7 @@ export default function App() {
         {loading && <SplashScreen />}
         {!loading && (
           <>
+            <CanvasCursor />
             <StarfieldBackground />
             <PageRoutes />
           </>
