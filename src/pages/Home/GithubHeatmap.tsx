@@ -32,7 +32,7 @@ export default function GithubHeatmap() {
   useEffect(() => {
     const fetchContributions = async () => {
       try {
-        const url = `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`;
+        const url = `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=2025`;
         const response = await fetch(url);
 
         if (!response.ok) {

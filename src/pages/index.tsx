@@ -25,7 +25,7 @@ export default function App() {
           <>
           <Aurora
               colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-              blend={15.0}
+              blend={1.0}
               amplitude={0.8}
               speed={0.9}
             />

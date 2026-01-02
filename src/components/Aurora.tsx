@@ -205,5 +205,5 @@ export default function Aurora(props: AuroraProps) {
     };
   }, [amplitude]);
 
-  return <div ref={ctnDom} className="pointer-events-none fixed inset-0 z-[-1] w-full h-full" style={{ top: 0, left: 0 }}/>;
+  return <div ref={ctnDom} className="absolute pointer-events-none inset-0 z-[-1] w-full h-full" style={{ top: 0, left: 0 }}/>;
 }

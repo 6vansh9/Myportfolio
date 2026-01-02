@@ -16,39 +16,57 @@ export default function Home() {
       <div className="h-[120px]" />
 
       <MaxWidthContainer>
-        <Intro />
+        <div id="intro-section">
+          <Intro />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <Bio />
+        <div id="bio-section">
+          <Bio />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <SpotifyNowPlaying />
+        <div id="spotify-now-playing-section">
+          <SpotifyNowPlaying />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <GithubHeatmap />
+        <div id="github-heatmap-section">
+          <GithubHeatmap />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <TechStack />
+        <div id="tech-stack-section">
+          <TechStack />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <FeaturedProjects />
+        <div id="featured-projects-section">
+          <FeaturedProjects />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <Experience />
+        <div id="experience-section">
+          <Experience />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <Contact />
+        <div id="contact-section">
+          <Contact />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <Quote />
+        <div id="quote-section">
+          <Quote />
+        </div>
       </MaxWidthContainer>
 
       <MaxWidthContainer>

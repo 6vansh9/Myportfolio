@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { IoCalendarOutline, IoMailOutline } from "react-icons/io5";
 import { MdArrowOutward } from "react-icons/md";
-import { FaXTwitter } from "react-icons/fa6";
+import { FiLinkedin } from "react-icons/fi";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -90,17 +90,17 @@ export default function Contact() {
               <MdArrowOutward className="text-zinc-600 group-hover:text-zinc-500 transition-colors shrink-0" />
             </a>
             <a
-              href="https://x.com/gautamvvvv"
+              href="https://linkedin.com/in/gautamvhavle"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 px-4.5 py-2.5 rounded-lg bg-zinc-900/40 border border-zinc-800/60 hover:border-zinc-700/60 hover:bg-zinc-800/40 transition-all duration-200 group"
             >
               <span className="text-zinc-500 group-hover:text-zinc-400 transition-colors">
-                {/* X Icon */}
-                <FaXTwitter />
+                {/* LinkedIn Icon */}
+                <FiLinkedin />
               </span>
               <div className="flex-1 min-w-0">
-                <p className="text-xs sm:text-sm text-zinc-300 mb-0.5">Connect on X</p>
+                <p className="text-xs sm:text-sm text-zinc-300 mb-0.5">Connect on LinkedIn</p>
                 <p className="text-[10px] sm:text-xs text-zinc-500">Follow for updates &amp; insights</p>
               </div>
               <MdArrowOutward className="text-zinc-600 group-hover:text-zinc-500 transition-colors shrink-0" />

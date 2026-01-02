@@ -21,6 +21,7 @@ export default function Chatbot() {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [shiver, setShiver] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,6 +50,15 @@ export default function Chatbot() {
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen]);
+
+  // Shiver animation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShiver(true);
+      setTimeout(() => setShiver(false), 1000); // Shiver for 1 second
+    }, 10000); // Every 10 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -128,11 +138,33 @@ export default function Chatbot() {
 
   return (
     <>
+      <style>
+        {`
+          @keyframes shiver {
+            0% { transform: translateX(0); }
+            10% { transform: translateX(-2px); }
+            20% { transform: translateX(2px); }
+            30% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            50% { transform: translateX(-2px); }
+            60% { transform: translateX(2px); }
+            70% { transform: translateX(-2px); }
+            80% { transform: translateX(2px); }
+            90% { transform: translateX(-2px); }
+            100% { transform: translateX(0); }
+          }
+          .glow-shiver {
+            box-shadow:
+              0 0 16px 8px #60a5fa;
+          }
+        `}
+      </style>
       {/* Floating Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Close chat" : "Open chat"}
-        className={`fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-900/90 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl active:scale-95 sm:right-6 sm:bottom-6 sm:h-14 sm:w-14 ${isOpen ? "pointer-events-none rotate-90 opacity-0" : "rotate-0 opacity-100"} `}
+        className={`fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-900/90 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl active:scale-95 sm:right-6 sm:bottom-6 sm:h-14 sm:w-14 ${isOpen ? "pointer-events-none rotate-90 opacity-0" : "rotate-0 opacity-100"} ${shiver ? "animate-shiver glow-shiver" : ""}`}
+        style={shiver ? { animation: "shiver 1s linear" } : {}}
       >
         <img
           src="/assets/icons/ai-icon.svg"
