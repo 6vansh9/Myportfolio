@@ -11,12 +11,27 @@ type Project = {
 
 const featuredProjects: Project[] = [
   {
-    title: "Grig Technologies",
+    title: "Old Portfolio",
     description:
-      "A modern web platform for collaborative note-taking and knowledge sharing.",
-    image: "/assets/projects/grig.png",
-    website: "https://grigtechnologies.com",
-    github: "https://grigtechnologies.com",
+      "A dashboard for real-time analytics and data visualization for startups.",
+    image: "/assets/projects/old-portfolio.png",
+    website: "https://ventory.in",
+    github: "https://ventory.in",
+    tech: [
+      { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
+      { name: "React", icon: "/assets/tech-stack/react.svg" },
+      { name: "SASS", icon: "/assets/tech-stack/sass.svg" },
+      { name: "JavaScript", icon: "/assets/tech-stack/javascript.svg" },
+      { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
+    ],
+  },
+  {
+    title: "Parkive",
+    description:
+      "A dashboard for real-time analytics and data visualization for startups.",
+    image: "/assets/projects/parkive.png",
+    website: "https://ventory.in",
+    github: "https://ventory.in",
     tech: [
       { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
       { name: "React", icon: "/assets/tech-stack/react.svg" },
@@ -40,7 +55,21 @@ const featuredProjects: Project[] = [
       { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
     ],
   },
-  // Add more projects here as needed
+  {
+    title: "Grig Technologies",
+    description:
+      "A modern web platform for collaborative note-taking and knowledge sharing.",
+    image: "/assets/projects/grig.png",
+    website: "https://grigtechnologies.com",
+    github: "https://grigtechnologies.com",
+    tech: [
+      { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
+      { name: "React", icon: "/assets/tech-stack/react.svg" },
+      { name: "SASS", icon: "/assets/tech-stack/sass.svg" },
+      { name: "JavaScript", icon: "/assets/tech-stack/javascript.svg" },
+      { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
+    ],
+  }
 ];
 
 export default function FeaturedProjects() {
