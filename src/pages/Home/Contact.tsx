@@ -46,16 +46,19 @@ export default function Contact() {
 
   return (
     <section>
-      <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase hover:text-white transition-colors">
+      <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase transition-colors hover:text-white">
         Let's Work Together
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* Contact Methods */}
-        <div className="font-inter px-6 py-5 rounded-xl bg-zinc-900/25 border backdrop-blur-lg border-zinc-800/40 flex flex-col">
+        <div className="font-inter flex flex-col rounded-xl border border-zinc-800/40 bg-zinc-900/25 px-6 py-5 backdrop-blur-lg">
           <div className="mb-4">
-            <h3 className="text-lg font-medium text-zinc-200 mb-1.5">Get in Touch</h3>
-            <p className="text-sm text-zinc-400 leading-[1.6]">
-              Choose your preferred method to connect and let's discuss your project.
+            <h3 className="mb-1.5 text-lg font-medium text-zinc-200">
+              Get in Touch
+            </h3>
+            <p className="text-sm leading-[1.6] text-zinc-400">
+              Choose your preferred method to connect and let's discuss your
+              project.
             </p>
           </div>
           <div className="space-y-3">
@@ -63,61 +66,76 @@ export default function Contact() {
               href="https://cal.com/gautamvhavle/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-4.5 py-2.5 rounded-lg bg-zinc-900/40 border border-zinc-800/60 hover:border-zinc-700/60 hover:bg-zinc-800/40 transition-all duration-200 group"
+              className="group flex items-center gap-3 rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-4.5 py-2.5 transition-all duration-200 hover:border-zinc-700/60 hover:bg-zinc-800/40"
             >
-              <span className="text-zinc-500 group-hover:text-zinc-400 transition-colors">
+              <span className="text-zinc-500 transition-colors group-hover:text-zinc-400">
                 {/* Calendar Icon */}
                 <IoCalendarOutline size={18} />
               </span>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs sm:text-sm text-zinc-300 mb-0.5">Schedule a free call</p>
-                <p className="text-[10px] sm:text-xs text-zinc-500">30-minute strategy session</p>
+              <div className="min-w-0 flex-1">
+                <p className="mb-0.5 text-xs text-zinc-300 sm:text-sm">
+                  Schedule a free call
+                </p>
+                <p className="text-[10px] text-zinc-500 sm:text-xs">
+                  30-minute strategy session
+                </p>
               </div>
-              <MdArrowOutward className="text-zinc-600 group-hover:text-zinc-500 transition-colors shrink-0" />
+              <MdArrowOutward className="shrink-0 text-zinc-600 transition-colors group-hover:text-zinc-500" />
             </a>
             <a
               href="mailto:gautam.vhavle@grigtechnologies.com"
-              className="flex items-center gap-3 px-4.5 py-2.5 rounded-lg bg-zinc-900/40 border border-zinc-800/60 hover:border-zinc-700/60 hover:bg-zinc-800/40 transition-all duration-200 group"
+              className="group flex items-center gap-3 rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-4.5 py-2.5 transition-all duration-200 hover:border-zinc-700/60 hover:bg-zinc-800/40"
             >
-              <span className="text-zinc-500 group-hover:text-zinc-400 transition-colors">
+              <span className="text-zinc-500 transition-colors group-hover:text-zinc-400">
                 {/* Mail Icon */}
                 <IoMailOutline size={18} />
               </span>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs sm:text-sm text-zinc-300 mb-0.5 truncate">Send Email</p>
-                <p className="text-[10px] sm:text-xs text-zinc-500">Quick inquiries &amp; questions</p>
+              <div className="min-w-0 flex-1">
+                <p className="mb-0.5 truncate text-xs text-zinc-300 sm:text-sm">
+                  Send Email
+                </p>
+                <p className="text-[10px] text-zinc-500 sm:text-xs">
+                  Quick inquiries &amp; questions
+                </p>
               </div>
-              <MdArrowOutward className="text-zinc-600 group-hover:text-zinc-500 transition-colors shrink-0" />
+              <MdArrowOutward className="shrink-0 text-zinc-600 transition-colors group-hover:text-zinc-500" />
             </a>
             <a
               href="https://linkedin.com/in/gautamvhavle"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-4.5 py-2.5 rounded-lg bg-zinc-900/40 border border-zinc-800/60 hover:border-zinc-700/60 hover:bg-zinc-800/40 transition-all duration-200 group"
+              className="group flex items-center gap-3 rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-4.5 py-2.5 transition-all duration-200 hover:border-zinc-700/60 hover:bg-zinc-800/40"
             >
-              <span className="text-zinc-500 group-hover:text-zinc-400 transition-colors">
+              <span className="text-zinc-500 transition-colors group-hover:text-zinc-400">
                 {/* LinkedIn Icon */}
                 <FiLinkedin />
               </span>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs sm:text-sm text-zinc-300 mb-0.5">Connect on LinkedIn</p>
-                <p className="text-[10px] sm:text-xs text-zinc-500">Follow for updates &amp; insights</p>
+              <div className="min-w-0 flex-1">
+                <p className="mb-0.5 text-xs text-zinc-300 sm:text-sm">
+                  Connect on LinkedIn
+                </p>
+                <p className="text-[10px] text-zinc-500 sm:text-xs">
+                  Follow for updates &amp; insights
+                </p>
               </div>
-              <MdArrowOutward className="text-zinc-600 group-hover:text-zinc-500 transition-colors shrink-0" />
+              <MdArrowOutward className="shrink-0 text-zinc-600 transition-colors group-hover:text-zinc-500" />
             </a>
           </div>
-          <div className="mt-auto pt-3 border-t border-zinc-800/40">
+          <div className="mt-auto border-t border-zinc-800/40 pt-3">
             <p className="text-xs text-zinc-600">
               Response within 24 hours • Available for hire
             </p>
           </div>
         </div>
         {/* Contact Form */}
-        <div className="font-inter px-6 py-5 rounded-xl bg-zinc-900/25 border backdrop-blur-lg border-zinc-800/40">
+        <div className="font-inter rounded-xl border border-zinc-800/40 bg-zinc-900/25 px-6 py-5 backdrop-blur-lg">
           <div className="mb-4">
-            <h3 className="text-base sm:text-lg font-medium text-zinc-200 mb-1.5">Send a Message</h3>
-            <p className="text-sm text-zinc-400 leading-[1.6]">
-              Prefer to write? Fill out the form and I'll get back to you within 24 hours.
+            <h3 className="mb-1.5 text-base font-medium text-zinc-200 sm:text-lg">
+              Send a Message
+            </h3>
+            <p className="text-sm leading-[1.6] text-zinc-400">
+              Prefer to write? Fill out the form and I'll get back to you within
+              24 hours.
             </p>
           </div>
           <form
@@ -133,7 +151,7 @@ export default function Contact() {
               name="email"
               required
               disabled={submitting}
-              className="w-full bg-zinc-900/40 border border-zinc-800/60 rounded-lg px-3.5 py-2.5 text-sm text-zinc-200 placeholder:text-zinc-500 focus:outline-none hover:border-zinc-800 focus:border-zinc-700 transition-all ease-in-out"
+              className="w-full rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
             />
             <input
               type="text"
@@ -141,7 +159,7 @@ export default function Contact() {
               name="subject"
               required
               disabled={submitting}
-              className="w-full bg-zinc-900/40 border border-zinc-800/60 rounded-lg px-3.5 py-2.5 text-sm text-zinc-200 placeholder:text-zinc-500 focus:outline-none hover:border-zinc-800 focus:border-zinc-700 transition-all ease-in-out"
+              className="w-full rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
             />
             <textarea
               name="message"
@@ -149,18 +167,20 @@ export default function Contact() {
               required
               rows={5}
               disabled={submitting}
-              className="w-full bg-zinc-900/40 border border-zinc-800/60 rounded-lg px-3.5 py-2.5 text-sm text-zinc-200 placeholder:text-zinc-500 focus:outline-none hover:border-zinc-800 focus:border-zinc-700 transition-all ease-in-out resize-none"
+              className="w-full resize-none rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
             ></textarea>
             <button
               type="submit"
               disabled={submitting}
-              className={`inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#131314] ${
-                submitting ? "opacity-60 cursor-not-allowed" : "hover:bg-[#151515]"
-              } border-[#2a2a2a] text-[#c7c7d7] text-sm font-medium rounded-lg border transition-all ease-out duration-200 group`}
+              className={`inline-flex w-full items-center justify-center gap-2 bg-[#131314] px-4 py-2.5 ${
+                submitting
+                  ? "cursor-not-allowed opacity-60"
+                  : "hover:bg-[#151515]"
+              } group rounded-lg border border-[#2a2a2a] text-sm font-medium text-[#c7c7d7] transition-all duration-200 ease-out`}
             >
               {submitting && (
                 <svg
-                  className="animate-spin h-4 w-4 mr-2 text-zinc-400"
+                  className="mr-2 h-4 w-4 animate-spin text-zinc-400"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -182,7 +202,14 @@ export default function Contact() {
               )}
               <span>{submitting ? "Sending..." : "Send Message"}</span>
               {!submitting && (
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" className="group-hover:translate-x-0.5 transition-transform ease-out" viewBox="0 0 24 24" fill="currentColor">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  className="transition-transform ease-out group-hover:translate-x-0.5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
                   <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                 </svg>
               )}
@@ -196,11 +223,14 @@ export default function Contact() {
           <AlertDialogHeader>
             <AlertDialogTitle>Message Sent!</AlertDialogTitle>
             <AlertDialogDescription>
-              Thank you for reaching out. Your message has been sent successfully. I will get back to you within 24 hours.
+              Thank you for reaching out. Your message has been sent
+              successfully. I will get back to you within 24 hours.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogAction onClick={() => setOpen(false)}>OK</AlertDialogAction>
+            <AlertDialogAction onClick={() => setOpen(false)}>
+              OK
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

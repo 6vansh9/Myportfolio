@@ -30,7 +30,7 @@ export default function MarkdownViewer({
   };
 
   return (
-    <div className="w-full overflow-hidden rounded-lg border border-zinc-700/50 bg-zinc-900/50">
+    <div className="w-full overflow-hidden rounded-lg border border-zinc-700/50 bg-zinc-900/50 backdrop-blur-lg">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-zinc-700/50 bg-zinc-800/30 px-4 py-3">
         <div className="flex items-center gap-2">

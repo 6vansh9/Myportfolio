@@ -94,7 +94,7 @@ export default function Quote() {
   const quote = quotes[index];
 
   return (
-    <div className="font-inter relative p-4 sm:p-6 rounded-xl bg-zinc-900/20 border border-zinc-800/50 shadow-[0_4px_32px_0_rgba(24,24,27,0.25)] overflow-hidden transition-all duration-300 group">
+    <div className="font-inter relative p-4 sm:p-6 rounded-xl bg-zinc-900/25 backdrop-blur-lg border border-zinc-800/50 shadow-[0_4px_32px_0_rgba(24,24,27,0.25)] overflow-hidden transition-all duration-300 group">
       {/* Animated modern reflection */}
       <div className="pointer-events-none absolute top-0 left-0 w-full h-full z-10">
         <div

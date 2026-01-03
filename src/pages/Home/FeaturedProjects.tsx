@@ -69,22 +69,22 @@ const featuredProjects: Project[] = [
       { name: "JavaScript", icon: "/assets/tech-stack/javascript.svg" },
       { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
     ],
-  }
+  },
 ];
 
 export default function FeaturedProjects() {
   return (
     <section className="w-full">
-      <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase hover:text-white transition-colors">
+      <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase transition-colors hover:text-white">
         Featured Projects
       </p>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {featuredProjects.map((project) => (
           <div
             key={project.title}
-            className="group font-inter flex flex-col rounded-xl border border-zinc-800/50 bg-zinc-900/25 transition-all duration-200 ease-out hover:border-zinc-700/40 hover:bg-zinc-900/30"
+            className="group font-inter flex flex-col rounded-xl border border-zinc-800/50 bg-zinc-900/25 backdrop-blur-lg transition-all duration-200 ease-out hover:border-zinc-700/40 hover:bg-zinc-900/30"
           >
-            <div className="relative h-40 w-full overflow-hidden rounded-t-xl bg-zinc-800/50 sm:h-52">
+            <div className="relative h-40 w-full overflow-hidden rounded-t-xl bg-zinc-900/25 backdrop-blur-lg sm:h-52">
               <img
                 alt={project.title}
                 className="h-full w-full object-cover"
