@@ -163,4 +163,7 @@ Today, I work at the intersection of:
 
 ### Thanks for scrolling this far. ✨
 
-*Now go build something cool.* 🚀
+*Let’s build cool stuff and leave the world better than we found it* 🚀
+![Go Beyond, PLUS ULTRA!](https://c.tenor.com/1outT5amFpYAAAAC/tenor.gif)
+
+> *"Go Beyond, PLUS ULTRA!"*
