@@ -65,17 +65,7 @@
 
 <body>
   <div id="root"></div>
-  <audio id="bg-music" src="/assets/music/interstellar.mp3" loop></audio>
-  <script>
-    function playMusicOnce() {
-    document.getElementById('bg-music').play();
-    window.removeEventListener('scroll', playMusicOnce);
-    window.removeEventListener('click', playMusicOnce);
-    }
-    window.addEventListener('scroll', playMusicOnce);
-    window.addEventListener('click', playMusicOnce);
-    </script>
-    <script type="module" src="/src/main.tsx"></script>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>
