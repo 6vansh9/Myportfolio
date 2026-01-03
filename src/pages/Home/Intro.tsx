@@ -7,6 +7,7 @@ import {
 } from "react-icons/md";
 import { FiGlobe } from "react-icons/fi";
 import { IoMdMale } from "react-icons/io";
+import { useEffect, useState } from "react";
 
 interface InfoItemProps {
   icon: React.ReactNode;
@@ -34,6 +35,36 @@ const InfoItem = ({ icon, children, href }: InfoItemProps) => (
 );
 
 export default function Intro() {
+  const [now, setNow] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setNow(new Date()), 50); // update every 50ms
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+  const interval = setInterval(() => setNow(new Date()), 50); // update every 50ms
+  // ASCII art log
+  console.log(`
+██████╗░░█████╗░██████╗░████████╗███████╗░█████╗░██╗░░░░░██╗░█████╗░
+██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔══██╗██║░░░░░██║██╔══██╗
+██████╔╝██║░░██║██████╔╝░░░██║░░░█████╗░░██║░░██║██║░░░░░██║██║░░██║
+██╔═══╝░██║░░██║██╔══██╗░░░██║░░░██╔══╝░░██║░░██║██║░░░░░██║██║░░██║
+██║░░░░░╚█████╔╝██║░░██║░░░██║░░░██║░░░░░╚█████╔╝███████╗██║╚█████╔╝
+╚═╝░░░░░░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░░░░░╚════╝░╚══════╝╚═╝░╚════╝░
+    `);
+  return () => clearInterval(interval);
+}, []);
+
+  // Format time with milliseconds
+  const formattedTime =
+    now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+
   return (
     <div className="flex w-full flex-col items-start justify-center gap-9">
       {/* Top Section */}
@@ -97,8 +128,8 @@ export default function Intro() {
           <div className="hidden flex-col gap-2 md:flex">
             <InfoItem icon={<MdAccessTime className="text-zinc-400" />}>
               <span className="flex items-center gap-2">
-                08:46 PM
-                <span className="text-xs text-zinc-600">// same time</span>
+                {formattedTime}
+                <span className="text-xs text-zinc-600">IST</span>
               </span>
             </InfoItem>
 
