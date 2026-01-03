@@ -1,6 +1,7 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
 import MarkdownViewer from "./MarkdownViewer";
-import aboutContent from '@/content/about.md?raw';
+import aboutContent from "@/content/about.md?raw";
+import RickRoll from "./RickRoll";
 import Footer from "@/components/Footer";
 
 export default function About() {
@@ -9,7 +10,7 @@ export default function About() {
       <div className="h-[120px]" />
 
       <MaxWidthContainer>
-        <div className="flex flex-col mb-4">
+        <div className="mb-4 flex flex-col">
           {/* Page Title */}
           <div className="flex flex-col gap-2">
             <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase transition-colors hover:text-white">
@@ -19,6 +20,31 @@ export default function About() {
 
           {/* Markdown Viewer */}
           <MarkdownViewer content={aboutContent} filename="about.md" />
+        </div>
+      </MaxWidthContainer>
+
+      <MaxWidthContainer>
+        <div className="w-full rounded-2xl border border-red-700/50 bg-gradient-to-br from-red-900/20 via-zinc-900/10 to-red-900/5 p-8 flex flex-col items-center gap-5">
+          <div className="flex items-center gap-2">
+            <svg
+              width={20}
+              height={20}
+              className="text-red-500"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
+              <path d="M12 8v4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="12" cy="16" r="1" fill="currentColor" />
+            </svg>
+            <p className="text-base font-bold tracking-wider text-red-400 uppercase">
+              Danger Zone
+            </p>
+          </div>
+          <p className="text-sm text-red-300 text-center max-w-md">
+            Actions in this area are irreversible. Proceed with caution.
+          </p>
+          <RickRoll />
         </div>
       </MaxWidthContainer>
 
