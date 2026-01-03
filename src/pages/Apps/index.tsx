@@ -1,10 +1,8 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
-import Header from "@/components/Header";
 
 export default function Apps() {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-9">
-      <Header />
 
       <div className="h-[120px]" />
 
