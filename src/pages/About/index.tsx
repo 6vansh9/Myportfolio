@@ -24,7 +24,7 @@ export default function About() {
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <div className="w-full rounded-2xl border border-red-700/50 bg-gradient-to-br from-red-900/20 via-zinc-900/10 to-red-900/5 p-8 flex flex-col items-center gap-5">
+        <div className="w-full rounded-2xl border border-red-700/50 bg-gradient-to-br from-red-900/20 via-zinc-900/10 to-red-900/5 p-8 flex flex-col items-center gap-5 backdrop-blur-lg">
           <div className="flex items-center gap-2">
             <svg
               width={20}
