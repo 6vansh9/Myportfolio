@@ -21,18 +21,18 @@ export default function Bio() {
     <div className="flex w-full flex-col items-start justify-center gap-9">
       <div className="w-full">
         <p className="text-left font-mono text-sm text-zinc-400 sm:text-base">
-          I'm a software engineer and patent holder passionate about creating
-          human-centered, future-ready products. Currently, I'm engineering
-          GenAI solutions at{" "}
+          Software engineer. Patent holder. Builder at heart. I craft intelligent
+          systems that bridge the gap between cutting-edge tech and real-world
+          impact. Currently engineering GenAI solutions at{" "}
           <a
             href="https://siemens.com"
             target="_blank"
             className="text-zinc-300 transition-colors hover:text-white hover:underline"
           >
             Siemens
-          </a>{" "}
-          while exploring how emerging technologies can transform industries and
-          improve everyday life.
+          </a>
+          , where I turn complex AI concepts into production-ready products.
+          I build things that ship, scale, and actually matter.
         </p>
       </div>
 
