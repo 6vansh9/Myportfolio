@@ -13,40 +13,39 @@ const featuredProjects: Project[] = [
   {
     title: "Old Portfolio",
     description:
-      "A dashboard for real-time analytics and data visualization for startups.",
+      "A personal website to showcase my projects, skills, and experience.",
     image: "/assets/projects/old-portfolio.png",
     website: "https://ventory.in",
-    github: "https://ventory.in",
     tech: [
       { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
       { name: "React", icon: "/assets/tech-stack/react.svg" },
       { name: "SASS", icon: "/assets/tech-stack/sass.svg" },
-      { name: "JavaScript", icon: "/assets/tech-stack/javascript.svg" },
+      { name: "TypeScript", icon: "/assets/tech-stack/typescript.svg" },
       { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
     ],
   },
   {
     title: "Parkive",
     description:
-      "A dashboard for real-time analytics and data visualization for startups.",
+      "A smart parking solution with real time data visualisation using IoT technology.",
     image: "/assets/projects/parkive.png",
-    website: "https://ventory.in",
-    github: "https://ventory.in",
+    website: "https://gautamvhavle.wixsite.com/website",
+    github: "https://github.com/GautamVhavle/parkive",
     tech: [
-      { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
       { name: "React", icon: "/assets/tech-stack/react.svg" },
       { name: "SASS", icon: "/assets/tech-stack/sass.svg" },
       { name: "JavaScript", icon: "/assets/tech-stack/javascript.svg" },
+      { name: "Espressif", icon: "/assets/tech-stack/espressif.svg" },
       { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
+
     ],
   },
   {
     title: "Ventory.in",
     description:
-      "A dashboard for real-time analytics and data visualization for startups.",
+      "An easy-to-use inventory management software for MSMEs.",
     image: "/assets/projects/ventory.png",
     website: "https://ventory.in",
-    github: "https://ventory.in",
     tech: [
       { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
       { name: "React", icon: "/assets/tech-stack/react.svg" },
@@ -56,12 +55,11 @@ const featuredProjects: Project[] = [
     ],
   },
   {
-    title: "Grig Technologies",
+    title: "GrigTechnologies.com",
     description:
-      "A modern web platform for collaborative note-taking and knowledge sharing.",
+      "A simple and modern homepage for a technology company.",
     image: "/assets/projects/grig.png",
     website: "https://grigtechnologies.com",
-    github: "https://grigtechnologies.com",
     tech: [
       { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
       { name: "React", icon: "/assets/tech-stack/react.svg" },

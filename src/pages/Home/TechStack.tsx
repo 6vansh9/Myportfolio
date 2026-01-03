@@ -15,6 +15,7 @@ const techStack = [
 	{ name: "PostgreSQL", url: "https://www.postgresql.org/", icon: "postgres.svg" },
 	{ name: "MSSQL", url: "https://www.microsoft.com/en-us/sql-server/", icon: "mssql.svg" },
 	{ name: "MongoDB", url: "https://www.mongodb.com/", icon: "mongodb.svg" },
+	{ name: "Flask", url: "https://flask.palletsprojects.com/", icon: "flask.svg" },
 	{ name: "FastAPI", url: "https://fastapi.tiangolo.com/", icon: "fastapi.svg" },
 	{ name: "Git", url: "https://git-scm.com/", icon: "git.svg" },
 	{ name: "GitHub", url: "https://github.com/", icon: "github.svg" },
