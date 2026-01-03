@@ -65,8 +65,8 @@ export default function SpotifyNowPlaying() {
         </div>
 
         {/* Track Info */}
-        <div className="min-w-0 flex-1">
-          <div className="mb-0.5 flex h-3.5 items-center gap-1.5 md:mb-1.5">
+        <div className="min-w-0 flex-1 flex flex-col gap-1">
+          <div className="flex h-3.5 items-center gap-1.5 ">
             <svg
               className="h-3 w-3 shrink-0 text-[#1DB954]"
               viewBox="0 0 24 24"
