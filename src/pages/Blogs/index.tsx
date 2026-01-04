@@ -1,5 +1,6 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
 import BlogsContent from "./BlogsContent";
+import Footer from "@/components/Footer";
 
 export default function Blogs() {
 
@@ -11,7 +12,11 @@ export default function Blogs() {
         <BlogsContent />
       </MaxWidthContainer>
 
-      <div className="h-20" />
+      <MaxWidthContainer>
+          <Footer />
+      </MaxWidthContainer>
+
+
     </div>
   );
 }
