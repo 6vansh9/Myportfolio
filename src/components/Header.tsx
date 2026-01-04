@@ -7,6 +7,7 @@ export default function Header() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
+    { name: "Blogs", path: "/blogs" },
     { name: "Apps", path: "/apps" },
   ];
   const location = useLocation();
@@ -65,16 +66,18 @@ export default function Header() {
           <MaxWidthContainer height="100%">
             <div className="flex h-full w-full items-center justify-between">
               {/* Logo */}
-              <div className="flex items-center">
-                <span className="text-lg text-gray-500">~/</span>
-                <ScrambledText
-                  className="font-mono text-base"
-                  duration={0.8}
-                  speed={1.5}
-                  scrambleChars="abcdefghijklmnopqrstuvwxyz0123456789"
-                >
-                  gautam_vhavle
-                </ScrambledText>
+              <div className="flex items-center cursor-pointer select-none">
+                <Link to="/" className="flex items-center gap-1 group">
+                  <span className="text-lg text-gray-500 group-hover:text-white transition-colors">~/</span>
+                  <ScrambledText
+                    className="font-mono text-base group-hover:text-white transition-colors"
+                    duration={0.8}
+                    speed={1.5}
+                    scrambleChars="abcdefghijklmnopqrstuvwxyz0123456789"
+                  >
+                    gautam_vhavle
+                  </ScrambledText>
+                </Link>
               </div>
 
               {/* Desktop Nav */}

@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Home from "./Home";
 import About from "./About";
+import Blogs from "./Blogs";
 import Apps from "./Apps";
 
 export default function PageRoutes() {
@@ -23,6 +24,8 @@ export default function PageRoutes() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="/apps" element={<Apps />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
