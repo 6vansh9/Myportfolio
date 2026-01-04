@@ -13,7 +13,7 @@ export default function About() {
         <div className="mb-4 flex flex-col">
           {/* Page Title */}
           <div className="flex flex-col gap-2">
-            <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase transition-colors hover:text-white">
+            <p className="mb-4 text-xs tracking-widest text-zinc-300 uppercase transition-colors hover:text-white">
               A little bit about who I am and what I do
             </p>
           </div>

@@ -7,6 +7,7 @@ import TechStack from "./TechStack";
 import FeaturedProjects from "./FeaturedProjects";
 import Experience from "./Experience";
 import Contact from "./Contact";
+import SpotifyPlaylist from "./SpotifyPlaylist";
 import Quote from "./Quote";
 import Footer from "../../components/Footer";
 
@@ -60,6 +61,12 @@ export default function Home() {
       <MaxWidthContainer>
         <div id="contact-section">
           <Contact />
+        </div>
+      </MaxWidthContainer>
+
+      <MaxWidthContainer>
+        <div id="spotify-playlist-section">
+          <SpotifyPlaylist />
         </div>
       </MaxWidthContainer>
 

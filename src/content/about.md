@@ -159,7 +159,6 @@ Today, I work at the intersection of:
 
 **Currently:** Deep in AI. Always learning. Always building. Always shipping. 🛠️
 
----
 
 ### Thanks for scrolling this far. ✨
 
