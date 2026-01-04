@@ -15,8 +15,6 @@ export default function Blogs() {
       <MaxWidthContainer>
           <Footer />
       </MaxWidthContainer>
-
-
     </div>
   );
 }

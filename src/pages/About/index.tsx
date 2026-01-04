@@ -1,6 +1,7 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
 import MarkdownViewer from "./MarkdownViewer";
 import aboutContent from "@/content/about.md?raw";
+import SpotifyPlaylist from "./SpotifyPlaylist";
 import RickRoll from "./RickRoll";
 import Footer from "@/components/Footer";
 
@@ -20,6 +21,12 @@ export default function About() {
 
           {/* Markdown Viewer */}
           <MarkdownViewer content={aboutContent} filename="about.md" />
+        </div>
+      </MaxWidthContainer>
+
+      <MaxWidthContainer>
+        <div id="spotify-playlist-section">
+          <SpotifyPlaylist />
         </div>
       </MaxWidthContainer>
 
