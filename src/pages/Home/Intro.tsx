@@ -56,7 +56,7 @@ export default function Intro() {
       {/* Top Section */}
       <div className="flex w-full flex-row items-center gap-5">
         <img
-          src="/assets/avatar.jpg"
+          src="/assets/me.png"
           alt="Photo of Gautam Vhavle"
           className="h-20 w-20 rounded-lg object-cover"
         />

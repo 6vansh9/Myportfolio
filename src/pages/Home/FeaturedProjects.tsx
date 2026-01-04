@@ -15,7 +15,7 @@ const featuredProjects: Project[] = [
     description:
       "A personal website to showcase my projects, skills, and experience.",
     image: "/assets/projects/old-portfolio.png",
-    website: "https://ventory.in",
+    website: "https://gautamvhavle.vercel.app/",
     tech: [
       { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
       { name: "React", icon: "/assets/tech-stack/react.svg" },
