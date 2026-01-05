@@ -1,4 +1,5 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
+import Chatbot from "@/components/Chatbot";
 import Intro from "./Intro";
 import Bio from "./Bio";
 import SpotifyNowPlaying from "@/components/SpotifyNowPlaying";
@@ -14,6 +15,8 @@ import Footer from "../../components/Footer";
 export default function Home() {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-9">
+      <Chatbot />
+
       <div className="h-[120px]" />
 
       <MaxWidthContainer>

@@ -4,10 +4,15 @@ import aboutContent from "@/content/about.md?raw";
 import SpotifyPlaylist from "./SpotifyPlaylist";
 import RickRoll from "./RickRoll";
 import Footer from "@/components/Footer";
+import Live2DCharacter from "./Live2DCharacter";
+
 
 export default function About() {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-9">
+      {/* Live2D Character - Only renders on About page */}
+      <Live2DCharacter />
+
       <div className="h-[120px]" />
 
       <MaxWidthContainer>

@@ -2,7 +2,6 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import Chatbot from "@/components/Chatbot";
 import PageRoutes from "@/pages/PageRoutes";
 import SplashScreen from "@/components/SplashScreen";
 import StarfieldBackground from "@/components/StarfieldBackground";
@@ -33,7 +32,6 @@ export default function App() {
             <CanvasCursor />
             <StarfieldBackground />
             <PageRoutes />
-            <Chatbot />
           </>
         )}
       </BrowserRouter>
