@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import certificates from "@/content/featured-certificates-metadata.json";
 import CertificateCard from "@/components/CertificateCard";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
@@ -97,7 +97,7 @@ export default function FeaturedCertificates() {
             rel="noopener noreferrer"
             className="group/link flex items-center gap-1.5 text-xs text-zinc-500 transition-colors hover:text-zinc-300"
           >
-            <span>View on LinkedIn</span>
+            <span>View more on LinkedIn</span>
             <FaArrowRightLong className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />
           </a>
         </div>
