@@ -8,10 +8,9 @@
         "issuedDate": "Dec 2025",
         "skills": [
             "Retrieval-Augmented Generation (RAG)",
-            "Information Retrieval",
-            "chunking",
-            "Intelligent Agents",
-            "Large Language Models (LLM)"
+            "Retrieval Techniques",
+            "Chunking Strategies",
+            "Intelligent Agents"
         ],
         "credentialUrl": "https://coursera.org/share/78ea2fd0831171b2b6b78bb9bf978c05"
     },
@@ -22,7 +21,12 @@
         "issuerLogo": "https://media.licdn.com/dms/image/v2/D560BAQFo2IrXO1-LCg/company-logo_100_100/B56ZoB_xEeJsAQ-/0/1760970084952/langchain_logo?e=1769040000&v=beta&t=UXxTqhLweWuhmGcF08-4HjOJSc5xUU8gekPDjKebfBc",
         "credentialId": "ndqtwkxtu0",
         "issuedDate": "Nov 2025",
-        "skills": [],
+        "skills": [
+            "Agentic AI",
+            "Graph-Based Data Modeling",
+            "Human In The Loop",
+            "Agent Memory"
+        ],
         "credentialUrl": "https://academy.langchain.com/certificates/ndqtwkxtu0"
     },
     {
@@ -35,7 +39,8 @@
         "skills": [
             "Agentic AI",
             "Agent Tools",
-            "Agent orchestration"
+            "AI orchestration",
+            "AI Context Management"
         ],
         "credentialUrl": "https://academy.langchain.com/certificates/cyjulhh0ma"
     },
@@ -49,7 +54,8 @@
         "skills": [
             "Chatbot Development",
             "GenAI Applications",
-            "Prompt Engineering"
+            "Prompt Engineering",
+            "XML Prompts"
         ],
         "credentialUrl": "https://learn.deeplearning.ai/accomplishments/109eb03d-bf30-49a5-99cd-1a08514940cc"
     },
@@ -60,7 +66,12 @@
         "issuerLogo": "https://media.licdn.com/dms/image/v2/D560BAQFo2IrXO1-LCg/company-logo_100_100/B56ZoB_xEeJsAQ-/0/1760970084952/langchain_logo?e=1769040000&v=beta&t=UXxTqhLweWuhmGcF08-4HjOJSc5xUU8gekPDjKebfBc",
         "credentialId": "xok3d0t5ig",
         "issuedDate": "Sep 2025",
-        "skills": [],
+        "skills": [
+            "Graphs",
+            "Langchain",
+            "Code Structuring",
+            "Time Machine"
+        ],
         "credentialUrl": "https://academy.langchain.com/certificates/xok3d0t5ig"
     },
     {
@@ -71,7 +82,10 @@
         "credentialId": "559b5a260a0f44154094bce1d5648adaa9a8440d9e8878235766448d846b5da2",
         "issuedDate": "Sep 2025",
         "skills": [
-            "Natural Language Processing (NLP)"
+            "Natural Language Processing (NLP)",
+            "Transformer Models",
+            "Tokens",
+            "LLMs"
         ],
         "credentialUrl": "https://www.linkedin.com/learning/certificates/559b5a260a0f44154094bce1d5648adaa9a8440d9e8878235766448d846b5da2"
     },
