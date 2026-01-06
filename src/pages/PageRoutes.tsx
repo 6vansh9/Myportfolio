@@ -4,6 +4,7 @@ import Home from "./Home";
 import About from "./About";
 import Blogs from "./Blogs";
 import Apps from "./Apps";
+import NotFound from "./NotFound";
 
 export default function PageRoutes() {
   const location = useLocation();
@@ -27,7 +28,7 @@ export default function PageRoutes() {
           <Route path="/about" element={<About />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/apps" element={<Apps />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
