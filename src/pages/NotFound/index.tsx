@@ -40,7 +40,7 @@ export default function NotFound() {
         setGlitchText(
           "404"
             .split("")
-            .map((char, index) => {
+            .map((_, index) => {
               if (iterations > index * 2) return "404"[index];
               return chars[Math.floor(Math.random() * chars.length)];
             })
