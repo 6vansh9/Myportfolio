@@ -72,6 +72,7 @@
   function playMusicOnce(event) {
     console.log("User interaction detected:", event.type);
     const audio = document.getElementById('bg-music');
+    audio.volume = 0.3;
     if (!audio.src) {
       audio.src = '/assets/music/interstellar.mp3';
       audio.load();
