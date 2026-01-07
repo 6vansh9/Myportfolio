@@ -11,4 +11,19 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      '/api/github-contributions': {
+        target: 'https://github-contributions-api.jogruber.de/v4',
+        changeOrigin: true,
+        rewrite: (path) => {
+          // Extract username and year from query params
+          const url = new URL(path, 'http://localhost');
+          const username = url.searchParams.get('username');
+          const year = url.searchParams.get('year') || 'last';
+          return `/${username}?y=${year}`;
+        },
+      },
+    },
+  },
 })

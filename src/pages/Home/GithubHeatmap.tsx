@@ -33,7 +33,8 @@ export default function GithubHeatmap() {
   useEffect(() => {
     const fetchContributions = async () => {
       try {
-        const url = `https://github-contributions-api.jogruber.de/v4/${github.username}?y=${github.year}`;
+        // Use Vercel serverless function to avoid CORS issues in production
+        const url = `/api/github-contributions?username=${github.username}&year=${github.year}`;
         const response = await fetch(url);
 
         if (!response.ok) {
