@@ -66,31 +66,6 @@
 <body>
   <div id="root"></div>
 
-  <audio id="bg-music" loop></audio>
-
-  <script>
-  function playMusicOnce(event) {
-    console.log("User interaction detected:", event.type);
-    const audio = document.getElementById('bg-music');
-    audio.volume = 0.3;
-    if (!audio.src) {
-      audio.src = '/assets/music/interstellar.mp3';
-      audio.load();
-      console.log("Audio source set and loaded.");
-    }
-    audio.play().then(() => {
-      console.log("Audio playback started.");
-    }).catch((err) => {
-      console.warn("Audio playback failed:", err);
-    });
-    window.removeEventListener('click', playMusicOnce);
-  }
-  window.addEventListener('load', () => {
-    console.log("Window loaded, adding event listeners for music.");
-    window.addEventListener('click', playMusicOnce);
-  });
-</script>
-
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
