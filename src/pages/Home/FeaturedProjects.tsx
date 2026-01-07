@@ -1,4 +1,5 @@
 import { FiGithub, FiGlobe } from "react-icons/fi";
+import metadata from "@/content/metadata.json";
 
 type Project = {
   title: string;
@@ -9,75 +10,16 @@ type Project = {
   tech: { name: string; icon: string }[];
 };
 
-const featuredProjects: Project[] = [
-  {
-    title: "Old Portfolio",
-    description:
-      "A personal website to showcase my projects, skills, and experience.",
-    image: "/assets/projects/old-portfolio.png",
-    website: "https://gautamvhavle.vercel.app/",
-    tech: [
-      { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
-      { name: "React", icon: "/assets/tech-stack/react.svg" },
-      { name: "SASS", icon: "/assets/tech-stack/sass.svg" },
-      { name: "TypeScript", icon: "/assets/tech-stack/typescript.svg" },
-      { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
-    ],
-  },
-  {
-    title: "Parkive",
-    description:
-      "A smart parking solution with real time data visualisation using IoT technology.",
-    image: "/assets/projects/parkive.png",
-    website: "https://gautamvhavle.wixsite.com/website",
-    github: "https://github.com/GautamVhavle/parkive",
-    tech: [
-      { name: "React", icon: "/assets/tech-stack/react.svg" },
-      { name: "SASS", icon: "/assets/tech-stack/sass.svg" },
-      { name: "JavaScript", icon: "/assets/tech-stack/javascript.svg" },
-      { name: "Espressif", icon: "/assets/tech-stack/espressif.svg" },
-      { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
-
-    ],
-  },
-  {
-    title: "Ventory.in",
-    description:
-      "An easy-to-use inventory management software for MSMEs.",
-    image: "/assets/projects/ventory.png",
-    website: "https://ventory.in",
-    tech: [
-      { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
-      { name: "React", icon: "/assets/tech-stack/react.svg" },
-      { name: "SASS", icon: "/assets/tech-stack/sass.svg" },
-      { name: "JavaScript", icon: "/assets/tech-stack/javascript.svg" },
-      { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
-    ],
-  },
-  {
-    title: "GrigTechnologies.com",
-    description:
-      "A simple and modern homepage for a technology company.",
-    image: "/assets/projects/grig.png",
-    website: "https://grigtechnologies.com",
-    tech: [
-      { name: "Vite", icon: "/assets/tech-stack/vite.svg" },
-      { name: "React", icon: "/assets/tech-stack/react.svg" },
-      { name: "SASS", icon: "/assets/tech-stack/sass.svg" },
-      { name: "JavaScript", icon: "/assets/tech-stack/javascript.svg" },
-      { name: "Figma", icon: "/assets/tech-stack/figma.svg" },
-    ],
-  },
-];
-
 export default function FeaturedProjects() {
+  const { featuredProjects } = metadata.home;
+
   return (
     <section className="w-full">
       <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase transition-colors hover:text-white">
         Featured Projects
       </p>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {featuredProjects.map((project) => (
+        {featuredProjects.map((project: Project) => (
           <div
             key={project.title}
             className="group font-inter flex flex-col rounded-xl border border-zinc-800/50 bg-zinc-900/25 backdrop-blur-lg transition-all duration-200 ease-out hover:border-zinc-700/40 hover:bg-zinc-900/30"

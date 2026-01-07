@@ -1,0 +1,345 @@
+{
+  "home": {
+    "intro": {
+      "name": "Gautam Vhavle",
+      "avatar": "/assets/me.png",
+      "roles": [
+        "Full-Stack Developer",
+        "GenAI Developer",
+        "IoT Developer",
+        "Context Engineering"
+      ],
+      "availability": {
+        "status": true,
+        "text": "Available for work"
+      },
+      "contact": {
+        "role": "Full-Stack Developer",
+        "location": "Bengaluru, Karnataka, India",
+        "email": "gautamvhavle@gmail.com",
+        "website": "grigtechnologies.com",
+        "websiteUrl": "https://grigtechnologies.com",
+        "timezone": "IST",
+        "pronouns": "he/him"
+      }
+    },
+    "bio": {
+      "description": "Software engineer. Patent holder. Builder at heart. I craft intelligent systems that bridge the gap between cutting-edge tech and real-world impact. Currently engineering GenAI solutions at",
+      "company": {
+        "name": "Siemens",
+        "url": "https://siemens.com"
+      },
+      "descriptionEnd": ", where I turn complex AI concepts into production-ready products. I build things that ship, scale, and actually matter.",
+      "resumeUrl": "https://drive.google.com/file/d/11226IywvimrBUydAPa9DVyvfE1thKh2b/view?usp=sharing",
+      "contactSectionId": "contact-section",
+      "socials": [
+        {
+          "name": "Github",
+          "url": "https://github.com/gautamvhavle"
+        },
+        {
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/gautamvhavle"
+        },
+        {
+          "name": "X",
+          "url": "https://x.com/gautamvvvv"
+        },
+        {
+          "name": "Mail",
+          "url": "mailto:gautamvhavle@gmail.com"
+        },
+        {
+          "name": "Instagram",
+          "url": "https://instagram.com/gautam_vhavle"
+        },
+        {
+          "name": "YouTube",
+          "url": "https://youtube.com/@gautamvhavle"
+        },
+        {
+          "name": "Dev",
+          "url": "https://dev.to/gautamvhavle"
+        },
+        {
+          "name": "Spotify",
+          "url": "https://open.spotify.com/user/31pd44dwu42evyskhwyb3fh7t2yy"
+        }
+      ]
+    },
+    "github": {
+      "username": "GautamVhavle",
+      "year": 2025
+    },
+    "techStack": [
+      { "name": "Python", "url": "https://www.python.org/", "icon": "python.svg" },
+      { "name": "TypeScript", "url": "https://www.typescriptlang.org/", "icon": "typescript.svg" },
+      { "name": "JavaScript", "url": "https://www.javascript.com/", "icon": "javascript.svg" },
+      { "name": "C++", "url": "https://isocpp.org/", "icon": "cpp.svg" },
+      { "name": "Bash", "url": "https://www.gnu.org/software/bash/", "icon": "bash.svg" },
+      { "name": "ReactJS", "url": "https://react.dev/", "icon": "react.svg" },
+      { "name": "Vite", "url": "https://vitejs.dev/", "icon": "vite.svg" },
+      { "name": "Sass", "url": "https://sass-lang.com/", "icon": "sass.svg" },
+      { "name": "Tailwind CSS", "url": "https://tailwindcss.com/", "icon": "tailwind.svg" },
+      { "name": "ShadCN", "url": "https://ui.shadcn.com/", "icon": "shadcn.svg" },
+      { "name": "Postman", "url": "https://www.postman.com/", "icon": "postman.svg" },
+      { "name": "PostgreSQL", "url": "https://www.postgresql.org/", "icon": "postgres.svg" },
+      { "name": "MSSQL", "url": "https://www.microsoft.com/en-us/sql-server/", "icon": "mssql.svg" },
+      { "name": "MongoDB", "url": "https://www.mongodb.com/", "icon": "mongodb.svg" },
+      { "name": "Flask", "url": "https://flask.palletsprojects.com/", "icon": "flask.svg" },
+      { "name": "FastAPI", "url": "https://fastapi.tiangolo.com/", "icon": "fastapi.svg" },
+      { "name": "Git", "url": "https://git-scm.com/", "icon": "git.svg" },
+      { "name": "GitHub", "url": "https://github.com/", "icon": "github.svg" },
+      { "name": "Docker", "url": "https://www.docker.com/", "icon": "docker.svg" },
+      { "name": "Kubernetes", "url": "https://kubernetes.io/", "icon": "kubernetes.svg" },
+      { "name": "Helm", "url": "https://helm.sh/", "icon": "helm.svg" },
+      { "name": "n8n", "url": "https://n8n.io/", "icon": "n8n.svg" },
+      { "name": "LangChain", "url": "https://langchain.com/", "icon": "langchain.svg" },
+      { "name": "Copilot", "url": "https://docs.github.com/en/copilot", "icon": "copilot.svg" },
+      { "name": "Docling", "url": "https://www.docling.ai/", "icon": "docling.svg" },
+      { "name": "LangFuse", "url": "https://www.langfuse.com/", "icon": "langfuse.svg" },
+      { "name": "Ollama", "url": "https://www.ollama.com/", "icon": "ollama.svg" },
+      { "name": "LlamaIndex", "url": "https://www.llamaindex.ai/", "icon": "llamaindex.svg" },
+      { "name": "OpenRouter", "url": "https://openrouter.ai/", "icon": "openrouter.svg" },
+      { "name": "Raspberry Pi", "url": "https://www.raspberrypi.com/", "icon": "raspberrypi.svg" },
+      { "name": "Espressif", "url": "https://www.espressif.com/", "icon": "espressif.svg" },
+      { "name": "VS Code", "url": "https://code.visualstudio.com/", "icon": "vscode.svg" },
+      { "name": "Cursor", "url": "https://www.cursor.so/", "icon": "cursor.svg" },
+      { "name": "Canva", "url": "https://www.canva.com/", "icon": "canva.svg" },
+      { "name": "Figma", "url": "https://www.figma.com/", "icon": "figma.svg" }
+    ],
+    "featuredProjects": [
+      {
+        "title": "Old Portfolio",
+        "description": "A personal website to showcase my projects, skills, and experience.",
+        "image": "/assets/projects/old-portfolio.png",
+        "website": "https://gautamvhavle.vercel.app/",
+        "tech": [
+          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
+          { "name": "TypeScript", "icon": "/assets/tech-stack/typescript.svg" },
+          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
+        ]
+      },
+      {
+        "title": "Parkive",
+        "description": "A smart parking solution with real time data visualisation using IoT technology.",
+        "image": "/assets/projects/parkive.png",
+        "website": "https://gautamvhavle.wixsite.com/website",
+        "github": "https://github.com/GautamVhavle/parkive",
+        "tech": [
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
+          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
+          { "name": "Espressif", "icon": "/assets/tech-stack/espressif.svg" },
+          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
+        ]
+      },
+      {
+        "title": "Ventory.in",
+        "description": "An easy-to-use inventory management software for MSMEs.",
+        "image": "/assets/projects/ventory.png",
+        "website": "https://ventory.in",
+        "tech": [
+          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
+          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
+          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
+        ]
+      },
+      {
+        "title": "GrigTechnologies.com",
+        "description": "A simple and modern homepage for a technology company.",
+        "image": "/assets/projects/grig.png",
+        "website": "https://grigtechnologies.com",
+        "tech": [
+          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
+          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
+          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
+        ]
+      }
+    ],
+    "experiences": [
+      {
+        "company": "Siemens",
+        "companyUrl": "https://www.siemens.com/",
+        "logo": "/assets/company-logos/siemens.jpeg",
+        "title": "Graduate Engineer Trainee",
+        "range": "April 2025 - Present",
+        "location": "Bangalore, India",
+        "bullets": [
+          "Developing a Threat and Risk Assessment AI Assistant aimed at automating cyber risk analysis and mitigation workflows for industrial applications.",
+          "Designing and implementing AI-powered orchestration workflows using LangChain, LangGraph, and Vision models, enabling dynamic decision-making and intelligent task automation.",
+          "Developing a full-stack web application with React frontend and FastAPI backend, integrating complex AI pipelines with intuitive UI for seamless user experience.",
+          "Building a dashboard to deliver risk categorization, scoring, and mitigation suggestions based on threat analysis, improving usability and supporting scalable assessments."
+        ]
+      },
+      {
+        "company": "Brand Context",
+        "companyUrl": "https://brandcontext.ai/",
+        "logo": "/assets/company-logos/brandcontext.jpeg",
+        "title": "IoT Developer Intern",
+        "range": "December 2024 - March 2025",
+        "location": "Remote",
+        "bullets": [
+          "Developed a prototype of an AI-driven modular bot for real-time manufacturing updates, enabling video streaming, barcode scanning, UI interaction, and operational monitoring.",
+          "Assisted in CAD modelling and component selection, collaborating with the team to optimize the bot's design and functionality.",
+          "Developed an AI-powered camera using Raspberry Pi for dashboard panel monitoring, and enhanced the hardware to create a smart helmet for factory workers."
+        ]
+      },
+      {
+        "company": "GRIG Technologies",
+        "companyUrl": "https://grigtechnologies.in",
+        "logo": "/assets/company-logos/grig.jpeg",
+        "title": "Full Stack IoT Developer",
+        "range": "August 2023 - January 2025",
+        "location": "Pune, India",
+        "bullets": [
+          "Building a modern full-stack business management solution for mid-tier stores, managing all aspects of design, development, and implementation.",
+          "Maintaining CI/CD Pipelines and GitHub for Organizations, managing deployments, workflows and team, and other DevOps related tasks.",
+          "Leading R&D for a lightweight, hands-free Linux based kiosk using Raspberry Pi Zero 2W, engineered to provide a cost-effective and flexible display solution.",
+          "Developing frontend of an alert dashboard to automate workflows, enabling the seamless sending of automated and promotional emails."
+        ]
+      },
+      {
+        "company": "Golain",
+        "companyUrl": "https://golain.io/",
+        "logo": "/assets/company-logos/golain.jpeg",
+        "title": "IoT Developer Intern",
+        "range": "June 2024 – August 2024",
+        "location": "Remote",
+        "bullets": [
+          "Migrated Platform IO SDKs to Arduino IDE, improving development efficiency and cross-platform compatibility.",
+          "Developed Espressif microcontroller SDKs for integration with Golain Cloud.",
+          "Enhanced data serialization and efficiency using Protocol Buffers and Arduino JSON.",
+          "Developed client projects, including a Smart Bedside Table and WLED-based LED automation system.",
+          "Trained a TensorFlow Lite model for Vision AI v2 for facial recognition, enabling AI-powered door lock automation."
+        ]
+      },
+      {
+        "company": "E4A Solutions",
+        "companyUrl": "https://e4asolution.com/",
+        "logo": "/assets/company-logos/e4a.jpeg",
+        "title": "Embedded Developer Intern",
+        "range": "April 2023 – July 2023",
+        "location": "Mumbai, India",
+        "bullets": [
+          "Developed a hospital software solution using NRF52 DK and Raspberry Pi, with mesh network topology via Thread Protocol and seamless MQTT communication.",
+          "Integrated GPIO inputs for real-time alert triggers. Optimized battery management by leveraging NRF chip capabilities.",
+          "Created a basic web-based GUI for responsive alert management and control. Implemented NoSQL-backed data logging and analysis."
+        ]
+      }
+    ],
+    "contactSection": {
+      "title": "Let's Work Together",
+      "methods": [
+        {
+          "type": "calendar",
+          "title": "Schedule a free call",
+          "description": "30-minute strategy session",
+          "url": "https://cal.com/gautamvhavle/30min"
+        },
+        {
+          "type": "email",
+          "title": "Send Email",
+          "description": "Quick inquiries & questions",
+          "url": "mailto:gautam.vhavle@grigtechnologies.com"
+        },
+        {
+          "type": "linkedin",
+          "title": "Connect on LinkedIn",
+          "description": "Follow for updates & insights",
+          "url": "https://linkedin.com/in/gautamvhavle"
+        }
+      ],
+      "form": {
+        "title": "Send a Message",
+        "description": "Prefer to write? Fill out the form and I'll get back to you within 24 hours.",
+        "actionUrl": "https://formbold.com/s/3jKjL"
+      },
+      "footer": "Response within 24 hours • Available for hire"
+    },
+    "quotes": [
+      {
+        "text": "We should forget about small efficiencies, say about 97 percent of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3 percent.",
+        "author": "Donald Knuth"
+      },
+      {
+        "text": "There are two ways of constructing a software design: one way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies.",
+        "author": "C.A.R. Hoare"
+      },
+      {
+        "text": "Program testing can be used to show the presence of bugs, but never to show their absence. No matter how many tests you run, you cannot logically prove correctness through testing alone.",
+        "author": "Edsger Dijkstra"
+      },
+      {
+        "text": "Adding manpower to a late software project makes it later. People and months are not interchangeable commodities, and coordination costs rise faster than we expect.",
+        "author": "Fred Brooks"
+      },
+      {
+        "text": "Controlling complexity is the essence of computer programming. The skill lies in organizing code so that each part remains understandable without needing to know every other part in detail.",
+        "author": "Brian Kernighan"
+      },
+      {
+        "text": "Good programmers worry about data structures and their relationships. Bad programmers worry about the code. Over time, the structure always outlives the specific implementation.",
+        "author": "Linus Torvalds"
+      },
+      {
+        "text": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand. Maintainability is not optional — it is part of the design.",
+        "author": "Martin Fowler"
+      },
+      {
+        "text": "The most effective debugging tool is still careful thought, coupled with judiciously placed print statements. Tools help, but disciplined reasoning solves problems.",
+        "author": "Brian Kernighan"
+      },
+      {
+        "text": "The only way to learn a new programming language is by writing programs in it. Reading about it is useful, but real understanding comes from building, breaking, and fixing.",
+        "author": "Dennis Ritchie"
+      },
+      {
+        "text": "Good code is its own best documentation. As you're about to add a comment, ask yourself: how can I improve the code so that this comment isn't necessary?",
+        "author": "Steve McConnell"
+      },
+      {
+        "text": "Simplicity is prerequisite for reliability. Systems that are too complex eventually behave in ways that even their designers cannot predict or control.",
+        "author": "Edsger Dijkstra"
+      },
+      {
+        "text": "A program that produces incorrect results twice as fast is infinitely slower than one that produces the correct results. Performance must always follow correctness.",
+        "author": "John Osterhout"
+      },
+      {
+        "text": "The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise. Abstraction clarifies thinking when it is done well.",
+        "author": "Edsger Dijkstra"
+      },
+      {
+        "text": "Software is hard because we build conceptual structures that are invisible and extremely flexible. This very flexibility makes it wonderfully powerful — and dangerously fragile.",
+        "author": "Fred Brooks"
+      },
+      {
+        "text": "Programs must be written for people to read, and only incidentally for machines to execute. The real challenge is to make ideas clear in a form that remains executable.",
+        "author": "Harold Abelson"
+      },
+      {
+        "text": "A good programmer is someone who always looks both ways before crossing a one-way street. Caution in software saves enormous effort later.",
+        "author": "Doug Linder"
+      },
+      {
+        "text": "The trouble with the world is that the stupid are cocksure and the intelligent are full of doubt — and software engineering amplifies this effect. Doubt forces us to test, validate, and verify.",
+        "author": "Bertrand Russell"
+      },
+      {
+        "text": "Make it work, make it right, make it fast. In that order. Skipping the middle step is the fastest way to guarantee technical debt.",
+        "author": "Kent Beck"
+      },
+      {
+        "text": "The only way to go fast is to go well. Sustainable speed comes from clean code, clear design, and disciplined refactoring — not from rushing.",
+        "author": "Robert C. Martin"
+      }
+    ]
+  }
+}
