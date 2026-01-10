@@ -34,8 +34,10 @@ export default function BlogsContent() {
   useEffect(() => {
     async function fetchArticles() {
       try {
+        // Cache bust every 10 minutes for better performance while ensuring updates
+        const cacheBuster = Math.floor(Date.now() / (10 * 60 * 1000));
         const res = await fetch(
-          `https://dev.to/api/articles?username=${DEV_TO_USERNAME}`,
+          `https://dev.to/api/articles?username=${DEV_TO_USERNAME}&_=${cacheBuster}`,
         );
         if (!res.ok) {
           throw new Error("Failed to fetch articles");
