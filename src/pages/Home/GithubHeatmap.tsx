@@ -22,19 +22,34 @@ const customTheme = {
   dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
 };
 
+// Check if we're in development or production
+const isDev = import.meta.env.DEV;
+
 export default function GithubHeatmap() {
   const [data, setData] = useState<ContributionDay[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [totalContributions, setTotalContributions] = useState<number>(0);
   
-  const { github } = metadata.home;
+  const github = metadata.home?.github;
+  
+  // Don't render if github section is disabled or missing required data
+  const isEnabled = github?.enabled !== false && github?.username;
 
   useEffect(() => {
+    if (!isEnabled) {
+      setLoading(false);
+      return;
+    }
+
     const fetchContributions = async () => {
       try {
-        // Use Vercel serverless function to avoid CORS issues in production
-        const url = `/api/github-contributions?username=${github.username}&year=${github.year}`;
+        // In development, call the external API directly
+        // In production, use the serverless function for better caching
+        const url = isDev
+          ? `https://github-contributions-api.jogruber.de/v4/${github.username}?y=${github.year || 'last'}`
+          : `/api/github-contributions?username=${github.username}&year=${github.year || 'last'}`;
+        
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -61,7 +76,12 @@ export default function GithubHeatmap() {
     };
 
     fetchContributions();
-  }, [github.username, github.year]);
+  }, [isEnabled, github?.username, github?.year]);
+
+  // Don't render component if disabled or no username
+  if (!isEnabled) {
+    return null;
+  }
 
   if (loading) {
     return (

@@ -10,6 +10,7 @@
         "Context Engineering"
       ],
       "availability": {
+        "enabled": true,
         "status": true,
         "text": "Available for work"
       },
@@ -68,6 +69,7 @@
       ]
     },
     "github": {
+      "enabled": true,
       "username": "GautamVhavle",
       "year": 2025
     },
@@ -238,18 +240,21 @@
       "title": "Let's Work Together",
       "methods": [
         {
+          "enabled": true,
           "type": "calendar",
           "title": "Schedule a free call",
           "description": "30-minute strategy session",
           "url": "https://cal.com/gautamvhavle/30min"
         },
         {
+          "enabled": true,
           "type": "email",
           "title": "Send Email",
           "description": "Quick inquiries & questions",
           "url": "mailto:gautam.vhavle@grigtechnologies.com"
         },
         {
+          "enabled": true,
           "type": "linkedin",
           "title": "Connect on LinkedIn",
           "description": "Follow for updates & insights",
@@ -257,6 +262,7 @@
         }
       ],
       "form": {
+        "enabled": true,
         "title": "Send a Message",
         "description": "Prefer to write? Fill out the form and I'll get back to you within 24 hours.",
         "actionUrl": "https://formbold.com/s/3jKjL"
@@ -341,5 +347,61 @@
         "author": "Robert C. Martin"
       }
     ]
+  },
+  "header": {
+    "logo": {
+      "prefix": "~/",
+      "text": "gautam_vhavle",
+      "href": "/"
+    },
+    "navLinks": [
+      { "name": "Home", "path": "/", "enabled": true },
+      { "name": "About", "path": "/about", "enabled": true },
+      { "name": "Blogs", "path": "/blogs", "enabled": true },
+      { "name": "Apps", "path": "/apps", "enabled": true }
+    ]
+  },
+  "footer": {
+    "text": "Made with ❤️ by",
+    "author": {
+      "name": "Gautam Vhavle",
+      "url": "https://github.com/gautamvhavle"
+    },
+    "socials": [
+      {
+        "enabled": true,
+        "name": "GitHub",
+        "url": "https://github.com/gautamvhavle",
+        "icon": "github"
+      },
+      {
+        "enabled": true,
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/in/gautamvhavle",
+        "icon": "linkedin"
+      },
+      {
+        "enabled": true,
+        "name": "Email",
+        "url": "mailto:gautamvhavle@gmail.com",
+        "icon": "email"
+      }
+    ]
+  },
+  "settings": {
+    "chatbot": {
+      "enabled": true,
+      "welcomeMessage": "Hi! I'm Gautam's AI assistant. Ask me anything about his work, skills, or projects! (Sorry I may have 'COLD START' sometimes 🥹)"
+    },
+    "splashScreen": {
+      "enabled": true,
+      "gif": "/assets/nyan-cat.gif",
+      "backgroundColor": "#000000",
+      "alt": "Loading..."
+    },
+    "blogs": {
+      "enabled": true,
+      "devToUsername": "gautamvhavle"
+    }
   }
 }

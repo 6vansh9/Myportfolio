@@ -1,13 +1,17 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Home from "./Home";
 import About from "./About";
 import Blogs from "./Blogs";
 import Apps from "./Apps";
 import NotFound from "./NotFound";
+import metadata from "@/content/metadata.json";
 
 export default function PageRoutes() {
   const location = useLocation();
+  
+  // Check if blogs section is enabled
+  const isBlogsEnabled = metadata.settings?.blogs?.enabled !== false;
 
   return (
     <AnimatePresence mode="wait">
@@ -25,8 +29,10 @@ export default function PageRoutes() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route 
+            path="/blogs" 
+            element={isBlogsEnabled ? <Blogs /> : <Navigate to="/" replace />} 
+          />
           <Route path="/apps" element={<Apps />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

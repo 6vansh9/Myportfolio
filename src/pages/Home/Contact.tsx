@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { IoCalendarOutline, IoMailOutline } from "react-icons/io5";
 import { MdArrowOutward } from "react-icons/md";
 import { FiLinkedin } from "react-icons/fi";
+import { FaQuestionCircle } from "react-icons/fa";
 import {
     AlertDialog,
     AlertDialogContent,
@@ -13,22 +14,63 @@ import {
 } from "@/components/ui/alert-dialog";
 import metadata from "@/content/metadata.json";
 
-const iconMap = {
+// Icon map with fallback
+const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
     calendar: IoCalendarOutline,
     email: IoMailOutline,
     linkedin: FiLinkedin,
 };
 
+// Default placeholder icon for unknown types
+const DefaultIcon = ({ size = 18 }: { size?: number }) => (
+    <FaQuestionCircle size={size} />
+);
+
+// Type definitions for better type safety
+interface ContactMethod {
+    enabled?: boolean;
+    type: string;
+    title?: string;
+    description?: string;
+    url?: string;
+    icon?: string;
+}
+
+interface ContactForm {
+    enabled?: boolean;
+    title?: string;
+    description?: string;
+    actionUrl?: string;
+}
+
+interface ContactSectionData {
+    title?: string;
+    methods?: ContactMethod[];
+    form?: ContactForm;
+    footer?: string;
+}
+
 export default function Contact() {
     const [open, setOpen] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const formRef = useRef<HTMLFormElement>(null);
-    const { contactSection } = metadata.home;
+    
+    // Safely access contactSection with defaults
+    const contactSection: ContactSectionData = metadata.home?.contactSection || {};
+    
+    // Filter only enabled methods (default to enabled if flag is not present)
+    const enabledMethods = (contactSection.methods || []).filter(
+        (method) => method.enabled !== false && method.url
+    );
+    
+    // Check if form is enabled and has required data
+    const isFormEnabled = contactSection.form?.enabled !== false && 
+                          contactSection.form?.actionUrl;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = formRef.current;
-        if (!form) return;
+        if (!form || !contactSection.form?.actionUrl) return;
         setSubmitting(true);
 
         const formData = new FormData(form);
@@ -52,142 +94,161 @@ export default function Contact() {
         }
     };
 
+    // Don't render section if no contact methods and no form
+    if (enabledMethods.length === 0 && !isFormEnabled) {
+        return null;
+    }
+
+    // Determine grid layout based on what's available
+    const hasMethodsAndForm = enabledMethods.length > 0 && isFormEnabled;
+
     return (
         <section>
             <p className="mb-4 text-xs uppercase tracking-widest text-zinc-600 transition-colors hover:text-white">
-                {contactSection.title}
+                {contactSection.title || "Contact"}
             </p>
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                {/* Contact Methods */}
-                <div className="font-inter flex flex-col rounded-xl border border-zinc-800/40 bg-zinc-900/25 px-6 py-5 backdrop-blur-lg">
-                    <div className="mb-4">
-                        <h3 className="mb-1.5 text-lg font-medium text-zinc-200">
-                            Get in Touch
-                        </h3>
-                        <p className="text-sm leading-[1.6] text-zinc-400">
-                            Choose your preferred method to connect and let's discuss your
-                            project.
-                        </p>
+            <div className={`grid grid-cols-1 gap-5 ${hasMethodsAndForm ? "md:grid-cols-2" : ""}`}>
+                {/* Contact Methods - Only render if there are enabled methods */}
+                {enabledMethods.length > 0 && (
+                    <div className="font-inter flex flex-col rounded-xl border border-zinc-800/40 bg-zinc-900/25 px-6 py-5 backdrop-blur-lg">
+                        <div className="mb-4">
+                            <h3 className="mb-1.5 text-lg font-medium text-zinc-200">
+                                Get in Touch
+                            </h3>
+                            <p className="text-sm leading-[1.6] text-zinc-400">
+                                Choose your preferred method to connect and let's discuss your
+                                project.
+                            </p>
+                        </div>
+                        <div className="space-y-3">
+                            {enabledMethods.map((method) => {
+                                const Icon = iconMap[method.type] || DefaultIcon;
+                                return (
+                                    <a
+                                        key={method.type}
+                                        href={method.url}
+                                        target={method.type !== "email" ? "_blank" : undefined}
+                                        rel={method.type !== "email" ? "noopener noreferrer" : undefined}
+                                        className="group flex items-center gap-3 rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-4.5 py-2.5 transition-all duration-200 hover:border-zinc-700/60 hover:bg-zinc-800/40"
+                                    >
+                                        <span className="text-zinc-500 transition-colors group-hover:text-zinc-400">
+                                            <Icon size={18} />
+                                        </span>
+                                        <div className="min-w-0 flex-1">
+                                            <p className="mb-0.5 truncate text-xs text-zinc-300 sm:text-sm">
+                                                {method.title || method.type}
+                                            </p>
+                                            {method.description && (
+                                                <p className="text-[10px] text-zinc-500 sm:text-xs">
+                                                    {method.description}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <MdArrowOutward className="shrink-0 text-zinc-600 transition-colors group-hover:text-zinc-500" />
+                                    </a>
+                                );
+                            })}
+                        </div>
+                        {contactSection.footer && (
+                            <div className="mt-auto border-t border-zinc-800/40 pt-3">
+                                <p className="text-xs text-zinc-600">{contactSection.footer}</p>
+                            </div>
+                        )}
                     </div>
-                    <div className="space-y-3">
-                        {contactSection.methods.map((method) => {
-                            const Icon = iconMap[method.type as keyof typeof iconMap];
-                            return (
-                                <a
-                                    key={method.type}
-                                    href={method.url}
-                                    target={method.type !== "email" ? "_blank" : undefined}
-                                    rel={method.type !== "email" ? "noopener noreferrer" : undefined}
-                                    className="group flex items-center gap-3 rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-4.5 py-2.5 transition-all duration-200 hover:border-zinc-700/60 hover:bg-zinc-800/40"
-                                >
-                                    <span className="text-zinc-500 transition-colors group-hover:text-zinc-400">
-                                        <Icon size={18} />
-                                    </span>
-                                    <div className="min-w-0 flex-1">
-                                        <p className="mb-0.5 truncate text-xs text-zinc-300 sm:text-sm">
-                                            {method.title}
-                                        </p>
-                                        <p className="text-[10px] text-zinc-500 sm:text-xs">
-                                            {method.description}
-                                        </p>
-                                    </div>
-                                    <MdArrowOutward className="shrink-0 text-zinc-600 transition-colors group-hover:text-zinc-500" />
-                                </a>
-                            );
-                        })}
-                    </div>
-                    <div className="mt-auto border-t border-zinc-800/40 pt-3">
-                        <p className="text-xs text-zinc-600">{contactSection.footer}</p>
-                    </div>
-                </div>
-                {/* Contact Form */}
-                <div className="font-inter rounded-xl border border-zinc-800/40 bg-zinc-900/25 px-6 py-5 backdrop-blur-lg">
-                    <div className="mb-4">
-                        <h3 className="mb-1.5 text-base font-medium text-zinc-200 sm:text-lg">
-                            {contactSection.form.title}
-                        </h3>
-                        <p className="text-sm leading-[1.6] text-zinc-400">
-                            {contactSection.form.description}
-                        </p>
-                    </div>
-                    <form
-                        ref={formRef}
-                        className="space-y-2.5"
-                        action={contactSection.form.actionUrl}
-                        method="POST"
-                        onSubmit={handleSubmit}
-                    >
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            name="email"
-                            required
-                            disabled={submitting}
-                            className="w-full rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
-                        />
-                        <input
-                            type="text"
-                            placeholder="Subject"
-                            name="subject"
-                            required
-                            disabled={submitting}
-                            className="w-full rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
-                        />
-                        <textarea
-                            name="message"
-                            placeholder="Type your message"
-                            required
-                            rows={5}
-                            disabled={submitting}
-                            className="w-full resize-none rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
-                        ></textarea>
-                        <button
-                            type="submit"
-                            disabled={submitting}
-                            className={`inline-flex w-full items-center justify-center gap-2 bg-[#131314] px-4 py-2.5 ${
-                                submitting
-                                    ? "cursor-not-allowed opacity-60"
-                                    : "hover:bg-[#151515]"
-                            } group rounded-lg border border-[#2a2a2a] text-sm font-medium text-[#c7c7d7] transition-all duration-200 ease-out`}
+                )}
+                
+                {/* Contact Form - Only render if enabled and has actionUrl */}
+                {isFormEnabled && (
+                    <div className="font-inter rounded-xl border border-zinc-800/40 bg-zinc-900/25 px-6 py-5 backdrop-blur-lg">
+                        <div className="mb-4">
+                            <h3 className="mb-1.5 text-base font-medium text-zinc-200 sm:text-lg">
+                                {contactSection.form?.title || "Send a Message"}
+                            </h3>
+                            {contactSection.form?.description && (
+                                <p className="text-sm leading-[1.6] text-zinc-400">
+                                    {contactSection.form.description}
+                                </p>
+                            )}
+                        </div>
+                        <form
+                            ref={formRef}
+                            className="space-y-2.5"
+                            action={contactSection.form?.actionUrl}
+                            method="POST"
+                            onSubmit={handleSubmit}
                         >
-                            {submitting && (
-                                <svg
-                                    className="mr-2 h-4 w-4 animate-spin text-zinc-400"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <circle
-                                        className="opacity-25"
-                                        cx="12"
-                                        cy="12"
-                                        r="10"
-                                        stroke="currentColor"
-                                        strokeWidth="4"
-                                    ></circle>
-                                    <path
-                                        className="opacity-75"
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                name="email"
+                                required
+                                disabled={submitting}
+                                className="w-full rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
+                            />
+                            <input
+                                type="text"
+                                placeholder="Subject"
+                                name="subject"
+                                required
+                                disabled={submitting}
+                                className="w-full rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
+                            />
+                            <textarea
+                                name="message"
+                                placeholder="Type your message"
+                                required
+                                rows={5}
+                                disabled={submitting}
+                                className="w-full resize-none rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-3.5 py-2.5 text-sm text-zinc-200 transition-all ease-in-out placeholder:text-zinc-500 hover:border-zinc-800 focus:border-zinc-700 focus:outline-none"
+                            ></textarea>
+                            <button
+                                type="submit"
+                                disabled={submitting}
+                                className={`inline-flex w-full items-center justify-center gap-2 bg-[#131314] px-4 py-2.5 ${
+                                    submitting
+                                        ? "cursor-not-allowed opacity-60"
+                                        : "hover:bg-[#151515]"
+                                } group rounded-lg border border-[#2a2a2a] text-sm font-medium text-[#c7c7d7] transition-all duration-200 ease-out`}
+                            >
+                                {submitting && (
+                                    <svg
+                                        className="mr-2 h-4 w-4 animate-spin text-zinc-400"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <circle
+                                            className="opacity-25"
+                                            cx="12"
+                                            cy="12"
+                                            r="10"
+                                            stroke="currentColor"
+                                            strokeWidth="4"
+                                        ></circle>
+                                        <path
+                                            className="opacity-75"
+                                            fill="currentColor"
+                                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                        ></path>
+                                    </svg>
+                                )}
+                                <span>{submitting ? "Sending..." : "Send Message"}</span>
+                                {!submitting && (
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="14"
+                                        height="14"
+                                        className="transition-transform ease-out group-hover:translate-x-0.5"
+                                        viewBox="0 0 24 24"
                                         fill="currentColor"
-                                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                                    ></path>
-                                </svg>
-                            )}
-                            <span>{submitting ? "Sending..." : "Send Message"}</span>
-                            {!submitting && (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="14"
-                                    height="14"
-                                    className="transition-transform ease-out group-hover:translate-x-0.5"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                                </svg>
-                            )}
-                        </button>
-                    </form>
-                </div>
+                                    >
+                                        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                                    </svg>
+                                )}
+                            </button>
+                        </form>
+                    </div>
+                )}
             </div>
             {/* Alert Dialog */}
             <AlertDialog open={open} onOpenChange={setOpen}>

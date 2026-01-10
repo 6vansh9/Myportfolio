@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BlogCardSkeleton from "./BlogCardSkeleton";
 import BlogCard from "./BlogCard";
 import { FaPlus, FaDev, FaArrowRightLong } from "react-icons/fa6";
+import metadata from "@/content/metadata.json";
 
 interface DevToUser {
   name: string;
@@ -24,7 +25,11 @@ interface DevToArticle {
   user: DevToUser;
 }
 
-const DEV_TO_USERNAME = "gautamvhavle";
+// Get username from settings
+const DEV_TO_USERNAME = metadata.settings?.blogs?.devToUsername || "username";
+
+// Check if we're in development or production
+const isDev = import.meta.env.DEV;
 
 export default function BlogsContent() {
   const [articles, setArticles] = useState<DevToArticle[]>([]);
@@ -34,12 +39,18 @@ export default function BlogsContent() {
   useEffect(() => {
     async function fetchArticles() {
       try {
-        const res = await fetch(
-          `/api/devto-articles?username=${DEV_TO_USERNAME}`,
-        );
+        // In development, call Dev.to API directly
+        // In production, use the serverless function for better caching
+        const url = isDev
+          ? `https://dev.to/api/articles?username=${DEV_TO_USERNAME}`
+          : `/api/devto-articles?username=${DEV_TO_USERNAME}`;
+
+        const res = await fetch(url);
+        
         if (!res.ok) {
-          throw new Error("Failed to fetch articles");
+          throw new Error(`Failed to fetch articles: ${res.status}`);
         }
+        
         const data = await res.json();
         setArticles(data);
       } catch (err) {

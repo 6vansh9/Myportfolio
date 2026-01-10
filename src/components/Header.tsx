@@ -2,14 +2,51 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ScrambledText from "@/components//ui/shadcn-io/scrambled-text";
 import MaxWidthContainer from "@/components/MaxWidthContainer";
+import metadata from "@/content/metadata.json";
+
+// Type definitions
+interface NavLink {
+  name: string;
+  path: string;
+  enabled?: boolean;
+}
+
+interface HeaderData {
+  logo?: {
+    prefix?: string;
+    text?: string;
+    href?: string;
+  };
+  navLinks?: NavLink[];
+}
 
 export default function Header() {
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Blogs", path: "/blogs" },
-    { name: "Apps", path: "/apps" },
+  const headerData: HeaderData = metadata.header || {};
+  
+  // Get enabled nav links from metadata, with defaults
+  const defaultNavLinks = [
+    { name: "Home", path: "/", enabled: true },
+    { name: "About", path: "/about", enabled: true },
+    { name: "Blogs", path: "/blogs", enabled: true },
+    { name: "Apps", path: "/apps", enabled: true },
   ];
+  
+  // Filter only enabled nav links
+  const navLinks = (headerData.navLinks || defaultNavLinks).filter(
+    (link) => link.enabled !== false
+  );
+  
+  // Check if blogs is disabled in settings and remove from nav
+  const isBlogsEnabled = metadata.settings?.blogs?.enabled !== false;
+  const filteredNavLinks = navLinks.filter(
+    (link) => link.path !== "/blogs" || isBlogsEnabled
+  );
+  
+  // Logo settings
+  const logoPrefix = headerData.logo?.prefix ?? "~/";
+  const logoText = headerData.logo?.text ?? "portfolio";
+  const logoHref = headerData.logo?.href ?? "/";
+
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -67,22 +104,22 @@ export default function Header() {
             <div className="flex h-full w-full items-center justify-between">
               {/* Logo */}
               <div className="flex items-center cursor-pointer select-none">
-                <Link to="/" className="flex items-center gap-1 group">
-                  <span className="text-lg text-gray-500 group-hover:text-white transition-colors">~/</span>
+                <Link to={logoHref} className="flex items-center gap-1 group">
+                  <span className="text-lg text-gray-500 group-hover:text-white transition-colors">{logoPrefix}</span>
                   <ScrambledText
                     className="font-mono text-base group-hover:text-white transition-colors"
                     duration={0.8}
                     speed={1.5}
                     scrambleChars="abcdefghijklmnopqrstuvwxyz0123456789"
                   >
-                    gautam_vhavle
+                    {logoText}
                   </ScrambledText>
                 </Link>
               </div>
 
               {/* Desktop Nav */}
               <nav className="hidden sm:flex gap-6" aria-label="Main navigation">
-                {navLinks.map((link) => {
+                {filteredNavLinks.map((link) => {
                   const isActive = location.pathname === link.path;
                   return (
                     <Link
@@ -146,7 +183,7 @@ export default function Header() {
         <div className="flex w-full items-center justify-center">
           <MaxWidthContainer>
             <div className="flex flex-col py-4 gap-1">
-              {navLinks.map((link) => {
+              {filteredNavLinks.map((link) => {
                 const isActive = location.pathname === link.path;
                 return (
                   <Link

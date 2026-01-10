@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Send, Bot, User, Loader2, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import metadata from "@/content/metadata.json";
 
 interface Message {
   id: string;
@@ -10,13 +11,22 @@ interface Message {
 }
 
 export default function Chatbot() {
+  const chatbotSettings = metadata.settings?.chatbot;
+  
+  // Don't render if disabled
+  if (chatbotSettings?.enabled === false) {
+    return null;
+  }
+  
+  const welcomeMessage = chatbotSettings?.welcomeMessage || 
+    "Hi! I'm an AI assistant. Ask me anything about this portfolio!";
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       role: "assistant",
-      content:
-        "Hi! I'm Gautam's AI assistant. Ask me anything about his work, skills, or projects! (Sorry I may have 'COLD START' sometimes 🥹)",
+      content: welcomeMessage,
     },
   ]);
   const [input, setInput] = useState("");
