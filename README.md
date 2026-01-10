@@ -16,17 +16,99 @@
 
 ## ✨ Features
 
+### 🎨 Visual Effects & Animations
+
 | Feature | Description |
 |---------|-------------|
-| 🎛️ **Fully Customizable** | Edit a single JSON file to personalize everything |
-| 🌙 **Dark Theme** | Sleek glassmorphism design with smooth gradients |
-| 📱 **Responsive** | Pixel-perfect on all devices |
-| 📝 **Dynamic Blog** | Auto-fetched articles from DEV.to API |
-| 🤖 **AI Chatbot** | Interactive assistant to answer visitor questions |
-| 🎵 **Spotify Integration** | Now Playing widget + embedded playlists |
-| 📊 **GitHub Heatmap** | Live contribution graph |
-| ⚡ **Fast** | Optimized with Vite for instant HMR |
-| 🎨 **Animations** | Smooth transitions & micro-interactions |
+| 🌌 **Aurora Background** | Beautiful WebGL-powered aurora gradient animation using OGL shaders |
+| ✨ **Starfield Background** | Dynamic GSAP-animated stars with twinkling effects |
+| 🖱️ **Canvas Cursor** | Custom interactive cursor that responds to mouse movements |
+| 📝 **Animated Text Slider** | Smooth auto-rotating text with fade transitions |
+| 🪟 **Glassmorphism UI** | Modern frosted-glass card effects with backdrop blur |
+| 💫 **Smooth Transitions** | Page transitions and micro-interactions throughout |
+
+### 🤖 Interactive Components
+
+| Feature | Description |
+|---------|-------------|
+| 💬 **AI Chatbot** | Gemini-powered assistant with markdown support and a cute shivering bot icon |
+| 🎭 **Live2D Character** | Interactive anime-style mascot that follows cursor (optional) |
+| 🎬 **Splash Screen** | Customizable loading screen with animated GIF (Nyan Cat by default!) |
+| 🙈 **Rick Roll Easter Egg** | A "Delete Website" button that... you'll have to click to find out |
+| 💬 **Rotating Quotes** | Auto-cycling inspirational quotes with glassmorphism cards |
+
+### 🎵 Spotify Integration
+
+| Feature | Description |
+|---------|-------------|
+| 🎧 **Now Playing Widget** | Real-time display of currently playing track with animated equalizer |
+| 🎶 **Embedded Playlist** | Configurable Spotify playlist embed on About page |
+| 🔄 **Fallback Track** | Customizable fallback when nothing is playing |
+
+### 📊 GitHub Integration
+
+| Feature | Description |
+|---------|-------------|
+| 🗓️ **Contribution Heatmap** | Beautiful GitHub-style contribution calendar with custom theming |
+| 📈 **Contribution Stats** | Total contributions count with loading skeleton |
+| 🔌 **Serverless Caching** | Vercel edge function for optimized API calls |
+
+### 📝 Content Sections
+
+| Feature | Description |
+|---------|-------------|
+| 👤 **Dynamic Intro** | Avatar, name, animated roles, location, live clock |
+| 📄 **Bio Section** | Description, social links, resume download, company info |
+| 🛠️ **Tech Stack** | Grid of technology icons with tooltips and links |
+| 💼 **Experience Timeline** | Interactive tabbed company cards with logos |
+| 🚀 **Featured Projects** | Project cards with images, descriptions, and tech icons |
+| 🏆 **Certifications** | Expandable certificate list with skills and LinkedIn integration |
+| 📬 **Contact Form** | Working form with Web3Forms + multiple contact methods |
+
+### 📰 Blog System
+
+| Feature | Description |
+|---------|-------------|
+| 📡 **DEV.to Integration** | Auto-fetches articles from your DEV.to profile |
+| 🖼️ **Blog Cards** | Beautiful cards with cover images, tags, and reading time |
+| 🔄 **Smart Caching** | Environment-aware fetching (dev vs production) |
+
+### 🧩 UI Components Library
+
+> Built with **shadcn/ui** components + custom components
+
+<details>
+<summary>📦 <b>Click to expand component list</b></summary>
+
+| Component | Description |
+|-----------|-------------|
+| `AlertDialog` | Confirmation dialogs with animations |
+| `Button` | Multiple variants (default, destructive, outline, ghost) |
+| `Card` | Glassmorphism card with hover effects |
+| `Carousel` | Smooth image/content carousel |
+| `Collapsible` | Animated expand/collapse sections |
+| `Dialog` | Modal dialogs with backdrop blur |
+| `Dropdown Menu` | Accessible dropdown with sub-menus |
+| `Hover Card` | Preview cards on hover |
+| `Navigation Menu` | Responsive navigation with mobile support |
+| `Progress` | Animated progress bars |
+| `Scroll Area` | Custom scrollbar styling |
+| `Select` | Styled select dropdowns |
+| `Textarea` | Auto-resizing text areas |
+| `Tooltip` | Animated tooltips throughout |
+
+</details>
+
+### 🎯 Developer Experience
+
+| Feature | Description |
+|---------|-------------|
+| 🎛️ **Single JSON Config** | Customize everything from `metadata.json` |
+| ⚡ **Vite Powered** | Blazing fast HMR and optimized builds |
+| 🔤 **TypeScript** | Full type safety throughout |
+| 📱 **Fully Responsive** | Mobile-first design that works everywhere |
+| 🌐 **SEO Optimized** | Meta tags, sitemap, robots.txt included |
+| 🚀 **Vercel Ready** | One-click deploy with serverless functions |
 
 ---
 
