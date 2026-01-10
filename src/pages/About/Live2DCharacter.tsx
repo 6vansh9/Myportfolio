@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import metadata from "@/content/metadata.json";
 
 declare global {
   interface Window {
@@ -9,7 +10,21 @@ declare global {
 }
 
 export default function Live2DCharacter() {
+  const live2dSettings = metadata.settings?.live2dCharacter;
+  
+  // Don't render if disabled
+  const isEnabled = live2dSettings?.enabled !== false;
+
   useEffect(() => {
+    if (!isEnabled) return;
+
+    // Get settings with defaults
+    const modelJsonPath = live2dSettings?.modelJsonPath || 
+      "https://cdn.jsdelivr.net/gh/evrstr/live2d-widget-models/live2d_evrstr/gelina/model.json";
+    const position = live2dSettings?.position || "right";
+    const width = live2dSettings?.width || 250;
+    const height = live2dSettings?.height || 500;
+
     // Wait for page to be fully loaded + idle time
     const loadCharacter = () => {
       if (document.querySelector('script[src*="L2Dwidget.min.js"]')) {
@@ -28,13 +43,12 @@ export default function Live2DCharacter() {
     function initWidget() {
       window.L2Dwidget?.init({
         model: {
-          jsonPath:
-            "https://cdn.jsdelivr.net/gh/evrstr/live2d-widget-models/live2d_evrstr/gelina/model.json",
+          jsonPath: modelJsonPath,
         },
         display: {
-          position: "right",
-          width: 250,
-          height: 500,
+          position: position,
+          width: width,
+          height: height,
           hOffset: 10,
           vOffset: 10,
         },
@@ -65,7 +79,9 @@ export default function Live2DCharacter() {
         )
         .forEach((el) => el.remove());
     };
-  }, []);
+  }, [isEnabled, live2dSettings]);
+
+  if (!isEnabled) return null;
 
   return null;
 }

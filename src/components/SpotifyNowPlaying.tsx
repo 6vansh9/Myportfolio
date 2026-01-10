@@ -1,15 +1,24 @@
 import { useSpotifyNowPlaying } from "@/hooks/useSpotifyNowPlaying";
+import metadata from "@/content/metadata.json";
+
+// Get settings from metadata
+const spotifySettings = metadata.settings?.spotifyNowPlaying;
 
 // Fallback track when nothing is playing and no recently played
 const FALLBACK_TRACK = {
   is_playing: false,
-  title: "Doomsday",
-  artiste: "MF DOOM",
-  image_url: "https://i.scdn.co/image/ab67616d0000b2736ce90ec627a0198a8efd127f",
-  url: "https://open.spotify.com/track/7EQvdUJqZ2i7SWvSB2VqGA",
+  title: spotifySettings?.fallbackTrack?.title || "Doomsday",
+  artiste: spotifySettings?.fallbackTrack?.artist || "MF DOOM",
+  image_url: spotifySettings?.fallbackTrack?.imageUrl || "https://i.scdn.co/image/ab67616d0000b2736ce90ec627a0198a8efd127f",
+  url: spotifySettings?.fallbackTrack?.url || "https://open.spotify.com/track/7EQvdUJqZ2i7SWvSB2VqGA",
 };
 
 export default function SpotifyNowPlaying() {
+  // Don't render if disabled
+  if (spotifySettings?.enabled === false) {
+    return null;
+  }
+
   const { track, loading } = useSpotifyNowPlaying();
 
   const displayTrack = track || FALLBACK_TRACK;

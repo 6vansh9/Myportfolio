@@ -402,6 +402,31 @@
     "blogs": {
       "enabled": true,
       "devToUsername": "gautamvhavle"
+    },
+    "spotifyNowPlaying": {
+      "enabled": true,
+      "fallbackTrack": {
+        "title": "Doomsday",
+        "artist": "MF DOOM",
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736ce90ec627a0198a8efd127f",
+        "url": "https://open.spotify.com/track/7EQvdUJqZ2i7SWvSB2VqGA"
+      }
+    },
+    "spotifyPlaylist": {
+      "enabled": true,
+      "embedUrl": "https://open.spotify.com/embed/playlist/4GwBHykYDpARfWFjYPzF5Q?utm_source=generator&theme=0"
+    },
+    "live2dCharacter": {
+      "enabled": true,
+      "modelJsonPath": "https://cdn.jsdelivr.net/gh/evrstr/live2d-widget-models/live2d_evrstr/gelina/model.json",
+      "position": "right",
+      "width": 250,
+      "height": 500
+    },
+    "rickRoll": {
+      "enabled": true,
+      "buttonText": "Delete Website",
+      "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     }
   }
 }
