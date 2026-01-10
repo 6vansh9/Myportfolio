@@ -16,7 +16,7 @@ export default function Chatbot() {
       id: "welcome",
       role: "assistant",
       content:
-        "Hi! I'm Gautam's AI assistant. Ask me anything about his work, skills, or projects!",
+        "Hi! I'm Gautam's AI assistant. Ask me anything about his work, skills, or projects! (Sorry I may have 'COLD START' sometimes 🥹)",
     },
   ]);
   const [input, setInput] = useState("");
