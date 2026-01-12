@@ -33,7 +33,7 @@ export default function PageRoutes() {
             path="/blogs" 
             element={isBlogsEnabled ? <Blogs /> : <Navigate to="/" replace />} 
           />
-          <Route path="/apps" element={<Apps />} />
+          <Route path="/apps/*" element={<Apps />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>

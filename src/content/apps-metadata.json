@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "BMI Calculator",
+    "description": "A conversational AI powered by GPT-4 for answering questions, writing code, and creative tasks.",
+    "image": "/assets/apps/bmi-calculator.png",
+    "url": "/apps/bmi-calculator",
+    "category": "Health",
+    "createdDate": "Jan 2026",
+    "tags": ["AI", "GPT-4", "Chatbot", "Python"]
+  },
+  {
+    "id": 2,
+    "name": "Code Snippet Manager",
+    "description": "Organize, search, and share your code snippets with syntax highlighting and cloud sync.",
+    "image": "/assets/apps/snippets.png",
+    "url": "/apps/snippets",
+    "category": "Developer Tools",
+    "createdDate": "Nov 2024",
+    "tags": ["React", "TypeScript", "Firebase"]
+  },
+  {
+    "id": 3,
+    "name": "Task Flow",
+    "description": "A minimal task management app with kanban boards, deadlines, and team collaboration.",
+    "image": "/assets/apps/taskflow.png",
+    "url": "/apps/taskflow",
+    "category": "Productivity",
+    "createdDate": "Oct 2024",
+    "tags": ["React", "Node.js", "MongoDB"]
+  }
+]
