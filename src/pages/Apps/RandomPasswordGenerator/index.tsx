@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCopy, FaRedo } from "react-icons/fa";
+import { FiMinus, FiPlus } from "react-icons/fi";
 import Slider from "@mui/material/Slider";
 import { styled } from "@mui/material/styles";
 import {
@@ -58,6 +59,109 @@ const StyledSlider = styled(Slider)({
     fontFamily: "monospace",
   },
 });
+
+// Custom NumberInput component matching zinc aesthetic
+interface NumberInputProps {
+  value: number;
+  onChange: (event: React.SyntheticEvent | null, value: number | null) => void;
+  min?: number;
+  max?: number;
+  disabled?: boolean;
+  "aria-label"?: string;
+}
+
+function StyledNumberInput({
+  value,
+  onChange,
+  min = 0,
+  max = 100,
+  disabled = false,
+  "aria-label": ariaLabel,
+}: NumberInputProps) {
+  const [inputValue, setInputValue] = useState(String(value));
+
+  // Sync inputValue when value prop changes
+  useEffect(() => {
+    setInputValue(String(value));
+  }, [value]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+
+    // Allow empty string while typing
+    if (newValue === "") {
+      return;
+    }
+
+    const parsed = parseInt(newValue, 10);
+    if (!isNaN(parsed)) {
+      const clamped = Math.min(max, Math.max(min, parsed));
+      onChange(e, clamped);
+    }
+  };
+
+  const handleBlur = () => {
+    // On blur, ensure we have a valid value
+    if (inputValue === "" || isNaN(parseInt(inputValue, 10))) {
+      setInputValue(String(min));
+      onChange(null, min);
+    } else {
+      const parsed = parseInt(inputValue, 10);
+      const clamped = Math.min(max, Math.max(min, parsed));
+      setInputValue(String(clamped));
+      if (clamped !== value) {
+        onChange(null, clamped);
+      }
+    }
+  };
+
+  const increment = () => {
+    const newValue = Math.min(max, value + 1);
+    setInputValue(String(newValue));
+    onChange(null, newValue);
+  };
+
+  const decrement = () => {
+    const newValue = Math.max(min, value - 1);
+    setInputValue(String(newValue));
+    onChange(null, newValue);
+  };
+
+  return (
+    <div className="flex items-center gap-1">
+      <button
+        type="button"
+        onClick={decrement}
+        disabled={disabled || value <= min}
+        className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-700/50 bg-zinc-800/50 text-zinc-400 transition-all hover:bg-zinc-700/50 hover:border-zinc-600 hover:text-zinc-200 active:bg-zinc-700/80 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-zinc-800/50 disabled:hover:border-zinc-700/50 disabled:hover:text-zinc-400"
+        aria-label="Decrease"
+      >
+        <FiMinus size={12} />
+      </button>
+      <input
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        value={inputValue}
+        onChange={handleInputChange}
+        onBlur={handleBlur}
+        disabled={disabled}
+        aria-label={ariaLabel}
+        className="w-12 rounded-md border border-zinc-700/50 bg-zinc-800/50 px-2 py-1 text-center font-mono text-xs text-zinc-300 outline-none transition-all focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600/50 disabled:opacity-40 disabled:cursor-not-allowed"
+      />
+      <button
+        type="button"
+        onClick={increment}
+        disabled={disabled || value >= max}
+        className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-700/50 bg-zinc-800/50 text-zinc-400 transition-all hover:bg-zinc-700/50 hover:border-zinc-600 hover:text-zinc-200 active:bg-zinc-700/80 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-zinc-800/50 disabled:hover:border-zinc-700/50 disabled:hover:text-zinc-400"
+        aria-label="Increase"
+      >
+        <FiPlus size={12} />
+      </button>
+    </div>
+  );
+}
 
 // Default character sets
 const DEFAULT_CHARSETS = {
@@ -372,18 +476,6 @@ export default function RandomPasswordGenerator() {
     setCopyDialogOpen(true);
   };
 
-  // Handle length input change
-  const handleLengthInputChange = (value: string) => {
-    const num = parseInt(value, 10);
-    if (!isNaN(num)) {
-      setLength(Math.min(50, Math.max(0, num)));
-    } else if (value === "") {
-      setLength(0);
-    }
-  };
-
-
-
   return (
     <div className="mx-auto w-full">
       <div className="flex flex-col gap-6 rounded-xl border border-zinc-800/40 bg-zinc-900/30 p-6 backdrop-blur-lg transition-all duration-300">
@@ -498,13 +590,12 @@ export default function RandomPasswordGenerator() {
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <label className="text-sm text-zinc-400">Password length</label>
-            <input
-              type="number"
+            <StyledNumberInput
               min={0}
               max={50}
               value={length}
-              onChange={(e) => handleLengthInputChange(e.target.value)}
-              className="w-16 text-sm font-mono text-zinc-200 bg-zinc-800/50 px-2 py-0.5 rounded border border-zinc-700/50 text-center outline-none focus:border-zinc-600 transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              onChange={(_, val) => setLength(val ?? 0)}
+              aria-label="Password length"
             />
           </div>
           <StyledSlider
@@ -626,19 +717,18 @@ export default function RandomPasswordGenerator() {
                       <span className="text-xs text-zinc-400 capitalize">
                         {key}
                       </span>
-                      <input
-                        type="number"
+                      <StyledNumberInput
                         min={0}
                         max={length}
                         value={minCounts[key]}
-                        onChange={(e) =>
+                        onChange={(_, val) =>
                           setMinCounts({
                             ...minCounts,
-                            [key]: Math.max(0, Number(e.target.value)),
+                            [key]: val ?? 0,
                           })
                         }
                         disabled={!options[key]}
-                        className="w-12 rounded border border-zinc-700/50 bg-zinc-800/50 px-2 py-1 text-center font-mono text-xs text-zinc-300 outline-none disabled:cursor-not-allowed"
+                        aria-label={`Minimum ${key} characters`}
                       />
                     </div>
                   ))}
@@ -712,15 +802,12 @@ export default function RandomPasswordGenerator() {
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-xs text-zinc-500">Every</span>
-                      <input
-                        type="number"
+                      <StyledNumberInput
                         min={2}
                         max={10}
                         value={groupSize}
-                        onChange={(e) =>
-                          setGroupSize(Math.max(2, Number(e.target.value)))
-                        }
-                        className="w-12 rounded border border-zinc-700/50 bg-zinc-800/50 px-2 py-1 text-center font-mono text-xs text-zinc-300 outline-none"
+                        onChange={(_, val) => setGroupSize(val ?? 2)}
+                        aria-label="Group size"
                       />
                       <span className="text-xs text-zinc-500">chars</span>
                     </div>
