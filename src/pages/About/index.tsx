@@ -1,5 +1,5 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
-import MarkdownViewer from "./MarkdownViewer";
+import MarkdownViewer from "@/components/MarkdownViewer";
 import aboutContent from "@/content/about.md?raw";
 import SpotifyPlaylist from "./SpotifyPlaylist";
 import RickRoll from "./RickRoll";

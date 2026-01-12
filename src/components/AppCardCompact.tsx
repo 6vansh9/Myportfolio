@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 type App = {
@@ -15,10 +16,8 @@ export default function AppCardCompact({ app }: { app: App }) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <a
-      href={app.url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to={app.url}
       className="group flex flex-col items-center gap-2 rounded-xl p-3 transition-all duration-300 hover:bg-zinc-800/40 sm:gap-3 sm:p-4"
     >
       {/* App Icon */}
@@ -43,6 +42,6 @@ export default function AppCardCompact({ app }: { app: App }) {
       <span className="w-full text-center text-[10px] leading-tight text-zinc-400 transition-colors group-hover:text-zinc-200 sm:text-xs">
         <span className="line-clamp-2">{app.name}</span>
       </span>
-    </a>
+    </Link>
   );
 }

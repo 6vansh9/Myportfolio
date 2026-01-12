@@ -16,7 +16,7 @@ export default function AppBreadcrumb({ appName }: BreadcrumbProps) {
         to="/apps"
         className={`flex items-center gap-1.5 transition-colors ${
           isAppPage
-            ? "text-zinc-500 hover:text-zinc-300"
+            ? "text-zinc-300 hover:text-white"
             : "text-zinc-300"
         }`}
       >

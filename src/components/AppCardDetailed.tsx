@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoOpenOutline } from "react-icons/io5";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { BsCalendarDate } from "react-icons/bs";
@@ -18,10 +19,8 @@ export default function AppCardDetailed({ app }: { app: App }) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <a
-      href={app.url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      to={app.url}
       className="group relative flex w-full flex-col overflow-hidden rounded-xl border border-zinc-800/40 bg-zinc-900/30 backdrop-blur-lg transition-all duration-300 hover:border-zinc-700/50 hover:bg-zinc-900/50"
     >
       {/* External Link - Top Right */}
@@ -94,6 +93,6 @@ export default function AppCardDetailed({ app }: { app: App }) {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
