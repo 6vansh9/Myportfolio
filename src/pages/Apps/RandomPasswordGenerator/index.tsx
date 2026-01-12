@@ -134,7 +134,7 @@ function StyledNumberInput({
         type="button"
         onClick={decrement}
         disabled={disabled || value <= min}
-        className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-700/50 bg-zinc-800/50 text-zinc-400 transition-all hover:bg-zinc-700/50 hover:border-zinc-600 hover:text-zinc-200 active:bg-zinc-700/80 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-zinc-800/50 disabled:hover:border-zinc-700/50 disabled:hover:text-zinc-400"
+        className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-700/50 bg-zinc-800/50 text-zinc-400 transition-all hover:border-zinc-600 hover:bg-zinc-700/50 hover:text-zinc-200 active:bg-zinc-700/80 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-zinc-700/50 disabled:hover:bg-zinc-800/50 disabled:hover:text-zinc-400"
         aria-label="Decrease"
       >
         <FiMinus size={12} />
@@ -148,13 +148,13 @@ function StyledNumberInput({
         onBlur={handleBlur}
         disabled={disabled}
         aria-label={ariaLabel}
-        className="w-12 rounded-md border border-zinc-700/50 bg-zinc-800/50 px-2 py-1 text-center font-mono text-xs text-zinc-300 outline-none transition-all focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600/50 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="w-12 rounded-md border border-zinc-700/50 bg-zinc-800/50 px-2 py-1 text-center font-mono text-xs text-zinc-300 transition-all outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600/50 disabled:cursor-not-allowed disabled:opacity-40"
       />
       <button
         type="button"
         onClick={increment}
         disabled={disabled || value >= max}
-        className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-700/50 bg-zinc-800/50 text-zinc-400 transition-all hover:bg-zinc-700/50 hover:border-zinc-600 hover:text-zinc-200 active:bg-zinc-700/80 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-zinc-800/50 disabled:hover:border-zinc-700/50 disabled:hover:text-zinc-400"
+        className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-700/50 bg-zinc-800/50 text-zinc-400 transition-all hover:border-zinc-600 hover:bg-zinc-700/50 hover:text-zinc-200 active:bg-zinc-700/80 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-zinc-700/50 disabled:hover:bg-zinc-800/50 disabled:hover:text-zinc-400"
         aria-label="Increase"
       >
         <FiPlus size={12} />
@@ -176,10 +176,39 @@ const AMBIGUOUS_CHARS = "0OIl1|";
 
 // Sequential patterns to detect
 const SEQUENTIAL_PATTERNS = [
-  "abc", "bcd", "cde", "def", "efg", "fgh", "ghi", "hij", "ijk", "jkl",
-  "klm", "lmn", "mno", "nop", "opq", "pqr", "qrs", "rst", "stu", "tuv",
-  "uvw", "vwx", "wxy", "xyz", "012", "123", "234", "345", "456", "567",
-  "678", "789", "890",
+  "abc",
+  "bcd",
+  "cde",
+  "def",
+  "efg",
+  "fgh",
+  "ghi",
+  "hij",
+  "ijk",
+  "jkl",
+  "klm",
+  "lmn",
+  "mno",
+  "nop",
+  "opq",
+  "pqr",
+  "qrs",
+  "rst",
+  "stu",
+  "tuv",
+  "uvw",
+  "vwx",
+  "wxy",
+  "xyz",
+  "012",
+  "123",
+  "234",
+  "345",
+  "456",
+  "567",
+  "678",
+  "789",
+  "890",
 ];
 
 type CharsetKey = keyof typeof DEFAULT_CHARSETS;
@@ -247,11 +276,11 @@ export default function RandomPasswordGenerator() {
   useEffect(() => {
     if (totalMinRequired > length) {
       setValidationError(
-        `Minimum requirements (${totalMinRequired}) exceed password length (${length})`
+        `Minimum requirements (${totalMinRequired}) exceed password length (${length})`,
       );
     } else if (noRepeated && effectiveCharset.length < length) {
       setValidationError(
-        `Not enough unique characters (${effectiveCharset.length}) for length ${length} with no repeats`
+        `Not enough unique characters (${effectiveCharset.length}) for length ${length} with no repeats`,
       );
     } else if (!effectiveCharset) {
       setValidationError("Select at least one character type");
@@ -272,7 +301,14 @@ export default function RandomPasswordGenerator() {
     if (length >= 12 && variety >= 2) return "Good";
     if (length >= 8) return "Weak";
     return "Very weak";
-  }, [length, options, excludeAmbiguous, noSequential, noRepeated, mustStartWithLetter]);
+  }, [
+    length,
+    options,
+    excludeAmbiguous,
+    noSequential,
+    noRepeated,
+    mustStartWithLetter,
+  ]);
 
   const strengthColor = {
     "Very weak": "text-red-400 bg-red-900/30",
@@ -342,13 +378,13 @@ export default function RandomPasswordGenerator() {
             .filter((c) => !result.includes(c));
           if (availableChars.length === 0) break;
           result.push(
-            availableChars[Math.floor(Math.random() * availableChars.length)]
+            availableChars[Math.floor(Math.random() * availableChars.length)],
           );
         } else {
           result.push(
             effectiveCharset.charAt(
-              Math.floor(Math.random() * effectiveCharset.length)
-            )
+              Math.floor(Math.random() * effectiveCharset.length),
+            ),
           );
         }
       }
@@ -362,7 +398,7 @@ export default function RandomPasswordGenerator() {
       // Handle "must start with letter" rule
       if (mustStartWithLetter) {
         const letters = result.filter((c) =>
-          (customCharsets.uppercase + customCharsets.lowercase).includes(c)
+          (customCharsets.uppercase + customCharsets.lowercase).includes(c),
         );
         if (letters.length > 0) {
           const letterIndex = result.findIndex((c) => letters.includes(c));
@@ -408,7 +444,7 @@ export default function RandomPasswordGenerator() {
       }
       return chunks.join(groupDelimiter);
     },
-    [groupingEnabled, groupSize, groupDelimiter]
+    [groupingEnabled, groupSize, groupDelimiter],
   );
 
   // Scramble animation effect
@@ -417,7 +453,8 @@ export default function RandomPasswordGenerator() {
       if (scrambleRef.current) clearInterval(scrambleRef.current);
 
       setIsScrambling(true);
-      const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      const chars =
+        "!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
       let iterations = 0;
       const maxIterations = 20;
       const displayLength = groupingEnabled
@@ -448,7 +485,7 @@ export default function RandomPasswordGenerator() {
         }
       }, 50);
     },
-    [formatPassword, groupDelimiter, groupingEnabled]
+    [formatPassword, groupDelimiter, groupingEnabled],
   );
 
   // Generate and animate
@@ -467,7 +504,19 @@ export default function RandomPasswordGenerator() {
     return () => {
       if (scrambleRef.current) clearInterval(scrambleRef.current);
     };
-  }, [length, options, customCharsets, excludeAmbiguous, mustStartWithLetter, noSequential, noRepeated, minCounts, groupingEnabled, groupSize, groupDelimiter]);
+  }, [
+    length,
+    options,
+    customCharsets,
+    excludeAmbiguous,
+    mustStartWithLetter,
+    noSequential,
+    noRepeated,
+    minCounts,
+    groupingEnabled,
+    groupSize,
+    groupDelimiter,
+  ]);
 
   // Copy to clipboard and show dialog
   const copyToClipboard = async (includeFormatting = false) => {
@@ -501,7 +550,7 @@ export default function RandomPasswordGenerator() {
             <input
               value={displayPassword || formatPassword(password)}
               readOnly
-              className={`flex-1 bg-transparent font-mono text-sm outline-none transition-colors duration-300 ${
+              className={`flex-1 bg-transparent font-mono text-sm transition-colors duration-300 outline-none ${
                 isScrambling ? "text-emerald-400" : "text-zinc-200"
               }`}
             />
@@ -510,9 +559,9 @@ export default function RandomPasswordGenerator() {
               disabled={!!validationError}
               className={`flex h-8 w-8 items-center justify-center rounded-full transition-all duration-300 ${
                 isScrambling
-                  ? "bg-emerald-500/20 text-emerald-400 animate-spin"
+                  ? "animate-spin bg-emerald-500/20 text-emerald-400"
                   : "bg-zinc-800/50 text-zinc-400 hover:bg-zinc-700/50 hover:text-zinc-200"
-              } disabled:opacity-50 disabled:cursor-not-allowed`}
+              } disabled:cursor-not-allowed disabled:opacity-50`}
             >
               <FaRedo className="h-3.5 w-3.5" />
             </button>
@@ -531,7 +580,7 @@ export default function RandomPasswordGenerator() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 rounded-lg pointer-events-none"
+                className="pointer-events-none absolute inset-0 rounded-lg"
                 style={{
                   background:
                     "radial-gradient(ellipse at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%)",
@@ -566,18 +615,18 @@ export default function RandomPasswordGenerator() {
               {strength}
             </span>
           </div>
-          <div className="h-1.5 w-full rounded-full bg-zinc-800/50 overflow-hidden">
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800/50">
             <motion.div
               className={`h-full rounded-full ${
                 strength === "Very weak"
                   ? "bg-red-500"
                   : strength === "Weak"
-                  ? "bg-yellow-500"
-                  : strength === "Good"
-                  ? "bg-amber-500"
-                  : strength === "Strong"
-                  ? "bg-green-500"
-                  : "bg-emerald-500"
+                    ? "bg-yellow-500"
+                    : strength === "Good"
+                      ? "bg-amber-500"
+                      : strength === "Strong"
+                        ? "bg-green-500"
+                        : "bg-emerald-500"
               }`}
               initial={{ width: 0 }}
               animate={{ width: `${strengthProgress}%` }}
@@ -665,7 +714,8 @@ export default function RandomPasswordGenerator() {
                   Custom Character Sets
                 </span>
                 <p className="text-xs text-zinc-500">
-                  Edit the characters used for each type. Remove unwanted characters or add custom ones.
+                  Edit the characters used for each type. Remove unwanted
+                  characters or add custom ones.
                 </p>
                 <div className="flex flex-col gap-2">
                   {(Object.keys(customCharsets) as CharsetKey[]).map((key) => (
@@ -683,13 +733,13 @@ export default function RandomPasswordGenerator() {
                           })
                         }
                         disabled={!options[key]}
-                        className="w-full rounded-md border border-zinc-800/40 bg-zinc-900/50 px-3 py-2 font-mono text-xs text-zinc-300 outline-none transition-all focus:border-zinc-700/50 disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="w-full rounded-md border border-zinc-800/40 bg-zinc-900/50 px-3 py-2 font-mono text-xs text-zinc-300 transition-all outline-none focus:border-zinc-700/50 disabled:cursor-not-allowed disabled:opacity-40"
                       />
                     </div>
                   ))}
                   <button
                     onClick={() => setCustomCharsets({ ...DEFAULT_CHARSETS })}
-                    className="mt-1 self-start text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
+                    className="mt-1 self-start text-xs text-zinc-500 transition-colors hover:text-zinc-300"
                   >
                     Reset to defaults
                   </button>
@@ -706,30 +756,36 @@ export default function RandomPasswordGenerator() {
                 <p className="text-xs text-zinc-500">
                   Guarantee a minimum number of characters from each type.
                 </p>
-                <div className="grid grid-cols-2 gap-3">
-                  {(Object.keys(minCounts) as CharsetKey[]).map((key) => (
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {(Object.keys(minCounts) as CharsetKey[]).map((key, idx, arr) => (
                     <div
                       key={key}
-                      className={`flex items-center justify-between rounded-md border border-zinc-800/40 bg-zinc-900/50 px-3 py-2 ${
+                      className={`flex flex-col items-stretch gap-2 rounded-xl border border-zinc-800/60 bg-zinc-900/60 px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between sm:gap-3 transition-all duration-200 ${
                         !options[key] ? "opacity-40" : ""
                       }`}
+                      style={{
+                        boxShadow: "0 2px 8px 0 rgba(24,24,27,0.07)",
+                        marginBottom: (idx < arr.length - 1 && window.innerWidth < 640) ? '0.5rem' : undefined
+                      }}
                     >
-                      <span className="text-xs text-zinc-400 capitalize">
+                      <span className="text-xs font-semibold text-zinc-300 capitalize tracking-wide">
                         {key}
                       </span>
-                      <StyledNumberInput
-                        min={0}
-                        max={length}
-                        value={minCounts[key]}
-                        onChange={(_, val) =>
-                          setMinCounts({
-                            ...minCounts,
-                            [key]: val ?? 0,
-                          })
-                        }
-                        disabled={!options[key]}
-                        aria-label={`Minimum ${key} characters`}
-                      />
+                      <div className="flex flex-row items-center justify-end gap-2 w-full sm:w-auto">
+                        <StyledNumberInput
+                          min={0}
+                          max={length}
+                          value={minCounts[key]}
+                          onChange={(_, val) =>
+                            setMinCounts({
+                              ...minCounts,
+                              [key]: val ?? 0,
+                            })
+                          }
+                          disabled={!options[key]}
+                          aria-label={`Minimum ${key} characters`}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -749,31 +805,63 @@ export default function RandomPasswordGenerator() {
                 </span>
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center space-x-2">
-                    <Switch id="exclude-ambiguous" checked={excludeAmbiguous} onCheckedChange={setExcludeAmbiguous} />
+                    <Switch
+                      id="exclude-ambiguous"
+                      checked={excludeAmbiguous}
+                      onCheckedChange={setExcludeAmbiguous}
+                    />
                     <div className="flex flex-col">
-                      <Label htmlFor="exclude-ambiguous">Exclude ambiguous characters</Label>
-                      <span className="text-xs text-zinc-500">Removes 0, O, I, l, 1, | that look similar</span>
+                      <Label htmlFor="exclude-ambiguous">
+                        Exclude ambiguous characters
+                      </Label>
+                      <span className="text-xs text-zinc-500">
+                        Removes 0, O, I, l, 1, | that look similar
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Switch id="must-start-letter" checked={mustStartWithLetter} onCheckedChange={setMustStartWithLetter} />
+                    <Switch
+                      id="must-start-letter"
+                      checked={mustStartWithLetter}
+                      onCheckedChange={setMustStartWithLetter}
+                    />
                     <div className="flex flex-col">
-                      <Label htmlFor="must-start-letter">Must start with a letter</Label>
-                      <span className="text-xs text-zinc-500">Some systems require this</span>
+                      <Label htmlFor="must-start-letter">
+                        Must start with a letter
+                      </Label>
+                      <span className="text-xs text-zinc-500">
+                        Some systems require this
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Switch id="no-sequential" checked={noSequential} onCheckedChange={setNoSequential} />
+                    <Switch
+                      id="no-sequential"
+                      checked={noSequential}
+                      onCheckedChange={setNoSequential}
+                    />
                     <div className="flex flex-col">
-                      <Label htmlFor="no-sequential">No sequential characters</Label>
-                      <span className="text-xs text-zinc-500">Prevents patterns like abc, 123</span>
+                      <Label htmlFor="no-sequential">
+                        No sequential characters
+                      </Label>
+                      <span className="text-xs text-zinc-500">
+                        Prevents patterns like abc, 123
+                      </span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Switch id="no-repeated" checked={noRepeated} onCheckedChange={setNoRepeated} />
+                    <Switch
+                      id="no-repeated"
+                      checked={noRepeated}
+                      onCheckedChange={setNoRepeated}
+                    />
                     <div className="flex flex-col">
-                      <Label htmlFor="no-repeated">No repeated characters</Label>
-                      <span className="text-xs text-zinc-500">Prevents aa, 11, $$ patterns</span>
+                      <Label htmlFor="no-repeated">
+                        No repeated characters
+                      </Label>
+                      <span className="text-xs text-zinc-500">
+                        Prevents aa, 11, $$ patterns
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -787,10 +875,16 @@ export default function RandomPasswordGenerator() {
                   Readability Formatting
                 </span>
                 <div className="flex items-center space-x-2">
-                  <Switch id="group-characters" checked={groupingEnabled} onCheckedChange={setGroupingEnabled} />
+                  <Switch
+                    id="group-characters"
+                    checked={groupingEnabled}
+                    onCheckedChange={setGroupingEnabled}
+                  />
                   <div className="flex flex-col">
                     <Label htmlFor="group-characters">Group characters</Label>
-                    <span className="text-xs text-zinc-500">Makes long passwords easier to read</span>
+                    <span className="text-xs text-zinc-500">
+                      Makes long passwords easier to read
+                    </span>
                   </div>
                 </div>
                 {groupingEnabled && (
@@ -798,7 +892,7 @@ export default function RandomPasswordGenerator() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="flex items-center gap-3 mt-2"
+                    className="mt-2 flex items-center gap-3"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-xs text-zinc-500">Every</span>
@@ -833,19 +927,19 @@ export default function RandomPasswordGenerator() {
 
         {/* Copy Success Dialog */}
         <Dialog open={copyDialogOpen} onOpenChange={setCopyDialogOpen}>
-          <DialogContent className="border-none bg-transparent shadow-none p-0">
-            <div className="font-inter relative p-4 sm:p-6 rounded-xl bg-zinc-900/25 backdrop-blur-lg border border-zinc-800/50 shadow-[0_4px_32px_0_rgba(24,24,27,0.25)] overflow-hidden transition-all duration-300 group">
+          <DialogContent className="border-none bg-transparent p-0 shadow-none">
+            <div className="font-inter group relative overflow-hidden rounded-xl border border-zinc-800/50 bg-zinc-900/25 p-4 shadow-[0_4px_32px_0_rgba(24,24,27,0.25)] backdrop-blur-lg transition-all duration-300 sm:p-6">
               {/* Animated modern reflection */}
-              <div className="pointer-events-none absolute top-0 left-0 w-full h-full z-10">
+              <div className="pointer-events-none absolute top-0 left-0 z-10 h-full w-full">
                 <div
-                  className="absolute left-0 top-0 w-2/3 h-1/3 rounded-t-full bg-gradient-to-br from-emerald-500/40 via-emerald-500/10 to-transparent blur-lg animate-card-reflection"
+                  className="animate-card-reflection absolute top-0 left-0 h-1/3 w-2/3 rounded-t-full bg-gradient-to-br from-emerald-500/40 via-emerald-500/10 to-transparent blur-lg"
                   style={{
                     filter: "blur(6px)",
                     opacity: 0.18,
                   }}
                 />
               </div>
-              <div className="relative flex flex-col gap-4 z-20">
+              <div className="relative z-20 flex flex-col gap-4">
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-2 text-lg text-zinc-100">
                     <IoCheckmarkCircleOutline className="h-5 w-5 text-emerald-400" />
@@ -855,19 +949,19 @@ export default function RandomPasswordGenerator() {
                 <div className="flex flex-col gap-3 text-sm text-zinc-400">
                   <p>
                     To paste the password somewhere else, press{" "}
-                    <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 font-mono text-xs">
+                    <kbd className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-300">
                       CTRL
                     </kbd>{" "}
                     +{" "}
-                    <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 font-mono text-xs">
+                    <kbd className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-300">
                       V
                     </kbd>{" "}
                     on your PC or{" "}
-                    <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 font-mono text-xs">
+                    <kbd className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-300">
                       ⌘
                     </kbd>{" "}
                     +{" "}
-                    <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-300 font-mono text-xs">
+                    <kbd className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-300">
                       V
                     </kbd>{" "}
                     on your Mac.
