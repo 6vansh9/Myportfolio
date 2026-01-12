@@ -892,31 +892,35 @@ export default function RandomPasswordGenerator() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-2 flex items-center gap-3"
+                    className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3"
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-zinc-500">Every</span>
-                      <StyledNumberInput
-                        min={2}
-                        max={10}
-                        value={groupSize}
-                        onChange={(_, val) => setGroupSize(val ?? 2)}
-                        aria-label="Group size"
-                      />
-                      <span className="text-xs text-zinc-500">chars</span>
+                    <div className="flex flex-col gap-1 w-full sm:flex-row sm:items-center sm:w-auto">
+                      <div className="flex items-center gap-2 w-full sm:w-auto">
+                        <span className="text-xs text-zinc-500">Every</span>
+                        <StyledNumberInput
+                          min={2}
+                          max={10}
+                          value={groupSize}
+                          onChange={(_, val) => setGroupSize(val ?? 2)}
+                          aria-label="Group size"
+                        />
+                        <span className="text-xs text-zinc-500">chars</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-zinc-500">with</span>
-                      <select
-                        value={groupDelimiter}
-                        onChange={(e) => setGroupDelimiter(e.target.value)}
-                        className="rounded border border-zinc-700/50 bg-zinc-800/50 px-2 py-1 text-xs text-zinc-300 outline-none"
-                      >
-                        <option value="-">Hyphen (-)</option>
-                        <option value=" ">Space</option>
-                        <option value=".">Dot (.)</option>
-                        <option value="_">Underscore (_)</option>
-                      </select>
+                    <div className="flex flex-col gap-1 w-full sm:flex-row sm:items-center sm:w-auto">
+                      <div className="flex items-center gap-2 w-full sm:w-auto">
+                        <span className="text-xs text-zinc-500">with</span>
+                        <select
+                          value={groupDelimiter}
+                          onChange={(e) => setGroupDelimiter(e.target.value)}
+                          className="w-full sm:w-auto rounded border border-zinc-700/50 bg-zinc-800/50 px-2 py-1 text-xs text-zinc-300 outline-none"
+                        >
+                          <option value="-">Hyphen (-)</option>
+                          <option value=" ">Space</option>
+                          <option value=".">Dot (.)</option>
+                          <option value="_">Underscore (_)</option>
+                        </select>
+                      </div>
                     </div>
                   </motion.div>
                 )}
