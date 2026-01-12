@@ -21,6 +21,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 // Styled MUI Slider to match zinc aesthetic
 const StyledSlider = styled(Slider)({
@@ -380,48 +382,7 @@ export default function RandomPasswordGenerator() {
     }
   };
 
-  // Toggle component for advanced options
-  const Toggle = ({
-    checked,
-    onChange,
-    label,
-    description,
-  }: {
-    checked: boolean;
-    onChange: (v: boolean) => void;
-    label: string;
-    description?: string;
-  }) => (
-    <label className="flex items-start gap-3 cursor-pointer group">
-      <div className="relative mt-0.5">
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => onChange(e.target.checked)}
-          className="sr-only"
-        />
-        <div
-          className={`h-5 w-9 rounded-full transition-all duration-300 ${
-            checked ? "bg-emerald-500/80" : "bg-zinc-700"
-          }`}
-        >
-          <div
-            className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow-md transition-all duration-300 ${
-              checked ? "left-[18px]" : "left-0.5"
-            }`}
-          />
-        </div>
-      </div>
-      <div className="flex flex-col gap-0.5">
-        <span className="text-sm text-zinc-300 group-hover:text-zinc-100 transition-colors">
-          {label}
-        </span>
-        {description && (
-          <span className="text-xs text-zinc-500">{description}</span>
-        )}
-      </div>
-    </label>
-  );
+
 
   return (
     <div className="mx-auto w-full">
@@ -697,30 +658,34 @@ export default function RandomPasswordGenerator() {
                   Security Rules
                 </span>
                 <div className="flex flex-col gap-4">
-                  <Toggle
-                    checked={excludeAmbiguous}
-                    onChange={setExcludeAmbiguous}
-                    label="Exclude ambiguous characters"
-                    description="Removes 0, O, I, l, 1, | that look similar"
-                  />
-                  <Toggle
-                    checked={mustStartWithLetter}
-                    onChange={setMustStartWithLetter}
-                    label="Must start with a letter"
-                    description="Some systems require this"
-                  />
-                  <Toggle
-                    checked={noSequential}
-                    onChange={setNoSequential}
-                    label="No sequential characters"
-                    description="Prevents patterns like abc, 123"
-                  />
-                  <Toggle
-                    checked={noRepeated}
-                    onChange={setNoRepeated}
-                    label="No repeated characters"
-                    description="Prevents aa, 11, $$ patterns"
-                  />
+                  <div className="flex items-center space-x-2">
+                    <Switch id="exclude-ambiguous" checked={excludeAmbiguous} onCheckedChange={setExcludeAmbiguous} />
+                    <div className="flex flex-col">
+                      <Label htmlFor="exclude-ambiguous">Exclude ambiguous characters</Label>
+                      <span className="text-xs text-zinc-500">Removes 0, O, I, l, 1, | that look similar</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Switch id="must-start-letter" checked={mustStartWithLetter} onCheckedChange={setMustStartWithLetter} />
+                    <div className="flex flex-col">
+                      <Label htmlFor="must-start-letter">Must start with a letter</Label>
+                      <span className="text-xs text-zinc-500">Some systems require this</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Switch id="no-sequential" checked={noSequential} onCheckedChange={setNoSequential} />
+                    <div className="flex flex-col">
+                      <Label htmlFor="no-sequential">No sequential characters</Label>
+                      <span className="text-xs text-zinc-500">Prevents patterns like abc, 123</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Switch id="no-repeated" checked={noRepeated} onCheckedChange={setNoRepeated} />
+                    <div className="flex flex-col">
+                      <Label htmlFor="no-repeated">No repeated characters</Label>
+                      <span className="text-xs text-zinc-500">Prevents aa, 11, $$ patterns</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -731,12 +696,13 @@ export default function RandomPasswordGenerator() {
                 <span className="text-sm font-medium text-zinc-300">
                   Readability Formatting
                 </span>
-                <Toggle
-                  checked={groupingEnabled}
-                  onChange={setGroupingEnabled}
-                  label="Group characters"
-                  description="Makes long passwords easier to read"
-                />
+                <div className="flex items-center space-x-2">
+                  <Switch id="group-characters" checked={groupingEnabled} onCheckedChange={setGroupingEnabled} />
+                  <div className="flex flex-col">
+                    <Label htmlFor="group-characters">Group characters</Label>
+                    <span className="text-xs text-zinc-500">Makes long passwords easier to read</span>
+                  </div>
+                </div>
                 {groupingEnabled && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
