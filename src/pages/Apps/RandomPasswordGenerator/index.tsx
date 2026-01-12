@@ -428,9 +428,9 @@ export default function RandomPasswordGenerator() {
       <div className="flex flex-col gap-6 rounded-xl border border-zinc-800/40 bg-zinc-900/30 p-6 backdrop-blur-lg transition-all duration-300">
         {/* Header */}
         <div className="flex flex-col gap-2">
-          <h2 className="text-xl font-semibold text-zinc-100">
+          <h1 className="text-2xl font-semibold text-zinc-100 sm:text-3xl">
             Random Password Generator
-          </h2>
+          </h1>
           <p className="text-sm text-zinc-400">
             Generate secure, customizable passwords instantly.
           </p>

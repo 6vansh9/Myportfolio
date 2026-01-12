@@ -1,22 +1,6 @@
 [
   {
     "id": 1,
-    "name": "BMI Calculator",
-    "description": "Calculate your Body Mass Index (BMI) instantly using standard WHO guidelines. Enter your height and weight to see your BMI value and category, with clear explanations and health tips.",
-    "image": "/assets/apps/bmi-calculator-app-icon.png",
-    "url": "/apps/bmi-calculator",
-    "category": "Health",
-    "createdDate": "Jan 2026",
-    "tags": [
-      "BMI",
-      "Health",
-      "Calculator",
-      "Wellness",
-      "WHO"
-    ]
-  },
-  {
-    "id": 2,
     "name": "Random Password Generator",
     "description": "Generate strong, secure, and customizable passwords instantly. Choose your password length and character types to keep your accounts safe and protected.",
     "image": "/assets/apps/random-password-generator-app-icon.png",
@@ -29,6 +13,22 @@
       "Generator",
       "Random",
       "Productivity"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "BMI Calculator",
+    "description": "Calculate your Body Mass Index (BMI) instantly using standard WHO guidelines. Enter your height and weight to see your BMI value and category, with clear explanations and health tips.",
+    "image": "/assets/apps/bmi-calculator-app-icon.png",
+    "url": "/apps/bmi-calculator",
+    "category": "Health",
+    "createdDate": "Jan 2026",
+    "tags": [
+      "BMI",
+      "Health",
+      "Calculator",
+      "Wellness",
+      "WHO"
     ]
   }
 ]
