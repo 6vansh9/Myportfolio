@@ -14,5 +14,21 @@
       "Wellness",
       "WHO"
     ]
+  },
+  {
+    "id": 2,
+    "name": "Random Password Generator",
+    "description": "Generate strong, secure, and customizable passwords instantly. Choose your password length and character types to keep your accounts safe and protected.",
+    "image": "/assets/apps/random-password-generator-app-icon.png",
+    "url": "/apps/random-password-generator",
+    "category": "Productivity",
+    "createdDate": "Jan 2026",
+    "tags": [
+      "Password",
+      "Security",
+      "Generator",
+      "Random",
+      "Productivity"
+    ]
   }
 ]

@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import AppsPanel from "./AppsPanel";
 import AppLayout from "./AppLayout";
 import BMICalculator from "./BMICalculator";
+import RandomPasswordGenerator from "./RandomPasswordGenerator";
 import NotFound from "@/pages/NotFound";
 
 export default function AppsRoutes() {
@@ -17,6 +18,15 @@ export default function AppsRoutes() {
         element={
           <AppLayout appName="BMI Calculator">
             <BMICalculator />
+          </AppLayout>
+        }
+      />
+
+      <Route
+        path="random-password-generator"
+        element={
+          <AppLayout appName="Random Password Generator">
+            <RandomPasswordGenerator />
           </AppLayout>
         }
       />
