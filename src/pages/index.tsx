@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState } from "react";
+import { Analytics } from '@vercel/analytics/react';
 import Header from "@/components/Header";
 import PageRoutes from "@/pages/PageRoutes";
 import SplashScreen from "@/components/SplashScreen";
@@ -17,24 +18,28 @@ export default function App() {
   }, []);
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <BrowserRouter>
-        {loading && <SplashScreen />}
-        {!loading && (
-          <>
-          <Aurora
-              colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-              blend={1.0}
-              amplitude={0.8}
-              speed={0.9}
-            />
-            <Header />
-            <CanvasCursor />
-            <StarfieldBackground />
-            <PageRoutes />
-          </>
-        )}
-      </BrowserRouter>
-    </ThemeProvider>
+    <div>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <BrowserRouter>
+          {loading && <SplashScreen />}
+          {!loading && (
+            <>
+            <Aurora
+                colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+                blend={1.0}
+                amplitude={0.8}
+                speed={0.9}
+              />
+              <Header />
+              <CanvasCursor />
+              <StarfieldBackground />
+              <PageRoutes />
+            </>
+          )}
+        </BrowserRouter>
+      </ThemeProvider>
+
+      <Analytics />
+    </div>
   );
 }
