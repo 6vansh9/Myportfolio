@@ -42,7 +42,7 @@ export default function AppsPanel() {
       <div className="mb-6 flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl font-semibold text-zinc-100 sm:text-3xl">
-            My Applications
+            My Apps
           </h1>
           <p className="text-sm text-zinc-400">
             A collection of tools and applications I've built.

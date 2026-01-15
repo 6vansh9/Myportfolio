@@ -5,6 +5,7 @@ import SpotifyPlaylist from "./SpotifyPlaylist";
 import RickRoll from "./RickRoll";
 import Footer from "@/components/Footer";
 import Live2DCharacter from "./Live2DCharacter";
+import { Meteors } from "@/components/ui/meteors"
 
 
 export default function About() {
@@ -12,6 +13,7 @@ export default function About() {
     <div className="flex w-full flex-col items-center justify-center gap-9">
       {/* Live2D Character - Only renders on About page */}
       <Live2DCharacter />
+      <Meteors />
 
       <div className="h-[120px]" />
 

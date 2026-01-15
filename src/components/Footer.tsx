@@ -1,6 +1,13 @@
 import { Separator } from "@/components/ui/separator";
+import ShinyText from "@/components/ShinyText";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { FaXTwitter, FaInstagram, FaYoutube, FaDev, FaSpotify } from "react-icons/fa6";
+import {
+  FaXTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaDev,
+  FaSpotify,
+} from "react-icons/fa6";
 import { IoLinkOutline } from "react-icons/io5";
 import metadata from "@/content/metadata.json";
 
@@ -38,10 +45,10 @@ interface FooterData {
 
 export default function Footer() {
   const footer: FooterData = metadata.footer || {};
-  
+
   // Filter enabled socials
   const enabledSocials = (footer.socials || []).filter(
-    (social) => social.enabled !== false && social.url
+    (social) => social.enabled !== false && social.url,
   );
 
   return (
@@ -57,7 +64,11 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-primary hover:text-primary/80 font-semibold underline transition-colors"
             >
-              {footer.author?.name || "Developer"}
+              <ShinyText
+                className="text-primary font-semibold"
+                text={footer.author?.name || "Developer"}
+                speed={3.2}
+              />
             </a>
           ) : (
             <span className="text-primary font-semibold">
@@ -69,7 +80,8 @@ export default function Footer() {
         {enabledSocials.length > 0 && (
           <div className="flex gap-4">
             {enabledSocials.map((social) => {
-              const Icon = iconMap[social.icon?.toLowerCase() || ""] || DefaultIcon;
+              const Icon =
+                iconMap[social.icon?.toLowerCase() || ""] || DefaultIcon;
               return (
                 <a
                   key={social.name}

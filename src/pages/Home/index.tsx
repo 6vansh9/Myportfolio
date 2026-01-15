@@ -11,10 +11,15 @@ import Experience from "./Experience";
 import Contact from "./Contact";
 import Quote from "./Quote";
 import Footer from "../../components/Footer";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+
+
 
 export default function Home() {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-9">
+      <ShootingStars />
+      
       <Chatbot />
 
       <div className="h-[120px]" />
