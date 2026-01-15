@@ -27,7 +27,6 @@ export default function SplashScreen() {
         <div>
         </div>
       </div>
-      {/* Star GIF in bottom right */}
       <img
         src="/assets/star.gif"
         alt="star"
