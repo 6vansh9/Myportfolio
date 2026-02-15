@@ -1,0 +1,63 @@
+# Gautam Vhavle - Portfolio
+
+> Full-Stack Developer, GenAI Engineer, and IoT Specialist
+
+## About
+
+Gautam Vhavle is a Full-Stack Developer and GenAI Engineer currently working at Siemens in Bengaluru, India. He is a patent holder specializing in building intelligent systems using modern web technologies, Generative AI, and IoT solutions.
+
+## Contact
+
+- Email: gautamvhavle@gmail.com
+- Website: https://gautamvhavle.xyz
+- Location: Bengaluru, Karnataka, India
+
+## Key Skills
+
+- **Languages**: Python, TypeScript, JavaScript, C++, Bash
+- **Frontend**: React, Vite, Tailwind CSS, ShadCN
+- **Backend**: FastAPI, Flask, Node.js
+- **AI/ML**: LangChain, LangGraph, GenAI, Context Engineering
+- **DevOps**: Docker, Kubernetes, Helm
+- **Databases**: PostgreSQL, MongoDB, MSSQL
+- **IoT**: Raspberry Pi, Embedded Systems, Hardware Integration
+
+## Experience
+
+Currently working as a Full-Stack Developer and GenAI Engineer at Siemens, where he designs and implements AI-powered orchestration workflows using LangChain, LangGraph, and Vision models.
+
+## Notable Achievements
+
+- Patent holder in AI/IoT domain
+- Built intelligent systems for industrial automation
+- Developed AI-powered monitoring solutions using computer vision
+- Created production-ready GenAI applications
+
+## Social Profiles
+
+- GitHub: https://github.com/gautamvhavle
+- LinkedIn: https://www.linkedin.com/in/gautamvhavle
+- Twitter/X: https://x.com/gautamvvvv
+- Dev.to: https://dev.to/gautamvhavle
+- YouTube: https://youtube.com/@gautamvhavle
+- Instagram: https://instagram.com/gautam_vhavle
+
+## Site Structure
+
+- Home (/) - Portfolio homepage with intro, bio, tech stack, and featured projects
+- About (/about) - Detailed background, journey, and personal story
+- Blog (/blogs) - Technical articles and insights
+- Apps (/apps) - Interactive web applications and projects
+- Sitemap: https://gautamvhavle.xyz/sitemap.xml
+
+## Purpose
+
+This portfolio showcases Gautam's expertise in Full-Stack Development, Generative AI, and IoT engineering. It features his projects, blog posts, work experience, certifications, and ways to connect with him.
+
+## License
+
+Personal portfolio website. All content belongs to Gautam Vhavle unless otherwise specified.
+
+---
+
+Last updated: February 15, 2026
