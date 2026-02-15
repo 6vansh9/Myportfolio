@@ -1,14 +1,25 @@
 {
   "short_name": "Gautam Vhavle",
-  "name": "Gautam Vhavle Portfolio",
+  "name": "Gautam Vhavle – Full-Stack Developer Portfolio",
+  "description": "Portfolio of Gautam Vhavle – Full-Stack Developer, GenAI & IoT Engineer at Siemens, based in Bengaluru, India.",
   "icons": [
     {
       "src": "logo.svg",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "assets/avatar.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#000000"
+  "theme_color": "#18181b",
+  "background_color": "#000000",
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en"
 }

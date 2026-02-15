@@ -12,10 +12,13 @@ import Contact from "./Contact";
 import Quote from "./Quote";
 import Footer from "../../components/Footer";
 import { ShootingStars } from "@/components/ui/shooting-stars";
+import useSEO from "@/hooks/useSEO";
 
 
 
 export default function Home() {
+  useSEO({ path: "/" });
+
   return (
     <div className="flex w-full flex-col items-center justify-center gap-9">
       <ShootingStars />

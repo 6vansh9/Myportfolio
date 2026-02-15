@@ -5,10 +5,17 @@ import SpotifyPlaylist from "./SpotifyPlaylist";
 import RickRoll from "./RickRoll";
 import Footer from "@/components/Footer";
 import Live2DCharacter from "./Live2DCharacter";
-import { Meteors } from "@/components/ui/meteors"
+import { Meteors } from "@/components/ui/meteors";
+import useSEO from "@/hooks/useSEO";
 
 
 export default function About() {
+  useSEO({
+    title: "About",
+    description: "Learn about Gautam Vhavle – his journey from curious tinkerer to Full-Stack Developer & GenAI Engineer at Siemens. IoT enthusiast, patent holder, and builder at heart.",
+    path: "/about",
+  });
+
   return (
     <div className="flex w-full flex-col items-center justify-center gap-9">
       {/* Live2D Character - Only renders on About page */}
