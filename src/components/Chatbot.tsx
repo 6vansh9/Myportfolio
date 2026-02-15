@@ -93,7 +93,7 @@ export default function Chatbot() {
     };
 
     try {
-      const response = await fetch("https://llm-provider.onrender.com/chat", {
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(requestBody),
