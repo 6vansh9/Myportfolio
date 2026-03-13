@@ -8,6 +8,7 @@ import SplashScreen from "@/components/SplashScreen";
 import StarfieldBackground from "@/components/StarfieldBackground";
 import CanvasCursor from "@/components/CanvasCursor";
 import Aurora from "@/components/Aurora";
+import useHaptics from "@/hooks/useHaptics";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -16,6 +17,8 @@ export default function App() {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  useHaptics();
 
   return (
     <div>
