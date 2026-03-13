@@ -24,7 +24,7 @@ export default function useHaptics() {
     [],
   );
 
-  const { trigger, isSupported } = useWebHaptics({ debug: debugMode });
+  const { trigger } = useWebHaptics({ debug: debugMode });
 
   const heartbeatTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -55,10 +55,10 @@ export default function useHaptics() {
   }, []);
 
   useEffect(() => {
-    // On mobile (isSupported=true): real vibration, no debug needed
-    // On desktop with ?haptics-debug: audio click fallback
-    // On desktop without flag: skip entirely
-    if (!isSupported && !debugMode) return;
+    // The library handles all platforms internally:
+    // - Android: navigator.vibrate()
+    // - iOS: hidden <input type="checkbox" switch> triggers native haptics
+    // - Desktop: no-op (or audio clicks with ?haptics-debug)
 
     function onScroll() {
       if (!activatedRef.current) return;
@@ -124,5 +124,5 @@ export default function useHaptics() {
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, [isSupported, debugMode, startHeartbeat, stopHeartbeat]);
+  }, [startHeartbeat, stopHeartbeat]);
 }
