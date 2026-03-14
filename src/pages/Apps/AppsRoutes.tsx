@@ -3,6 +3,7 @@ import AppsPanel from "./AppsPanel";
 import AppLayout from "./AppLayout";
 import BMICalculator from "./BMICalculator";
 import RandomPasswordGenerator from "./RandomPasswordGenerator";
+import HapticPlayground from "./HapticPlayground";
 import NotFound from "@/pages/NotFound";
 
 export default function AppsRoutes() {
@@ -27,6 +28,15 @@ export default function AppsRoutes() {
         element={
           <AppLayout appName="Random Password Generator">
             <RandomPasswordGenerator />
+          </AppLayout>
+        }
+      />
+
+      <Route
+        path="haptic-playground"
+        element={
+          <AppLayout appName="Haptic Playground">
+            <HapticPlayground />
           </AppLayout>
         }
       />

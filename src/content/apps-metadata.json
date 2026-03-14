@@ -22,13 +22,29 @@
     "image": "/assets/apps/bmi-calculator-app-icon.png",
     "url": "/apps/bmi-calculator",
     "category": "Health",
-    "createdDate": "Jan 2026",
+    "createdDate": "Feb 2026",
     "tags": [
       "BMI",
       "Health",
       "Calculator",
       "Wellness",
       "WHO"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Haptic Playground",
+    "description": "Design, preview, and export custom haptic vibration patterns for the web. Choose from presets or build your own using a visual timeline editor with intensity and duration controls.",
+    "image": "/assets/apps/haptic-playground-app-icon.png",
+    "url": "/apps/haptic-playground",
+    "category": "Developer Tools",
+    "createdDate": "Mar 2026",
+    "tags": [
+      "Haptics",
+      "Vibration",
+      "Developer",
+      "Tools",
+      "Web API"
     ]
   }
 ]
