@@ -1,5 +1,6 @@
 import { AnimatedTextSlider } from "@/components/animated-text-slider";
 import ShinyText from "@/components/ShinyText";
+import { useHaptics } from "@/hooks/useHaptics";
 
 import { FaCode } from "react-icons/fa6";
 import {
@@ -40,6 +41,7 @@ const InfoItem = ({ icon, children, href }: InfoItemProps) => (
 export default function Intro() {
   const [now, setNow] = useState(new Date());
   const { intro } = metadata.home;
+  const { trigger } = useHaptics();
 
   useEffect(() => {
     const interval = setInterval(() => setNow(new Date()), 50);
@@ -74,7 +76,9 @@ export default function Intro() {
             </div>
             {intro.availability?.enabled !== false &&
               intro.availability?.status && (
-                <div className="hidden h-6 cursor-pointer items-center gap-2.5 rounded-full border border-zinc-700/50 bg-zinc-800/50 px-3 py-0.5 transition-colors hover:bg-gray-700 sm:flex">
+                <div
+                  onClick={() => trigger([{ duration: 1000 }], { intensity: 1 })}
+                  className="hidden h-6 cursor-pointer items-center gap-2.5 rounded-full border border-zinc-700/50 bg-zinc-800/50 px-3 py-0.5 transition-colors hover:bg-gray-700 sm:flex">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_6px_1px_rgba(34,197,94,0.5)]"></span>

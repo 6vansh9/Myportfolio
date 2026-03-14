@@ -9,7 +9,7 @@ import {
   FaSpotify,
 } from "react-icons/fa6";
 import { IoLinkOutline } from "react-icons/io5";
-import { useWebHaptics } from "web-haptics/react";
+import { useHaptics } from "@/hooks/useHaptics";
 import metadata from "@/content/metadata.json";
 
 // Icon map for footer socials
@@ -46,7 +46,7 @@ interface FooterData {
 
 export default function Footer() {
   const footer: FooterData = metadata.footer || {};
-  const { trigger } = useWebHaptics();
+  const { trigger } = useHaptics();
 
   // Filter enabled socials
   const enabledSocials = (footer.socials || []).filter(
