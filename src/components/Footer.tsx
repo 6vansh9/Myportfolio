@@ -9,6 +9,7 @@ import {
   FaSpotify,
 } from "react-icons/fa6";
 import { IoLinkOutline } from "react-icons/io5";
+import { useWebHaptics } from "web-haptics/react";
 import metadata from "@/content/metadata.json";
 
 // Icon map for footer socials
@@ -45,6 +46,7 @@ interface FooterData {
 
 export default function Footer() {
   const footer: FooterData = metadata.footer || {};
+  const { trigger } = useWebHaptics();
 
   // Filter enabled socials
   const enabledSocials = (footer.socials || []).filter(
@@ -56,7 +58,16 @@ export default function Footer() {
       <Separator className="mb-5 w-full max-w-3xl bg-zinc-700/40" />
       <div className="flex w-full max-w-3xl flex-col items-center justify-between gap-3 px-4 sm:flex-row">
         <span className="text-xs text-zinc-400 select-none">
-          © {new Date().getFullYear()} {footer.text || "Made with ❤️ by"}{" "}
+          © {new Date().getFullYear()} Made with{" "}
+              <button
+                type="button"
+                onClick={() => trigger("heavy")}
+                className="cursor-pointer transition-transform hover:scale-125 active:scale-95"
+                aria-label="Haptic heart"
+              >
+                ❤️
+              </button>{" "}
+              by{" "}
           {footer.author?.url ? (
             <a
               href={footer.author.url}

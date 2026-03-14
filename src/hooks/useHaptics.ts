@@ -1,15 +1,13 @@
 import { useEffect, useRef, useCallback, useMemo } from "react";
 import { useWebHaptics } from "web-haptics/react";
 
-// Resting heartbeat: 72 BPM → ~833ms per beat
-const HEARTBEAT_INTERVAL = 833;
+const HEARTBEAT_INTERVAL = 833; // 72 BPM
 const SCROLL_IDLE_TIMEOUT = 150;
 
-// "Lub-dub" heartbeat pattern
 const HEARTBEAT_PATTERN = {
   pattern: [
-    { duration: 100, intensity: 0.6 }, // lub
-    { delay: 100, duration: 80, intensity: 0.4 }, // dub
+    { duration: 100, intensity: 0.6 },
+    { delay: 100, duration: 80, intensity: 0.4 },
   ],
 };
 
@@ -17,12 +15,23 @@ function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
 }
 
+/**
+ * Continuous haptic feedback: heartbeat when idle, buzz on scroll.
+ *
+ * - Android: uses navigator.vibrate() — works from timers after user click activation.
+ * - Desktop: auto-enables debug mode (AudioContext clicks) on non-touch devices.
+ * - iOS: navigator.vibrate() is unavailable; library falls back to switch-toggle haptics,
+ *   but timer/scroll-based triggers lack user-gesture context, so iOS haptics
+ *   are limited to the initial activation tap only.
+ * - Use ?haptics-debug URL param to force debug audio on any device.
+ */
 export default function useHaptics() {
-  // ?haptics-debug in URL → audio clicks on desktop for testing
-  const debugMode = useMemo(
-    () => typeof window !== "undefined" && new URLSearchParams(window.location.search).has("haptics-debug"),
-    [],
-  );
+  const debugMode = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    const forceDebug = new URLSearchParams(window.location.search).has("haptics-debug");
+    const isNonTouch = !("ontouchstart" in window);
+    return forceDebug || isNonTouch;
+  }, []);
 
   const { trigger } = useWebHaptics({ debug: debugMode });
 
@@ -55,11 +64,6 @@ export default function useHaptics() {
   }, []);
 
   useEffect(() => {
-    // The library handles all platforms internally:
-    // - Android: navigator.vibrate()
-    // - iOS: hidden <input type="checkbox" switch> triggers native haptics
-    // - Desktop: no-op (or audio clicks with ?haptics-debug)
-
     function onScroll() {
       if (!activatedRef.current) return;
 
@@ -98,15 +102,17 @@ export default function useHaptics() {
       }
     }
 
-    // navigator.vibrate requires a prior user gesture
     function onFirstInteraction() {
       if (activatedRef.current) return;
       activatedRef.current = true;
+
+      // Fire initial haptic inside user gesture context
+      triggerRef.current("medium");
       removeListeners();
       startHeartbeat();
     }
 
-    const events = ["touchstart", "click", "pointerdown"] as const;
+    const events = ["touchstart", "click"] as const;
     function removeListeners() {
       for (const e of events) window.removeEventListener(e, onFirstInteraction);
     }
