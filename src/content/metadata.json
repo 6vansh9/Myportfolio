@@ -86,10 +86,11 @@
       { "name": "ShadCN", "url": "https://ui.shadcn.com/", "icon": "shadcn.svg" },
       { "name": "Postman", "url": "https://www.postman.com/", "icon": "postman.svg" },
       { "name": "PostgreSQL", "url": "https://www.postgresql.org/", "icon": "postgres.svg" },
+      { "name": "Supabase", "url": "https://supabase.com/", "icon": "supabase.svg" },
       { "name": "MSSQL", "url": "https://www.microsoft.com/en-us/sql-server/", "icon": "mssql.svg" },
       { "name": "MongoDB", "url": "https://www.mongodb.com/", "icon": "mongodb.svg" },
-      { "name": "Flask", "url": "https://flask.palletsprojects.com/", "icon": "flask.svg" },
       { "name": "FastAPI", "url": "https://fastapi.tiangolo.com/", "icon": "fastapi.svg" },
+      { "name": "Pypi", "url": "https://pypi.org/", "icon": "pypi.svg" },
       { "name": "Git", "url": "https://git-scm.com/", "icon": "git.svg" },
       { "name": "GitHub", "url": "https://github.com/", "icon": "github.svg" },
       { "name": "Docker", "url": "https://www.docker.com/", "icon": "docker.svg" },
@@ -97,6 +98,7 @@
       { "name": "Helm", "url": "https://helm.sh/", "icon": "helm.svg" },
       { "name": "n8n", "url": "https://n8n.io/", "icon": "n8n.svg" },
       { "name": "LangChain", "url": "https://langchain.com/", "icon": "langchain.svg" },
+      { "name": "MCP", "url": "https://modelcontextprotocol.io/", "icon": "mcp.svg" },
       { "name": "Copilot", "url": "https://docs.github.com/en/copilot", "icon": "copilot.svg" },
       { "name": "Docling", "url": "https://www.docling.ai/", "icon": "docling.svg" },
       { "name": "LangFuse", "url": "https://www.langfuse.com/", "icon": "langfuse.svg" },
@@ -105,28 +107,128 @@
       { "name": "OpenRouter", "url": "https://openrouter.ai/", "icon": "openrouter.svg" },
       { "name": "Raspberry Pi", "url": "https://www.raspberrypi.com/", "icon": "raspberrypi.svg" },
       { "name": "Espressif", "url": "https://www.espressif.com/", "icon": "espressif.svg" },
-      { "name": "VS Code", "url": "https://code.visualstudio.com/", "icon": "vscode.svg" },
-      { "name": "Cursor", "url": "https://www.cursor.so/", "icon": "cursor.svg" },
+      { "name": "Gemini", "url": "https://www.gemini.com/", "icon": "gemini.svg" },
+      { "name": "Claude", "url": "https://claude.ai/", "icon": "claude.svg" },
+      { "name": "NoVNC", "url": "https://novnc.com/", "icon": "novnc.svg" },
+      { "name": "Razorpay", "url": "https://razorpay.com/", "icon": "razorpay.svg" },
+      { "name": "Playwright", "url": "https://playwright.dev/", "icon": "playwright.svg" },
       { "name": "Canva", "url": "https://www.canva.com/", "icon": "canva.svg" },
-      { "name": "Figma", "url": "https://www.figma.com/", "icon": "figma.svg" }
+      { "name": "Figma", "url": "https://www.figma.com/", "icon": "figma.svg" },
+      { "name": "Cursor", "url": "https://www.cursor.so/", "icon": "cursor.svg" },
+      { "name": "VS Code", "url": "https://code.visualstudio.com/", "icon": "vscode.svg" }
+      
     ],
     "featuredProjects": [
       {
+        "title": "LearnerVerse",
+        "description": "An AI-Native EdTech platform where you can turn any playlist into a real course",
+        "image": "/assets/projects/learnerverse.png",
+        "website": "https://learnerverse.xyz",
+        "github": "https://github.com/GautamVhavle/learner-verse",
+        "tech": [
+          { "name": "Python", "icon": "/assets/tech-stack/python.svg" },
+          { "name": "FastAPI", "icon": "/assets/tech-stack/fastapi.svg" },
+          { "name": "LangChain", "icon": "/assets/tech-stack/langchain.svg" },
+          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "TypeScript", "icon": "/assets/tech-stack/typescript.svg" },
+          { "name": "Tailwind CSS", "icon": "/assets/tech-stack/tailwind.svg" },
+          { "name": "Supabase", "icon": "/assets/tech-stack/supabase.svg" },
+          { "name": "Razorpay", "icon": "/assets/tech-stack/razorpay.svg" }
+
+        ]
+      },
+      {
+        "title": "CatGPT Gateway",
+        "description": "A personal website to showcase my projects, skills, and experience",
+        "image": "/assets/projects/catgpt.png",
+        "github": "https://github.com/GautamVhavle/CatGPT-Gateway",
+        "website": "https://dev.to/gautamvhavle/i-reverse-engineered-chatgpts-ui-into-an-openai-compatible-api-and-heres-why-you-shouldnt-ch",
+        "tech": [
+          { "name": "Python", "icon": "/assets/tech-stack/python.svg" },
+          { "name": "FastAPI", "icon": "/assets/tech-stack/fastapi.svg" },
+          { "name": "LangChain", "icon": "/assets/tech-stack/langchain.svg" },
+          { "name": "Bash", "icon": "/assets/tech-stack/bash.svg" },
+          { "name": "Playwright", "icon": "/assets/tech-stack/playwright.svg" },
+          { "name": "VS Code", "icon": "/assets/tech-stack/vscode.svg" },
+          { "name": "NoVNC", "icon": "/assets/tech-stack/novnc.svg" }
+        ]
+      },
+      {
+        "title": "Universal JSON Agent MCP",
+        "description": "Talk to JSON files using natural language using specialised tools right from your IDE using MCP",
+        "image": "/assets/projects/universal-json-agent-mcp.png",
+        "github": "https://github.com/GautamVhavle/universal-json-agent",
+        "website": "https://dev.to/gautamvhavle/my-json-was-too-big-for-my-ai-so-i-built-an-mcp-server-to-fix-it-43m2",
+        "tech": [
+          { "name": "Pypi", "icon": "/assets/tech-stack/pypi.svg" },
+          { "name": "Python", "icon": "/assets/tech-stack/python.svg" },
+          { "name": "MCP", "icon": "/assets/tech-stack/mcp.svg" },
+          { "name": "LangChain", "icon": "/assets/tech-stack/langchain.svg" },
+          { "name": "LangFuse", "icon": "/assets/tech-stack/langfuse.svg" },
+          { "name": "Copilot", "icon": "/assets/tech-stack/copilot.svg" },
+          { "name": "VS Code", "icon": "/assets/tech-stack/vscode.svg" }
+        ]
+      },
+      {
+        "title": "Ventory.in",
+        "description": "An easy-to-use inventory management software for MSMEs",
+        "image": "/assets/projects/ventory.png",
+        "website": "https://ventory.in",
+        "tech": [
+          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
+          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
+          { "name": "Python", "icon": "/assets/tech-stack/python.svg" },
+          { "name": "FastAPI", "icon": "/assets/tech-stack/fastapi.svg" },
+          { "name": "Supabase", "icon": "/assets/tech-stack/supabase.svg" },
+          { "name": "Docker", "icon": "/assets/tech-stack/docker.svg" },
+          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
+        ]
+      },
+      {
+        "title": "GrigTechnologies.com",
+        "description": "A simple and modern homepage for a technology company",
+        "image": "/assets/projects/grig.png",
+        "website": "https://grigtechnologies.com",
+        "tech": [
+          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
+          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
+          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
+        ]
+      },
+      {
+        "title": "KYRA-AI",
+        "description": "A lawyer bot designed to assist with legal queries, using gpt-3",
+        "image": "/assets/projects/kyra-ai.png",
+        "github": "https://github.com/GautamVhavle/KYRA-AI",
+        "tech": [
+          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
+          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
+          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
+        ]
+      },
+      {
         "title": "Old Portfolio",
-        "description": "A personal website to showcase my projects, skills, and experience.",
+        "description": "My v1 personal website to showcase my projects, skills, and experience",
         "image": "/assets/projects/old-portfolio.png",
         "website": "https://gautamvhavle.vercel.app/",
         "tech": [
           { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
           { "name": "React", "icon": "/assets/tech-stack/react.svg" },
           { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
-          { "name": "TypeScript", "icon": "/assets/tech-stack/typescript.svg" },
+          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
           { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
         ]
       },
       {
         "title": "Parkive",
-        "description": "A smart parking solution with real time data visualisation using IoT technology.",
+        "description": "A smart parking solution with real time data visualisation using IoT technology",
         "image": "/assets/projects/parkive.png",
         "website": "https://gautamvhavle.wixsite.com/website",
         "github": "https://github.com/GautamVhavle/parkive",
@@ -135,32 +237,6 @@
           { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
           { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
           { "name": "Espressif", "icon": "/assets/tech-stack/espressif.svg" },
-          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
-        ]
-      },
-      {
-        "title": "Ventory.in",
-        "description": "An easy-to-use inventory management software for MSMEs.",
-        "image": "/assets/projects/ventory.png",
-        "website": "https://ventory.in",
-        "tech": [
-          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
-          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
-          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
-          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
-        ]
-      },
-      {
-        "title": "GrigTechnologies.com",
-        "description": "A simple and modern homepage for a technology company.",
-        "image": "/assets/projects/grig.png",
-        "website": "https://grigtechnologies.com",
-        "tech": [
-          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
-          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
-          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
           { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
         ]
       }
