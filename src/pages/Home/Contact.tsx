@@ -103,7 +103,7 @@ export default function Contact() {
     const hasMethodsAndForm = enabledMethods.length > 0 && isFormEnabled;
 
     return (
-        <section>
+        <section id="contact-section">
             <p className="mb-4 text-xs uppercase tracking-widest text-zinc-600 transition-colors hover:text-white">
                 {contactSection.title || "Contact"}
             </p>
