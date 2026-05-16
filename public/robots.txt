@@ -2,9 +2,9 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-# AI/LLM context file
-# https://llmstxt.org/
-Sitemap: https://gautamvhavle.xyz/llms.txt
-
 # Sitemap
 Sitemap: https://gautamvhavle.xyz/sitemap.xml
+
+# AI/LLM context file
+# https://llmstxt.org/
+# llms.txt: https://gautamvhavle.xyz/llms.txt

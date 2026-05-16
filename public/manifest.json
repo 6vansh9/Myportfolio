@@ -9,7 +9,7 @@
       "sizes": "any"
     },
     {
-      "src": "assets/avatar.jpg",
+      "src": "assets/logo.svg",
       "type": "image/jpeg",
       "sizes": "512x512",
       "purpose": "any maskable"

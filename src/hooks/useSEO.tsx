@@ -23,7 +23,7 @@ function setMeta(attr: string, key: string, content: string) {
 
 export default function useSEO({ title, description, path = "/" }: SEOProps = {}) {
   useEffect(() => {
-    const fullTitle = title ? `${title} | ${BASE_TITLE}` : `${BASE_TITLE} | Full-Stack Developer, GenAI & IoT Engineer – Portfolio`;
+    const fullTitle = title ? `${title} | ${BASE_TITLE}` : `${BASE_TITLE}'s Portfolio`;
     const desc = description || DEFAULT_DESCRIPTION;
     const url = `${BASE_URL}${path}`;
 
