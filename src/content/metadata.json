@@ -140,7 +140,7 @@
       },
       {
         "title": "CatGPT Gateway",
-        "description": "A personal website to showcase my projects, skills, and experience",
+        "description": "Turn your ChatGPT or Claude WebUI into a fully working OpenAI-compatible API",
         "image": "/assets/projects/catgpt.png",
         "github": "https://github.com/GautamVhavle/CatGPT-Gateway",
         "website": "https://dev.to/gautamvhavle/i-reverse-engineered-chatgpts-ui-into-an-openai-compatible-api-and-heres-why-you-shouldnt-ch",
