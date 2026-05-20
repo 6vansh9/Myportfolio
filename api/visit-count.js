@@ -1,8 +1,9 @@
-import { PrismaClient } from "../generated/prisma/client.js";
+import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 
-const prisma = new PrismaClient({
-  datasourceUrl: process.env.DATABASE_URL || process.env.PRISMA_POSTGRES_PRISMA_DATABASE_URL,
-});
+const connectionString = process.env.DATABASE_URL || process.env.PRISMA_POSTGRES_PRISMA_DATABASE_URL;
+const adapter = new PrismaPg({ connectionString });
+const prisma = new PrismaClient({ adapter });
 
 export default async function handler(req, res) {
   // Set CORS headers
