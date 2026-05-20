@@ -177,25 +177,24 @@ export default function App() {
             <SplashScreen progress={progress} onExitComplete={handleExitComplete} />
           )}
 
-          {/* Main app content — always mounted so everything pre-renders behind splash */}
-          <div
-            style={{
-              opacity: splashDone ? 1 : 0,
-              transition: splashDone ? "opacity 0.3s ease-in" : "none",
-              visibility: splashDone ? "visible" : "hidden",
-            }}
-          >
-            <Aurora
-              colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-              blend={1.0}
-              amplitude={0.8}
-              speed={0.9}
-            />
-            <CanvasCursor />
-            <StarfieldBackground />
-            <Header />
-            <PageRoutes />
-          </div>
+          {/* Backgrounds — always mounted so WebGL initializes during splash */}
+          <Aurora
+            colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+            blend={1.0}
+            amplitude={0.8}
+            speed={0.9}
+          />
+          <CanvasCursor />
+          <StarfieldBackground />
+
+          {/* Page content — mounted after splash so entrance animations play fresh.
+              Lazy chunks are pre-imported during splash so this mounts instantly. */}
+          {splashDone && (
+            <>
+              <Header />
+              <PageRoutes />
+            </>
+          )}
         </BrowserRouter>
       </ThemeProvider>
 
