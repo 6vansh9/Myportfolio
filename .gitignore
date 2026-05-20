@@ -25,3 +25,10 @@ dist-ssr
 
 # Temp exploration folder
 temp/
+
+# Environment variables
+.env
+.env.local
+
+# Prisma generated client
+generated/

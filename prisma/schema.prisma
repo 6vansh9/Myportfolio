@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model SiteVisit {
+  id        Int      @id @default(1)
+  count     Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
