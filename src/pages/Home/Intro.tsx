@@ -65,9 +65,9 @@ export default function Intro() {
           src={intro.avatar}
           alt={`Photo of ${intro.name}`}
           className="h-20 w-20 rounded-lg object-cover grayscale filter"
-          initial={{ opacity: 0, scale: 0.7 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.1 }}
         />
         <div className="flex w-full flex-col gap-2">
           <div className="flex w-full items-center gap-2 sm:gap-4">

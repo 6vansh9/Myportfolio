@@ -10,6 +10,19 @@ import CanvasCursor from "@/components/CanvasCursor";
 import Aurora from "@/components/Aurora";
 import metadata from "@/content/metadata.json";
 
+// Eagerly pre-import lazy route chunks so they're cached in the module system
+// before the splash finishes — prevents the second loading delay
+function preloadRouteChunks(): Promise<void> {
+  return Promise.all([
+    import("./About"),
+    import("./Blogs"),
+    import("./Apps"),
+    import("./NotFound"),
+  ])
+    .then(() => {})
+    .catch(() => {});
+}
+
 // Critical images to preload during splash (above-the-fold + key UI + projects)
 const PRELOAD_IMAGES = [
   "/assets/me.png",
@@ -127,7 +140,6 @@ function createStagedProgress(onProgress: (pct: number) => void) {
 export default function App() {
   const [progress, setProgress] = useState(0);
   const [splashDone, setSplashDone] = useState(false);
-  const [ready, setReady] = useState(false);
   const startedRef = useRef(false);
 
   useEffect(() => {
@@ -139,6 +151,7 @@ export default function App() {
       ...PRELOAD_IMAGES.map(preloadImage),
       preloadLive2D(),
       preloadBlogArticles(),
+      preloadRouteChunks(),
       document.fonts.ready,
     ]);
 
@@ -152,38 +165,41 @@ export default function App() {
 
   const handleExitComplete = useCallback(() => {
     setSplashDone(true);
-    requestAnimationFrame(() => setReady(true));
   }, []);
 
   return (
     <div>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <BrowserRouter>
-          {/* Splash overlay */}
+          {/* Splash overlay — sits on top of content with z-[9999] */}
           {!splashDone && (
             <SplashScreen progress={progress} onExitComplete={handleExitComplete} />
           )}
 
-          {/* Main app content — only render after splash so no GPU waste behind it */}
-          {splashDone && (
-            <div
-              style={{
-                opacity: ready ? 1 : 0,
-                transition: "opacity 0.4s ease-in",
-              }}
-            >
-              <Aurora
-                colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-                blend={1.0}
-                amplitude={0.8}
-                speed={0.9}
-              />
-              <Header />
-              <CanvasCursor />
-              <StarfieldBackground />
-              <PageRoutes />
-            </div>
-          )}
+          {/* Main app content — always mounted so pages pre-render behind splash */}
+          <div
+            style={{
+              opacity: splashDone ? 1 : 0,
+              transition: splashDone ? "opacity 0.3s ease-in" : "none",
+              visibility: splashDone ? "visible" : "hidden",
+            }}
+          >
+            {/* Heavy WebGL backgrounds — only mount after splash to avoid GPU competition */}
+            {splashDone && (
+              <>
+                <Aurora
+                  colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+                  blend={1.0}
+                  amplitude={0.8}
+                  speed={0.9}
+                />
+                <CanvasCursor />
+                <StarfieldBackground />
+              </>
+            )}
+            <Header />
+            <PageRoutes />
+          </div>
         </BrowserRouter>
       </ThemeProvider>
 

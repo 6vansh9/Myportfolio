@@ -18,8 +18,8 @@ export default function Quote() {
 
     return (
         <div className="font-inter relative overflow-hidden rounded-xl border border-zinc-800/50 bg-zinc-900/25 p-4 shadow-[0_4px_32px_0_rgba(24,24,27,0.25)] backdrop-blur-lg transition-all duration-300 group sm:p-6">
-            {/* Animated modern reflection */}
-            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full">
+            {/* Animated modern reflection — hidden on mobile for GPU savings */}
+            <div className="pointer-events-none absolute left-0 top-0 z-10 hidden h-full w-full sm:block">
                 <div
                     className="absolute left-0 top-0 h-1/3 w-2/3 animate-card-reflection rounded-t-full bg-gradient-to-br from-white/60 via-white/10 to-transparent blur-lg"
                     style={{
