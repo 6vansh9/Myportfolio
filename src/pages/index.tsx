@@ -95,23 +95,24 @@ function preloadBlogArticles(): Promise<void> {
     .catch(() => {});
 }
 
-// Simulated staged progress — gives a smooth ~5s loading feel
-// Each stage resolves after a delay and bumps progress by its weight
+// Staged progress that takes ~5.5s minimum — progress caps at 90% until
+// real work finishes, ensuring the splash never exits before content is ready
 function createStagedProgress(onProgress: (pct: number) => void) {
   const stages = [
-    { weight: 6, delay: 350 },   // Boot
-    { weight: 8, delay: 550 },   // Fonts loading
-    { weight: 10, delay: 500 },  // Images start
-    { weight: 10, delay: 550 },  // Images loading
-    { weight: 10, delay: 500 },  // More images
+    { weight: 6, delay: 400 },   // Boot
+    { weight: 7, delay: 500 },   // Fonts loading
+    { weight: 8, delay: 500 },   // Images start
+    { weight: 9, delay: 550 },   // Images loading
+    { weight: 9, delay: 500 },   // More images
     { weight: 8, delay: 450 },   // Blog articles
-    { weight: 10, delay: 500 },  // Live2D assets
-    { weight: 8, delay: 400 },   // API warm-up
-    { weight: 8, delay: 350 },   // Compiling
-    { weight: 8, delay: 400 },   // Building UI
-    { weight: 6, delay: 350 },   // Final polish
-    { weight: 8, delay: 500 },   // Ready
+    { weight: 9, delay: 500 },   // Live2D assets
+    { weight: 7, delay: 450 },   // API warm-up
+    { weight: 7, delay: 400 },   // Compiling
+    { weight: 7, delay: 400 },   // Building UI
+    { weight: 6, delay: 400 },   // Final polish
+    { weight: 7, delay: 500 },   // Ready
   ];
+  // Total delay: ~5550ms, total weight: 90 → caps at 90%
 
   let accumulated = 0;
   let resolve: () => void;
@@ -176,7 +177,7 @@ export default function App() {
             <SplashScreen progress={progress} onExitComplete={handleExitComplete} />
           )}
 
-          {/* Main app content — always mounted so pages pre-render behind splash */}
+          {/* Main app content — always mounted so everything pre-renders behind splash */}
           <div
             style={{
               opacity: splashDone ? 1 : 0,
@@ -184,19 +185,14 @@ export default function App() {
               visibility: splashDone ? "visible" : "hidden",
             }}
           >
-            {/* Heavy WebGL backgrounds — only mount after splash to avoid GPU competition */}
-            {splashDone && (
-              <>
-                <Aurora
-                  colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-                  blend={1.0}
-                  amplitude={0.8}
-                  speed={0.9}
-                />
-                <CanvasCursor />
-                <StarfieldBackground />
-              </>
-            )}
+            <Aurora
+              colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+              blend={1.0}
+              amplitude={0.8}
+              speed={0.9}
+            />
+            <CanvasCursor />
+            <StarfieldBackground />
             <Header />
             <PageRoutes />
           </div>
