@@ -8,6 +8,7 @@ import SplashScreen from "@/components/SplashScreen";
 import StarfieldBackground from "@/components/StarfieldBackground";
 import CanvasCursor from "@/components/CanvasCursor";
 import Aurora from "@/components/Aurora";
+import metadata from "@/content/metadata.json";
 
 // Critical images to preload during splash (above-the-fold + key UI)
 const PRELOAD_IMAGES = [
@@ -28,6 +29,30 @@ function preloadImage(src: string): Promise<void> {
     img.onerror = () => resolve();
     img.src = src;
   });
+}
+
+// Preload Live2D widget script + model assets so they're cached for the About page
+function preloadLive2D(): Promise<void> {
+  const live2dSettings = metadata.settings?.live2dCharacter;
+  if (!live2dSettings || live2dSettings.enabled === false) return Promise.resolve();
+
+  const modelBase = (live2dSettings.modelJsonPath || "").replace(/\/[^/]+$/, "");
+
+  // Prefetch the script, model JSON, moc, and texture in parallel
+  const urls = [
+    "https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js",
+    live2dSettings.modelJsonPath,
+    `${modelBase}/model.moc`,
+    `${modelBase}/model.1024/texture_00.png`,
+  ].filter(Boolean) as string[];
+
+  return Promise.all(
+    urls.map((url) =>
+      fetch(url, { mode: "cors", credentials: "omit" })
+        .then(() => {})
+        .catch(() => {})
+    )
+  ).then(() => {});
 }
 
 // Simulated staged progress — gives a smooth ~4s loading feel
@@ -82,6 +107,7 @@ export default function App() {
     // Run real preloading and staged animation in parallel
     const realWork = Promise.all([
       ...PRELOAD_IMAGES.map(preloadImage),
+      preloadLive2D(),
       document.fonts.ready,
     ]);
 

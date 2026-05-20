@@ -26,7 +26,6 @@ export default function About() {
       <div className="h-[120px]" />
 
       <MaxWidthContainer>
-        <ScrollReveal direction="up" distance={50} duration={0.7}>
           <div className="mb-4 flex flex-col">
             {/* Page Title */}
             <div className="flex flex-col gap-2">
@@ -38,7 +37,6 @@ export default function About() {
             {/* Markdown Viewer */}
             <MarkdownViewer content={aboutContent} filename="about.md" />
           </div>
-        </ScrollReveal>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
