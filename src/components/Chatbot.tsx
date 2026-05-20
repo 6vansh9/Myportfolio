@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Send, Bot, User, Loader2, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import metadata from "@/content/metadata.json";
@@ -40,8 +41,10 @@ export default function Chatbot() {
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (isOpen) {
+      scrollToBottom();
+    }
+  }, [messages, isOpen]);
 
   // Focus input when chat opens
   useEffect(() => {
@@ -61,14 +64,37 @@ export default function Chatbot() {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen]);
 
-  // Shiver animation effect
+  // Shiver animation effect — only run when chat is closed and tab is visible
   useEffect(() => {
-    const interval = setInterval(() => {
-      setShiver(true);
-      setTimeout(() => setShiver(false), 1000); // Shiver for 1 second
-    }, 10000); // Every 10 seconds
-    return () => clearInterval(interval);
-  }, []);
+    if (isOpen) return;
+
+    let intervalId: ReturnType<typeof setInterval>;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const start = () => {
+      intervalId = setInterval(() => {
+        setShiver(true);
+        timeoutId = setTimeout(() => setShiver(false), 1000);
+      }, 10000);
+    };
+
+    const stop = () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+
+    const handleVisibility = () => {
+      if (document.hidden) stop(); else start();
+    };
+
+    start();
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      stop();
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -184,13 +210,16 @@ export default function Chatbot() {
       </button>
 
       {/* Chat Window */}
-      <div
-        className={`fixed z-50 transition-all duration-300 ease-in-out ${
-          isOpen
-            ? "pointer-events-auto translate-y-0 opacity-100 top-0 right-0 bottom-0 left-0 p-2 sm:top-auto sm:right-6 sm:bottom-6 sm:left-auto sm:h-[550px] sm:w-[400px] sm:p-0"
-            : "pointer-events-none translate-y-4 opacity-0 h-0 w-0 overflow-hidden bottom-6 right-6"
-        }`}
-      >
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 10 }}
+            transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.8 }}
+            className="fixed z-50 top-0 right-0 bottom-0 left-0 p-2 sm:top-auto sm:right-6 sm:bottom-6 sm:left-auto sm:h-[550px] sm:w-[400px] sm:p-0"
+            style={{ transformOrigin: "bottom right" }}
+          >
         <div className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-zinc-700/50 bg-zinc-900/95 shadow-2xl backdrop-blur-md sm:h-[550px]">
           {/* Header */}
           <div className="flex items-center gap-2 border-b border-zinc-700/50 bg-zinc-800/50 px-3 py-2 sm:px-4 sm:py-3">
@@ -222,8 +251,11 @@ export default function Chatbot() {
           <div className="flex-1 overflow-y-auto p-2 sm:p-4">
             <div className="flex flex-col gap-3 sm:gap-4">
               {messages.map((message) => (
-                <div
+                <motion.div
                   key={message.id}
+                  initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                   className={`flex gap-2 sm:gap-3 ${
                     message.role === "user" ? "flex-row-reverse" : "flex-row"
                   }`}
@@ -366,7 +398,7 @@ export default function Chatbot() {
                       </p>
                     )}
                   </div>
-                </div>
+                </motion.div>
               ))}
 
               {isLoading && (
@@ -413,15 +445,23 @@ export default function Chatbot() {
             </button>
           </form>
         </div>
-      </div>
+      </motion.div>
+      )}
+      </AnimatePresence>
 
       {/* Backdrop for mobile */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm sm:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm sm:hidden"
+            onClick={() => setIsOpen(false)}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

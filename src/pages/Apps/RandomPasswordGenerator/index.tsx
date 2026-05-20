@@ -1,9 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { FaCopy, FaRedo } from "react-icons/fa";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import Slider from "@mui/material/Slider";
-import { styled } from "@mui/material/styles";
+import { Slider } from "@/components/ui/slider";
 import {
   IoCheckmarkCircleOutline,
   IoChevronDown,
@@ -25,40 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 
-// Styled MUI Slider to match zinc aesthetic
-const StyledSlider = styled(Slider)({
-  color: "#a1a1aa", // zinc-400
-  height: 8,
-  "& .MuiSlider-track": {
-    border: "none",
-    background: "linear-gradient(to right, #52525b, #a1a1aa)", // zinc-600 to zinc-400
-  },
-  "& .MuiSlider-rail": {
-    opacity: 1,
-    backgroundColor: "rgba(39, 39, 42, 0.5)", // zinc-800/50
-  },
-  "& .MuiSlider-thumb": {
-    height: 18,
-    width: 18,
-    backgroundColor: "#f4f4f5", // zinc-100
-    boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
-    transition: "box-shadow 0.15s ease-in-out",
-    "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
-      boxShadow: "0 0 0 8px rgba(161, 161, 170, 0.16)",
-    },
-    "&::before": {
-      display: "none",
-    },
-  },
-  "& .MuiSlider-valueLabel": {
-    backgroundColor: "#27272a", // zinc-800
-    color: "#e4e4e7", // zinc-200
-    borderRadius: "6px",
-    padding: "4px 8px",
-    fontSize: "12px",
-    fontFamily: "monospace",
-  },
-});
+
 
 // Custom NumberInput component matching zinc aesthetic
 interface NumberInputProps {
@@ -647,11 +613,11 @@ export default function RandomPasswordGenerator() {
               aria-label="Password length"
             />
           </div>
-          <StyledSlider
+          <Slider
             value={length}
             min={0}
             max={50}
-            onChange={(_, value) => setLength(value as number)}
+            onValueChange={(value) => setLength(value)}
             aria-label="Password length"
           />
           <div className="flex justify-between text-xs text-zinc-600">

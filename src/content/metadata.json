@@ -473,7 +473,23 @@
       "enabled": true,
       "gif": "/assets/nyan-cat.gif",
       "backgroundColor": "#000000",
-      "alt": "Loading..."
+      "alt": "Loading...",
+      "messages": [
+        "Booting up the dev environment...",
+        "Compiling React components...",
+        "Loading GenAI models...",
+        "Connecting to IoT sensors...",
+        "Fetching GitHub contributions...",
+        "Spinning up serverless functions...",
+        "Initializing the starfield...",
+        "Training the neural network...",
+        "Deploying containers to K8s...",
+        "Building the full-stack pipeline...",
+        "Calibrating LLM parameters...",
+        "Syncing with the cloud...",
+        "Rendering the portfolio...",
+        "Almost there..."
+      ]
     },
     "blogs": {
       "enabled": true,

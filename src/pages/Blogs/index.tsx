@@ -1,4 +1,5 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
+import ScrollReveal from "@/components/ScrollReveal";
 import BlogsContent from "./BlogsContent";
 import Footer from "@/components/Footer";
 import useSEO from "@/hooks/useSEO";
@@ -15,11 +16,15 @@ export default function Blogs() {
       <div className="h-[120px]" />
 
       <MaxWidthContainer>
-        <BlogsContent />
+        <ScrollReveal direction="up" distance={50} duration={0.7}>
+          <BlogsContent />
+        </ScrollReveal>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
+        <ScrollReveal direction="up" distance={20} duration={0.5}>
           <Footer />
+        </ScrollReveal>
       </MaxWidthContainer>
     </div>
   );

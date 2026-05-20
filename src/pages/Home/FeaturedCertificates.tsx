@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import certificates from "@/content/featured-certificates-metadata.json";
 import CertificateCard from "@/components/CertificateCard";
+import StaggerChildren from "@/components/StaggerChildren";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { LuBrainCircuit } from "react-icons/lu";
 import { FaArrowRightLong, FaChevronDown } from "react-icons/fa6";
@@ -41,20 +42,18 @@ export default function FeaturedCertificates() {
       {/* Main Card Container */}
       <div className="rounded-xl border border-zinc-800/40 bg-zinc-900/25 p-4 backdrop-blur-lg sm:p-6">
         {/* Certificates List */}
-        <div className="flex flex-col gap-3">
-          {typedCertificates.map((certificate, index) => (
-            <div
-              key={certificate.id}
-              className={`transition-all duration-300 ease-in-out ${
-                index >= INITIAL_DISPLAY_COUNT && !isExpanded
-                  ? "hidden"
-                  : "block"
-              }`}
-            >
+        <StaggerChildren
+          className="flex flex-col gap-3"
+          stagger={0.06}
+          duration={0.4}
+          distance={25}
+        >
+          {(isExpanded ? typedCertificates : typedCertificates.slice(0, INITIAL_DISPLAY_COUNT)).map((certificate) => (
+            <div key={certificate.id}>
               <CertificateCard certificate={certificate} />
             </div>
           ))}
-        </div>
+        </StaggerChildren>
 
         {/* Expand/Collapse Button */}
         {typedCertificates.length > INITIAL_DISPLAY_COUNT && (

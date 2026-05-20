@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import type { ReactNode } from "react";
 
 interface TooltipProps {
@@ -57,18 +58,24 @@ export const Tooltip = ({
     >
       {children}
 
-      <div
-        className={`absolute ${positions[position]} pointer-events-none z-50 rounded-lg bg-zinc-800 px-3 py-1.5 font-mono text-xs font-medium whitespace-nowrap text-white transition-all duration-100 ease-out ${
-          isVisible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
-        }`}
-        style={{
-          boxShadow:
-            "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)",
-        }}
-      >
-        {text}
-        <div className={arrowPositions[position]} />
-      </div>
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.92 }}
+            transition={{ duration: 0.12, ease: "easeOut" }}
+            className={`absolute ${positions[position]} pointer-events-none z-50 rounded-lg bg-zinc-800 px-3 py-1.5 font-mono text-xs font-medium whitespace-nowrap text-white`}
+            style={{
+              boxShadow:
+                "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)",
+            }}
+          >
+            {text}
+            <div className={arrowPositions[position]} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

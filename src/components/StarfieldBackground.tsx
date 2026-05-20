@@ -1,97 +1,97 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, memo } from "react";
 import { gsap } from "gsap";
 import { RoughEase } from "gsap/EasePack";
 
-// Register the plugin if not already
 gsap.registerPlugin(RoughEase);
 
-const STAR_COUNT = 300;
-const ANIMATION_COUNT = 50;
-const WIDTH = window.innerWidth;
-const HEIGHT = window.innerHeight;
+// Reduce star count; use fewer animation segments
+const STAR_COUNT = 120;
+const ANIMATION_COUNT = 20;
 
-export default function StarfieldBackground() {
+const StarfieldBackground = memo(function StarfieldBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Clear previous stars if any
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
     container.innerHTML = "";
 
-    // Create stars
-    const stars: HTMLDivElement[] = [];
     const eases: gsap.EaseFunction[] = [];
-
-    // Fill the eases array
     for (let i = 0; i < ANIMATION_COUNT; i++) {
-      const strength = random(1, 3);
-      const points = Math.floor(random(50, 200));
-      const roughString = `rough({ template: none, strength: ${strength}, points: ${points}, taper: both, randomize: true, clamp: true })`;
-      const ease = gsap.parseEase(roughString);
-      eases.push(ease);
+      const strength = 1 + Math.random() * 2;
+      const points = Math.floor(50 + Math.random() * 150);
+      eases.push(
+        gsap.parseEase(
+          `rough({ template: none, strength: ${strength}, points: ${points}, taper: both, randomize: true, clamp: true })`,
+        ),
+      );
     }
+
+    // Use a single DocumentFragment for batch DOM insertion
+    const fragment = document.createDocumentFragment();
+    const timelines: gsap.core.Timeline[] = [];
 
     for (let i = 0; i < STAR_COUNT; i++) {
       const star = document.createElement("div");
-      star.className = "star";
-      container.appendChild(star);
-
-      gsap.set(star, {
+      Object.assign(star.style, {
         position: "absolute",
-        width: 4,
-        height: 4,
+        width: "4px",
+        height: "4px",
         background: "white",
         borderRadius: "50%",
-        left: random(WIDTH),
-        top: random(HEIGHT),
-        xPercent: -50,
-        yPercent: -50,
-        scale: 0,
-        opacity: 0,
+        left: `${Math.random() * width}px`,
+        top: `${Math.random() * height}px`,
+        transform: "translate(-50%, -50%) scale(0)",
+        opacity: "0",
         pointerEvents: "none",
         boxShadow: "0 0 8px 2px white",
+        willChange: "transform, opacity",
       });
+      fragment.appendChild(star);
 
       const tl = gsap.timeline({ repeat: -1, yoyo: true });
       for (let j = 0; j < ANIMATION_COUNT; j++) {
-        const ease1 = eases[Math.floor(random(ANIMATION_COUNT))];
-        const ease2 = eases[Math.floor(random(ANIMATION_COUNT))];
-        const alpha = random(0.7, 1);
-        const scale = random(0.15, 0.4);
-        const appear = "+=" + random(0.3, 0.8);
-        const delay = "+=" + random(2, 6);
-        const duration1 = random(0.3, 1);
-        const duration2 = random(0.3, 1);
-
+        const ease1 = eases[Math.floor(Math.random() * ANIMATION_COUNT)];
+        const ease2 = eases[Math.floor(Math.random() * ANIMATION_COUNT)];
         tl.to(
           star,
           {
-            opacity: alpha,
-            scale: scale,
+            opacity: 0.7 + Math.random() * 0.3,
+            scale: 0.15 + Math.random() * 0.25,
             ease: ease1,
-            duration: duration1,
+            duration: 0.3 + Math.random() * 0.7,
           },
-          delay,
+          "+=" + (2 + Math.random() * 4),
         ).to(
           star,
           {
             opacity: 0,
             scale: 0,
             ease: ease2,
-            duration: duration2,
+            duration: 0.3 + Math.random() * 0.7,
           },
-          appear,
+          "+=" + (0.3 + Math.random() * 0.5),
         );
       }
-      tl.progress(random(1));
-      stars.push(star);
+      tl.progress(Math.random());
+      timelines.push(tl);
     }
+    container.appendChild(fragment);
 
-    // Cleanup on unmount
+    // Pause/resume on tab visibility
+    const handleVisibility = () => {
+      const paused = document.hidden;
+      timelines.forEach((tl) => tl.paused(paused));
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
     return () => {
-      gsap.globalTimeline.clear();
+      document.removeEventListener("visibilitychange", handleVisibility);
+      timelines.forEach((tl) => tl.kill());
       container.innerHTML = "";
     };
   }, []);
@@ -111,18 +111,6 @@ export default function StarfieldBackground() {
       aria-hidden="true"
     />
   );
-}
+});
 
-// Utility
-function random(min: number, max?: number) {
-  if (max == null) {
-    max = min;
-    min = 0;
-  }
-  if (min > max) {
-    const tmp = min;
-    min = max;
-    max = tmp;
-  }
-  return min + (max - min) * Math.random();
-}
+export default StarfieldBackground;

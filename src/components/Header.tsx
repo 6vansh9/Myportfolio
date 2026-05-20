@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
 import ScrambledText from "@/components//ui/shadcn-io/scrambled-text";
 import MaxWidthContainer from "@/components/MaxWidthContainer";
 import metadata from "@/content/metadata.json";
@@ -170,41 +171,50 @@ export default function Header() {
       </header>
 
       {/* Mobile Nav Drawer */}
-      <nav
-        className={`sm:hidden fixed top-[60px] z-40 w-screen bg-black/95 backdrop-blur-lg border-b border-zinc-800 transition-all duration-300 ease-in-out ${
-          menuOpen && visible
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0 pointer-events-none"
-        }`}
-        style={{ left: 0, right: 0 }}
-        aria-label="Mobile navigation"
-        aria-hidden={!menuOpen || !visible}
-      >
-        <div className="flex w-full items-center justify-center">
-          <MaxWidthContainer>
-            <div className="flex flex-col py-4 gap-1">
-              {filteredNavLinks.map((link) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    aria-current={isActive ? "page" : undefined}
-                    className={`block py-3 px-3 rounded-lg font-mono text-base transition-colors ${
-                      isActive
-                        ? "bg-zinc-800 text-white"
-                        : "text-gray-400 hover:bg-zinc-800/50 hover:text-white"
-                    }`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
+      <AnimatePresence>
+        {menuOpen && visible && (
+          <motion.nav
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+            className="sm:hidden fixed top-[60px] z-40 w-screen overflow-hidden bg-black/95 backdrop-blur-lg border-b border-zinc-800"
+            style={{ left: 0, right: 0 }}
+            aria-label="Mobile navigation"
+          >
+            <div className="flex w-full items-center justify-center">
+              <MaxWidthContainer>
+                <div className="flex flex-col py-4 gap-1">
+                  {filteredNavLinks.map((link, i) => {
+                    const isActive = location.pathname === link.path;
+                    return (
+                      <motion.div
+                        key={link.path}
+                        initial={{ opacity: 0, x: -16 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.05 + i * 0.06, duration: 0.25, ease: "easeOut" }}
+                      >
+                        <Link
+                          to={link.path}
+                          aria-current={isActive ? "page" : undefined}
+                          className={`block py-3 px-3 rounded-lg font-mono text-base transition-colors ${
+                            isActive
+                              ? "bg-zinc-800 text-white"
+                              : "text-gray-400 hover:bg-zinc-800/50 hover:text-white"
+                          }`}
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {link.name}
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </MaxWidthContainer>
             </div>
-          </MaxWidthContainer>
-        </div>
-      </nav>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </>
   );
 }

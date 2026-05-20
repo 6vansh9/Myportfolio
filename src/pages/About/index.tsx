@@ -1,5 +1,6 @@
 import MaxWidthContainer from "@/components/MaxWidthContainer";
 import MarkdownViewer from "@/components/MarkdownViewer";
+import ScrollReveal from "@/components/ScrollReveal";
 import aboutContent from "@/content/about.md?raw";
 import SpotifyPlaylist from "./SpotifyPlaylist";
 import RickRoll from "./RickRoll";
@@ -25,27 +26,32 @@ export default function About() {
       <div className="h-[120px]" />
 
       <MaxWidthContainer>
-        <div className="mb-4 flex flex-col">
-          {/* Page Title */}
-          <div className="flex flex-col gap-2">
-            <p className="mb-4 text-xs tracking-widest text-zinc-300 uppercase transition-colors hover:text-white">
-              A little bit about who I am and what I do
-            </p>
+        <ScrollReveal direction="up" distance={50} duration={0.7}>
+          <div className="mb-4 flex flex-col">
+            {/* Page Title */}
+            <div className="flex flex-col gap-2">
+              <p className="mb-4 text-xs tracking-widest text-zinc-300 uppercase transition-colors hover:text-white">
+                A little bit about who I am and what I do
+              </p>
+            </div>
+
+            {/* Markdown Viewer */}
+            <MarkdownViewer content={aboutContent} filename="about.md" />
           </div>
-
-          {/* Markdown Viewer */}
-          <MarkdownViewer content={aboutContent} filename="about.md" />
-        </div>
+        </ScrollReveal>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <div id="spotify-playlist-section">
-          <SpotifyPlaylist />
-        </div>
+        <ScrollReveal direction="left" distance={40}>
+          <div id="spotify-playlist-section">
+            <SpotifyPlaylist />
+          </div>
+        </ScrollReveal>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <div className="w-full rounded-2xl border border-red-700/50 bg-gradient-to-br from-red-900/20 via-zinc-900/10 to-red-900/5 p-8 flex flex-col items-center gap-5 backdrop-blur-lg">
+        <ScrollReveal direction="up">
+          <div className="w-full rounded-2xl border border-red-700/50 bg-gradient-to-br from-red-900/20 via-zinc-900/10 to-red-900/5 p-8 flex flex-col items-center gap-5 backdrop-blur-lg">
           <div className="flex items-center gap-2">
             <svg
               width={20}
@@ -67,10 +73,13 @@ export default function About() {
           </p>
           <RickRoll />
         </div>
+        </ScrollReveal>
       </MaxWidthContainer>
 
       <MaxWidthContainer>
-        <Footer />
+        <ScrollReveal direction="up" distance={20} duration={0.5}>
+          <Footer />
+        </ScrollReveal>
       </MaxWidthContainer>
     </div>
   );

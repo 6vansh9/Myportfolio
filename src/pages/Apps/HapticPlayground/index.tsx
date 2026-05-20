@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { FaCopy } from "react-icons/fa";
 import { FiPlus, FiTrash2, FiDownload, FiUpload } from "react-icons/fi";
 import {
@@ -14,8 +14,7 @@ import {
   IoCopy,
 } from "react-icons/io5";
 import { BsLightning } from "react-icons/bs";
-import Slider from "@mui/material/Slider";
-import { styled } from "@mui/material/styles";
+import { Slider } from "@/components/ui/slider";
 import {
   Collapsible,
   CollapsibleContent,
@@ -31,38 +30,6 @@ import { defaultPatterns } from "web-haptics";
 // ---------------------------------------------------------------------------
 // Styled MUI Slider
 // ---------------------------------------------------------------------------
-const StyledSlider = styled(Slider)({
-  color: "#a1a1aa",
-  height: 8,
-  "& .MuiSlider-track": {
-    border: "none",
-    background: "linear-gradient(to right, #52525b, #a1a1aa)",
-  },
-  "& .MuiSlider-rail": {
-    opacity: 1,
-    backgroundColor: "rgba(39, 39, 42, 0.5)",
-  },
-  "& .MuiSlider-thumb": {
-    height: 18,
-    width: 18,
-    backgroundColor: "#f4f4f5",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
-    transition: "box-shadow 0.15s ease-in-out",
-    "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
-      boxShadow: "0 0 0 8px rgba(161, 161, 170, 0.16)",
-    },
-    "&::before": { display: "none" },
-  },
-  "& .MuiSlider-valueLabel": {
-    backgroundColor: "#27272a",
-    color: "#e4e4e7",
-    borderRadius: "6px",
-    padding: "4px 8px",
-    fontSize: "12px",
-    fontFamily: "monospace",
-  },
-});
-
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
@@ -929,13 +896,13 @@ function LikeButton() {
                   <div className="flex min-w-[140px] flex-1 items-center gap-2">
                     <Label className="text-[10px] uppercase tracking-wider text-zinc-600">Intensity</Label>
                     <div className="flex-1">
-                      <StyledSlider
+                      <Slider
                         size="small"
                         value={seg.intensity ?? globalIntensity}
                         min={0} max={1} step={0.05}
                         valueLabelDisplay="auto"
                         valueLabelFormat={(v) => `${Math.round(v * 100)}%`}
-                        onChange={(_, val) => updateSegment(idx, "intensity", val as number)}
+                        onValueChange={(val) => updateSegment(idx, "intensity", val)}
                       />
                     </div>
                     <span className="w-8 text-right font-mono text-[10px] text-zinc-500">
@@ -995,11 +962,11 @@ function LikeButton() {
                   {Math.round(globalIntensity * 100)}%
                 </span>
               </div>
-              <StyledSlider
+              <Slider
                 value={globalIntensity} min={0} max={1} step={0.05}
                 valueLabelDisplay="auto"
                 valueLabelFormat={(v) => `${Math.round(v * 100)}%`}
-                onChange={(_, val) => setGlobalIntensity(val as number)}
+                onValueChange={(val) => setGlobalIntensity(val)}
               />
             </div>
 

@@ -92,6 +92,8 @@ export const useSpotifyNowPlaying = (refreshInterval = 30000) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let intervalId: ReturnType<typeof setInterval> | undefined;
+
     const fetchNowPlaying = async () => {
       try {
         const accessToken = await getAccessToken();
@@ -111,9 +113,34 @@ export const useSpotifyNowPlaying = (refreshInterval = 30000) => {
       }
     };
 
-    fetchNowPlaying();
-    const interval = setInterval(fetchNowPlaying, refreshInterval);
-    return () => clearInterval(interval);
+    const startPolling = () => {
+      fetchNowPlaying();
+      intervalId = setInterval(fetchNowPlaying, refreshInterval);
+    };
+
+    const stopPolling = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = undefined;
+      }
+    };
+
+    // Pause polling when tab is hidden
+    const handleVisibility = () => {
+      if (document.hidden) {
+        stopPolling();
+      } else {
+        startPolling();
+      }
+    };
+
+    startPolling();
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      stopPolling();
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, [refreshInterval]);
 
   return { track, loading, error };

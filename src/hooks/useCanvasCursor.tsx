@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const useCanvasCursor = () => {
+const useCanvasCursor = (enabled = true) => {
   function n(e) {
     this.init(e || {});
   }
@@ -172,18 +172,27 @@ const useCanvasCursor = () => {
       }
     });
     window.addEventListener("blur", () => {
-      ctx.running = true;
+      ctx.running = false;
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        ctx.running = false;
+      } else if (!ctx.running) {
+        ctx.running = true;
+        render();
+      }
     });
     resizeCanvas();
   };
 
   useEffect(() => {
+    if (!enabled) return;
     renderCanvas();
 
     return () => {
       if (ctx) ctx.running = false;
     };
-  }, []);
+  }, [enabled]);
 };
 
 export default useCanvasCursor;

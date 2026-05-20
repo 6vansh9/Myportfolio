@@ -1,4 +1,5 @@
 import { FiGithub, FiGlobe } from "react-icons/fi";
+import StaggerChildren from "@/components/StaggerChildren";
 import metadata from "@/content/metadata.json";
 
 type Project = {
@@ -18,11 +19,16 @@ export default function FeaturedProjects() {
       <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase transition-colors hover:text-white">
         Featured Projects
       </p>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <StaggerChildren
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+        stagger={0.08}
+        duration={0.5}
+        distance={35}
+      >
         {featuredProjects.map((project: Project) => (
           <div
             key={project.title}
-            className="group font-inter flex flex-col rounded-xl border border-zinc-800/50 bg-zinc-900/25 backdrop-blur-lg transition-all duration-200 ease-out hover:border-zinc-700/40 hover:bg-zinc-900/30"
+            className="tilt-card group font-inter flex flex-col rounded-xl border border-zinc-800/50 bg-zinc-900/25 backdrop-blur-lg transition-all duration-200 ease-out hover:border-zinc-700/40 hover:bg-zinc-900/30"
           >
             <div className="relative h-40 w-full overflow-hidden rounded-t-xl bg-zinc-900/25 backdrop-blur-lg sm:h-52">
               <img
@@ -82,7 +88,7 @@ export default function FeaturedProjects() {
             </div>
           </div>
         ))}
-      </div>
+      </StaggerChildren>
     </section>
   );
 }

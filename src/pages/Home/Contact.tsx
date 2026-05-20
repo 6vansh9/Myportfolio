@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { motion } from "motion/react";
 import { IoCalendarOutline, IoMailOutline } from "react-icons/io5";
 import { MdArrowOutward } from "react-icons/md";
 import { FiLinkedin } from "react-icons/fi";
@@ -121,15 +122,19 @@ export default function Contact() {
                             </p>
                         </div>
                         <div className="space-y-3">
-                            {enabledMethods.map((method) => {
+                            {enabledMethods.map((method, i) => {
                                 const Icon = iconMap[method.type] || DefaultIcon;
                                 return (
-                                    <a
+                                    <motion.a
                                         key={method.type}
                                         href={method.url}
                                         target={method.type !== "email" ? "_blank" : undefined}
                                         rel={method.type !== "email" ? "noopener noreferrer" : undefined}
                                         className="group flex items-center gap-3 rounded-lg border border-zinc-800/60 bg-zinc-900/40 px-4.5 py-2.5 transition-all duration-200 hover:border-zinc-700/60 hover:bg-zinc-800/40"
+                                        initial={{ opacity: 0, y: 12, scale: 0.95 }}
+                                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                        viewport={{ once: true, amount: 0.3 }}
+                                        transition={{ type: "spring", stiffness: 350, damping: 25, delay: i * 0.1 }}
                                     >
                                         <span className="text-zinc-500 transition-colors group-hover:text-zinc-400">
                                             <Icon size={18} />
@@ -145,7 +150,7 @@ export default function Contact() {
                                             )}
                                         </div>
                                         <MdArrowOutward className="shrink-0 text-zinc-600 transition-colors group-hover:text-zinc-500" />
-                                    </a>
+                                    </motion.a>
                                 );
                             })}
                         </div>

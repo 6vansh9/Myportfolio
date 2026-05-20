@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { type BundledLanguage, codeToHtml } from "shiki";
 import { FiFileText, FiCode, FiCopy, FiCheck } from "react-icons/fi";
 
 interface MarkdownViewerProps {
@@ -10,6 +9,32 @@ interface MarkdownViewerProps {
 }
 
 type ViewMode = "preview" | "code";
+
+function ShikiCodeBlock({ code, language }: { code: string; language: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    codeToHtml(code, {
+      lang: language as BundledLanguage,
+      theme: "one-dark-pro",
+    }).then((html) => {
+      if (!cancelled && containerRef.current) {
+        containerRef.current.innerHTML = html;
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [code, language]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="[&>pre]:!m-0 [&>pre]:!rounded-md [&>pre]:!bg-zinc-800/50"
+    />
+  );
+}
 
 export default function MarkdownViewer({
   content,
@@ -98,18 +123,10 @@ export default function MarkdownViewer({
                   const match = /language-(\w+)/.exec(className || "");
                   const isInline = !match;
                   return !isInline ? (
-                    <SyntaxHighlighter
-                      style={oneDark}
+                    <ShikiCodeBlock
+                      code={String(children).replace(/\n$/, "")}
                       language={match[1]}
-                      PreTag="div"
-                      customStyle={{
-                        margin: 0,
-                        borderRadius: "0.375rem",
-                        background: "rgba(39, 39, 42, 0.5)",
-                      }}
-                    >
-                      {String(children).replace(/\n$/, "")}
-                    </SyntaxHighlighter>
+                    />
                   ) : (
                     <code className={className} {...props}>
                       {children}

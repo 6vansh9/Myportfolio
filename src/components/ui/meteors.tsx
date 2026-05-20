@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useMemo } from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -21,22 +21,18 @@ export const Meteors = ({
   angle = 215,
   className,
 }: MeteorsProps) => {
-  const [meteorStyles, setMeteorStyles] = useState<Array<React.CSSProperties>>(
-    []
-  )
-
-  useEffect(() => {
-    const styles = [...new Array(number)].map(() => ({
+  const meteorStyles = useMemo(() =>
+    Array.from({ length: number }, () => ({
       "--angle": -angle + "deg",
       top: "-5%",
-      left: `calc(0% + ${Math.floor(Math.random() * window.innerWidth)}px)`,
+      left: `calc(0% + ${Math.floor(Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1920))}px)`,
       animationDelay: Math.random() * (maxDelay - minDelay) + minDelay + "s",
       animationDuration:
         Math.floor(Math.random() * (maxDuration - minDuration) + minDuration) +
         "s",
-    }))
-    setMeteorStyles(styles)
-  }, [number, minDelay, maxDelay, minDuration, maxDuration, angle])
+    })),
+    [number, minDelay, maxDelay, minDuration, maxDuration, angle]
+  )
 
   return (
     <>

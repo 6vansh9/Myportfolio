@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { FaQuoteRight } from "react-icons/fa";
 import metadata from "@/content/metadata.json";
 
@@ -32,17 +33,25 @@ export default function Quote() {
                     <div className="flex items-start gap-4">
                         <FaQuoteRight size={40} color="#A3A3A3" />
 
-                        <div>
-                            <p className="mb-2 text-sm leading-relaxed text-zinc-400 sm:text-base">
-                                {quote.text}
-                            </p>
-
-                            <div className="flex items-center gap-2">
-                                <p className="text-xs text-zinc-500 sm:text-sm">
-                                    - {quote.author}
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -8 }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                            >
+                                <p className="mb-2 text-sm leading-relaxed text-zinc-400 sm:text-base">
+                                    {quote.text}
                                 </p>
-                            </div>
-                        </div>
+
+                                <div className="flex items-center gap-2">
+                                    <p className="text-xs text-zinc-500 sm:text-sm">
+                                        - {quote.author}
+                                    </p>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>

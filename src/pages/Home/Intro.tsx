@@ -1,6 +1,7 @@
 import { AnimatedTextSlider } from "@/components/animated-text-slider";
 import ShinyText from "@/components/ShinyText";
 import { useHaptics } from "@/hooks/useHaptics";
+import { motion } from "motion/react";
 
 import { FaCode } from "react-icons/fa6";
 import {
@@ -60,24 +61,34 @@ export default function Intro() {
     <div className="flex w-full flex-col items-start justify-center gap-9">
       {/* Top Section */}
       <div className="flex w-full flex-row items-center gap-5">
-        <img
+        <motion.img
           src={intro.avatar}
           alt={`Photo of ${intro.name}`}
           className="h-20 w-20 rounded-lg object-cover grayscale filter"
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
         />
         <div className="flex w-full flex-col gap-2">
           <div className="flex w-full items-center gap-2 sm:gap-4">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
+            >
               <p className="text-left font-sans text-3xl font-semibold sm:text-4xl">
                 {intro.name}
               </p>
               <div className="w-full text-left">
                 <AnimatedTextSlider texts={intro.roles} />
               </div>
-            </div>
+            </motion.div>
             {intro.availability?.enabled !== false &&
               intro.availability?.status && (
-                <div
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25, delay: 0.5 }}
                   onClick={() => trigger([{ duration: 1000 }], { intensity: 1 })}
                   className="hidden h-6 cursor-pointer items-center gap-2.5 rounded-full border border-zinc-700/50 bg-zinc-800/50 px-3 py-0.5 transition-colors hover:bg-gray-700 sm:flex">
                   <span className="relative flex h-2 w-2">
@@ -90,14 +101,19 @@ export default function Intro() {
                     text={intro.availability.text || "Available"}
                     speed={3.2}
                   />
-                </div>
+                </motion.div>
               )}
           </div>
         </div>
       </div>
 
       {/* Info Grid */}
-      <div className="w-full">
+      <motion.div
+        className="w-full"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.55, ease: "easeOut" }}
+      >
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
           {/* Left Column */}
           <div className="flex flex-col gap-2">
@@ -140,7 +156,7 @@ export default function Intro() {
             </InfoItem>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

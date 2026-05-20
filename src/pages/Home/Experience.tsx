@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import metadata from "@/content/metadata.json";
 
 export default function Experience() {
@@ -40,12 +41,18 @@ export default function Experience() {
         </div>
 
         {/* Panel */}
-        <div
-          id={`panel-${active}`}
-          role="tabpanel"
-          aria-labelledby={`tab-${active}`}
-          className="flex-1 transition-opacity duration-300"
-        >
+        <div className="flex-1 relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              id={`panel-${active}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${active}`}
+              initial={{ opacity: 0, x: 12 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -12 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+            >
           <div className="rounded-xl border border-zinc-800/40 bg-zinc-900/25 px-4 py-4 backdrop-blur-lg sm:px-6 sm:py-5">
             {/* Header */}
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
@@ -117,6 +124,8 @@ export default function Experience() {
               ))}
             </ul>
           </div>
+        </motion.div>
+        </AnimatePresence>
         </div>
       </div>
     </section>

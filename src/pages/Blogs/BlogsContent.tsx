@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import BlogCardSkeleton from "./BlogCardSkeleton";
 import BlogCard from "./BlogCard";
 import { FaPlus, FaDev, FaArrowRightLong } from "react-icons/fa6";
@@ -95,8 +96,15 @@ export default function BlogsContent() {
       {!loading && !error && (
         <>
           <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2">
-            {articles.map((article) => (
-              <BlogCard key={article.id} article={article} />
+            {articles.map((article, i) => (
+              <motion.div
+                key={article.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: i * 0.08, ease: "easeOut" }}
+              >
+                <BlogCard article={article} />
+              </motion.div>
             ))}
           </div>
 

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo } from 'react';
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 
 const VERT = `#version 300 es
@@ -115,7 +115,7 @@ interface AuroraProps {
   speed?: number;
 }
 
-export default function Aurora(props: AuroraProps) {
+export default memo(function Aurora(props: AuroraProps) {
   const { colorStops = ['#5227FF', '#7cff67', '#5227FF'], amplitude = 1.0, blend = 0.5 } = props;
   const propsRef = useRef<AuroraProps>(props);
   propsRef.current = props;
@@ -155,6 +155,7 @@ export default function Aurora(props: AuroraProps) {
       delete geometry.attributes.uv;
     }
 
+    // Pre-parse color stops once instead of every frame
     const colorStopsArray = colorStops.map(hex => {
       const c = new Color(hex);
       return [c.r, c.g, c.b];
@@ -176,27 +177,32 @@ export default function Aurora(props: AuroraProps) {
     ctn.appendChild(gl.canvas);
 
     let animateId = 0;
+    let paused = false;
+
     const update = (t: number) => {
       animateId = requestAnimationFrame(update);
+      if (paused) return;
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
       if (program) {
         program.uniforms.uTime.value = time * speed * 0.1;
         program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
         program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
-        const stops = propsRef.current.colorStops ?? colorStops;
-        program.uniforms.uColorStops.value = stops.map((hex: string) => {
-          const c = new Color(hex);
-          return [c.r, c.g, c.b];
-        });
         renderer.render({ scene: mesh });
       }
     };
     animateId = requestAnimationFrame(update);
 
+    // Pause rendering when tab is hidden
+    const handleVisibility = () => {
+      paused = document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
     resize();
 
     return () => {
       cancelAnimationFrame(animateId);
+      document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('resize', resize);
       if (ctn && gl.canvas.parentNode === ctn) {
         ctn.removeChild(gl.canvas);
@@ -206,4 +212,4 @@ export default function Aurora(props: AuroraProps) {
   }, [amplitude]);
 
   return <div ref={ctnDom} className="absolute pointer-events-none inset-0 z-[-1] w-full h-full" style={{ top: 0, left: 0 }}/>;
-}
+});

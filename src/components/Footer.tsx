@@ -100,7 +100,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="focus-visible:ring-primary rounded-full p-2 transition-colors hover:bg-zinc-800/60 focus-visible:ring-2 focus-visible:outline-none"
+                  className="social-pop focus-visible:ring-primary rounded-full p-2 transition-colors hover:bg-zinc-800/60 focus-visible:ring-2 focus-visible:outline-none"
                 >
                   <Icon className="hover:text-primary size-5 text-zinc-400 transition-colors" />
                 </a>

@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { Analytics } from '@vercel/analytics/react';
 import Header from "@/components/Header";
 import PageRoutes from "@/pages/PageRoutes";
@@ -9,22 +9,113 @@ import StarfieldBackground from "@/components/StarfieldBackground";
 import CanvasCursor from "@/components/CanvasCursor";
 import Aurora from "@/components/Aurora";
 
+// Critical images to preload during splash (above-the-fold + key UI)
+const PRELOAD_IMAGES = [
+  "/assets/me.png",
+  "/assets/icons/ai-icon.svg",
+  "/assets/avatar.jpg",
+  "/assets/company-logos/siemens.jpeg",
+  "/assets/company-logos/grig.jpeg",
+  "/assets/company-logos/e4a.jpeg",
+  "/assets/company-logos/brandcontext.jpeg",
+  "/assets/company-logos/golain.jpeg",
+];
+
+function preloadImage(src: string): Promise<void> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve();
+    img.onerror = () => resolve();
+    img.src = src;
+  });
+}
+
+// Simulated staged progress — gives a smooth ~4s loading feel
+// Each stage resolves after a delay and bumps progress by its weight
+function createStagedProgress(onProgress: (pct: number) => void) {
+  const stages = [
+    { weight: 8, delay: 300 },   // Boot
+    { weight: 12, delay: 600 },  // Fonts + images start
+    { weight: 15, delay: 400 },  // Images loading
+    { weight: 15, delay: 500 },  // More images
+    { weight: 12, delay: 400 },  // API warm-up
+    { weight: 10, delay: 350 },  // Compiling
+    { weight: 10, delay: 400 },  // Building UI
+    { weight: 8, delay: 300 },   // Final polish
+    { weight: 10, delay: 450 },  // Ready
+  ];
+
+  let accumulated = 0;
+  let resolve: () => void;
+  const promise = new Promise<void>((r) => { resolve = r; });
+  let i = 0;
+
+  function next() {
+    if (i >= stages.length) {
+      onProgress(100);
+      resolve();
+      return;
+    }
+    const stage = stages[i];
+    i++;
+    setTimeout(() => {
+      accumulated += stage.weight;
+      onProgress(Math.min(accumulated, 99));
+      next();
+    }, stage.delay);
+  }
+
+  next();
+  return promise;
+}
+
 export default function App() {
-  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [splashDone, setSplashDone] = useState(false);
+  const [ready, setReady] = useState(false);
+  const startedRef = useRef(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(timer);
+    if (startedRef.current) return;
+    startedRef.current = true;
+
+    // Run real preloading and staged animation in parallel
+    const realWork = Promise.all([
+      ...PRELOAD_IMAGES.map(preloadImage),
+      document.fonts.ready,
+    ]);
+
+    const stagedAnimation = createStagedProgress(setProgress);
+
+    // Both must complete before hitting 100%
+    Promise.all([realWork, stagedAnimation]).then(() => {
+      setProgress(100);
+    });
+  }, []);
+
+  const handleExitComplete = useCallback(() => {
+    setSplashDone(true);
+    requestAnimationFrame(() => setReady(true));
   }, []);
 
   return (
     <div>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <BrowserRouter>
-          {loading && <SplashScreen />}
-          {!loading && (
-            <>
-            <Aurora
+          {/* Splash overlay */}
+          {!splashDone && (
+            <SplashScreen progress={progress} onExitComplete={handleExitComplete} />
+          )}
+
+          {/* Main app content — only render after splash so no GPU waste behind it */}
+          {splashDone && (
+            <div
+              style={{
+                opacity: ready ? 1 : 0,
+                transition: "opacity 0.4s ease-in",
+              }}
+            >
+              <Aurora
                 colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
                 blend={1.0}
                 amplitude={0.8}
@@ -34,7 +125,7 @@ export default function App() {
               <CanvasCursor />
               <StarfieldBackground />
               <PageRoutes />
-            </>
+            </div>
           )}
         </BrowserRouter>
       </ThemeProvider>
