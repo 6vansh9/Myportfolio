@@ -10,7 +10,7 @@ import CanvasCursor from "@/components/CanvasCursor";
 import Aurora from "@/components/Aurora";
 import metadata from "@/content/metadata.json";
 
-// Critical images to preload during splash (above-the-fold + key UI)
+// Critical images to preload during splash (above-the-fold + key UI + projects)
 const PRELOAD_IMAGES = [
   "/assets/me.png",
   "/assets/icons/ai-icon.svg",
@@ -20,6 +20,10 @@ const PRELOAD_IMAGES = [
   "/assets/company-logos/e4a.jpeg",
   "/assets/company-logos/brandcontext.jpeg",
   "/assets/company-logos/golain.jpeg",
+  // Project images
+  ...((metadata.home?.featuredProjects || []) as Array<{ image?: string }>)
+    .map((p) => p.image)
+    .filter(Boolean) as string[],
 ];
 
 function preloadImage(src: string): Promise<void> {
@@ -55,19 +59,45 @@ function preloadLive2D(): Promise<void> {
   ).then(() => {});
 }
 
-// Simulated staged progress — gives a smooth ~4s loading feel
+// Dev.to username from settings
+const DEV_TO_USERNAME = metadata.settings?.blogs?.devToUsername || "username";
+
+// Prefetch blog articles + their cover images so the Blogs page loads instantly
+function preloadBlogArticles(): Promise<void> {
+  const isDev = import.meta.env.DEV;
+  const url = isDev
+    ? `https://dev.to/api/articles?username=${DEV_TO_USERNAME}`
+    : `/api/devto-articles?username=${DEV_TO_USERNAME}`;
+
+  return fetch(url)
+    .then((res) => (res.ok ? res.json() : []))
+    .then((articles: Array<{ cover_image?: string; social_image?: string }>) => {
+      // Preload cover images in parallel
+      const imageUrls = articles
+        .map((a) => a.cover_image || a.social_image)
+        .filter(Boolean) as string[];
+      return Promise.all(imageUrls.map(preloadImage));
+    })
+    .then(() => {})
+    .catch(() => {});
+}
+
+// Simulated staged progress — gives a smooth ~5s loading feel
 // Each stage resolves after a delay and bumps progress by its weight
 function createStagedProgress(onProgress: (pct: number) => void) {
   const stages = [
-    { weight: 8, delay: 300 },   // Boot
-    { weight: 12, delay: 600 },  // Fonts + images start
-    { weight: 15, delay: 400 },  // Images loading
-    { weight: 15, delay: 500 },  // More images
-    { weight: 12, delay: 400 },  // API warm-up
-    { weight: 10, delay: 350 },  // Compiling
-    { weight: 10, delay: 400 },  // Building UI
-    { weight: 8, delay: 300 },   // Final polish
-    { weight: 10, delay: 450 },  // Ready
+    { weight: 6, delay: 350 },   // Boot
+    { weight: 8, delay: 550 },   // Fonts loading
+    { weight: 10, delay: 500 },  // Images start
+    { weight: 10, delay: 550 },  // Images loading
+    { weight: 10, delay: 500 },  // More images
+    { weight: 8, delay: 450 },   // Blog articles
+    { weight: 10, delay: 500 },  // Live2D assets
+    { weight: 8, delay: 400 },   // API warm-up
+    { weight: 8, delay: 350 },   // Compiling
+    { weight: 8, delay: 400 },   // Building UI
+    { weight: 6, delay: 350 },   // Final polish
+    { weight: 8, delay: 500 },   // Ready
   ];
 
   let accumulated = 0;
@@ -108,6 +138,7 @@ export default function App() {
     const realWork = Promise.all([
       ...PRELOAD_IMAGES.map(preloadImage),
       preloadLive2D(),
+      preloadBlogArticles(),
       document.fonts.ready,
     ]);
 
