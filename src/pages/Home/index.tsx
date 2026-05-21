@@ -11,6 +11,7 @@ import FeaturedCertificates from "./FeaturedCertificates";
 import Experience from "./Experience";
 import Contact from "./Contact";
 import Quote from "./Quote";
+import VisitorCounter from "@/components/VisitorCounter";
 import Footer from "../../components/Footer";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import useSEO from "@/hooks/useSEO";
@@ -107,6 +108,14 @@ export default function Home() {
         <ScrollReveal direction="none" duration={0.8}>
           <div id="quote-section">
             <Quote />
+          </div>
+        </ScrollReveal>
+      </MaxWidthContainer>
+
+      <MaxWidthContainer>
+        <ScrollReveal direction="up" distance={20} duration={0.5}>
+          <div className="flex justify-center">
+            <VisitorCounter />
           </div>
         </ScrollReveal>
       </MaxWidthContainer>

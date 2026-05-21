@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import ShinyText from "@/components/ShinyText";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
@@ -10,7 +9,6 @@ import {
   FaSpotify,
 } from "react-icons/fa6";
 import { IoLinkOutline } from "react-icons/io5";
-import { FiEye } from "react-icons/fi";
 import { useHaptics } from "@/hooks/useHaptics";
 import metadata from "@/content/metadata.json";
 
@@ -49,21 +47,6 @@ interface FooterData {
 export default function Footer() {
   const footer: FooterData = metadata.footer || {};
   const { trigger } = useHaptics();
-  const [visitCount, setVisitCount] = useState<number | null>(null);
-
-  // Increment visit count on first mount
-  useEffect(() => {
-    const hasVisited = sessionStorage.getItem("visited");
-    const method = hasVisited ? "GET" : "POST";
-
-    fetch("/api/visit-count", { method })
-      .then((res) => res.json())
-      .then((data) => {
-        setVisitCount(data.count);
-        if (!hasVisited) sessionStorage.setItem("visited", "1");
-      })
-      .catch(() => {});
-  }, []);
 
   // Filter enabled socials
   const enabledSocials = (footer.socials || []).filter(
@@ -107,12 +90,6 @@ export default function Footer() {
         </span>
 
         <div className="flex items-center gap-4">
-          {visitCount !== null && (
-            <span className="flex items-center gap-1.5 text-xs text-zinc-500 select-none">
-              <FiEye className="size-3.5" />
-              {visitCount.toLocaleString()}
-            </span>
-          )}
           {enabledSocials.length > 0 && (
           <div className="flex gap-4">
             {enabledSocials.map((social) => {
