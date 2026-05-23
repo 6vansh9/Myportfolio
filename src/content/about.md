@@ -16,7 +16,7 @@ Remote controls. Wall switches. Random Electronics. Broken toys. If it had screw
 
 > **Curiosity wasn't a phase. It was the whole personality.** 🔧
 
-I didn't have fancy tools or tutorials back then — just an endless need to understand *how things worked*. That instinct? Still runs the show today.
+I didn't have fancy tools or tutorials back then, just an endless need to understand *how things worked*. That instinct? Still runs the show today.
 
 ---
 
@@ -26,7 +26,7 @@ None of this happens without the people who believed in me before I believed in 
 
 **👨‍👩‍👦 Parents**
 
-They never shut down my experiments. Broken remotes, dismantled gadgets, questionable *"inventions"* — they let me explore, fail, and figure things out. That freedom shaped everything.
+They never shut down my experiments. Broken remotes, dismantled gadgets, questionable *"inventions"*. They let me explore, fail, and figure things out. That freedom shaped everything.
 
 **👥 Friends**
 
@@ -38,7 +38,7 @@ The ones who pushed me when I doubted myself. Hyped me up when I shipped somethi
 
 ## 🎓 College: Where It All Clicked
 
-College wasn't just academics — it was where I found **my people** and **my purpose**.
+College wasn't just academics. It was where I found **my people** and **my purpose**.
 
 **What I Expected vs What I Actually Got:**
 
@@ -58,7 +58,7 @@ Surrounded by curious minds, everything accelerated. Casual conversations turned
 
 ## ⚡ The IoT Rabbit Hole
 
-Then I discovered **IoT** — and everything changed.
+Then I discovered **IoT**, and everything changed.
 
 Suddenly, code wasn't just pixels on a screen. It could *sense* the real world, *react* to it, and *automate* it.
 
@@ -68,15 +68,15 @@ My brain immediately went:
 
 **Home automation became my playground:**
 
-- 🔌 **Smart lighting** — because manual switches are inefficient
-- 🌡️ **Sensors everywhere** — temperature, motion, presence
-- ⚙️ **Custom automations** — if it can be automated, it will be
+- 🔌 **Smart lighting**: because manual switches are inefficient
+- 🌡️ **Sensors everywhere**: temperature, motion, presence
+- ⚙️ **Custom automations**: if it can be automated, it will be
 
 **This rabbit hole pulled me deeper into:**
 
-- 🔩 **Embedded Systems** — Writing code that runs on *actual hardware*
-- 🔗 **Hardware Integration** — Making software talk to the physical world
-- ⚠️ **Real-World Constraints** — Latency, power, reliability — things that *have* to work
+- 🔩 **Embedded Systems**: Writing code that runs on *actual hardware*
+- 🔗 **Hardware Integration**: Making software talk to the physical world
+- ⚠️ **Real-World Constraints**: Latency, power, reliability, things that *have* to work
 
 > **Building for the physical world hits different when failure isn't just a console error.** 🔥
 
@@ -92,7 +92,7 @@ I didn't want to build pieces. I wanted to build **complete systems**.
 └─────────────────────────────────────────────────┘
 ```
 
-Full-stack development taught me how **everything connects**. Then came DevOps — CI/CD pipelines, production debugging, and finally understanding why *"it works on my machine"* is never enough.
+Full-stack development taught me how **everything connects**. Then came DevOps: CI/CD pipelines, production debugging, and finally understanding why *"it works on my machine"* is never enough.
 
 **The mindset shift:**
 
@@ -103,7 +103,7 @@ Full-stack development taught me how **everything connects**. Then came DevOps �
 
 ## 🤖 Current Obsession: AI
 
-Okay, real talk — **AI has completely taken over my brain** and I'm not even mad about it.
+Okay, real talk, **AI has completely taken over my brain** and I'm not even mad about it.
 
 LLMs. Agents. RAG pipelines. MCP servers. Orchestration frameworks.
 
@@ -119,7 +119,7 @@ while curious:
 
 > **This isn't just exciting. This is the future being built in real-time.** 🚀
 
-Every spare moment goes into this space. Watching agents collaborate, pipelines reason, and models evolve feels like witnessing the **next layer of computing** being written — and I get to be part of it.
+Every spare moment goes into this space. Watching agents collaborate, pipelines reason, and models evolve feels like witnessing the **next layer of computing** being written, and I get to be part of it.
 
 AI isn't a pivot. It's the **natural evolution** of everything I've been building toward.
 
@@ -129,11 +129,11 @@ AI isn't a pivot. It's the **natural evolution** of everything I've been buildin
 
 Even my downtime is lowkey nerdy, ngl:
 
-- 🎮 **Gaming** — Competitive + story-driven. Yes, I get *way* too invested.
-- 🎧 **Music** — Hypertechno, EDM, lossless audio. Sound should be *felt*, not just heard.
-- 📺 **Anime** — No explanation needed. You either get it or you don't.
-- 🚗 **Drives** — Long drives + good music = free therapy.
-- 📚 **Books** — Some knowledge just hits better on paper.
+- 🎮 **Gaming**: Competitive + story-driven. Yes, I get *way* too invested.
+- 🎧 **Music**: Hypertechno, EDM, lossless audio. Sound should be *felt*, not just heard.
+- 📺 **Anime**: No explanation needed. You either get it or you don't.
+- 🚗 **Drives**: Long drives + good music = free therapy.
+- 📚 **Books**: Some knowledge just hits better on paper.
 
 Even my **home setup** reflects this philosophy:
 
@@ -153,9 +153,9 @@ Today, I work at the intersection of:
 
 **Building systems that are:**
 
-- ✅ **Practical** — solves real problems
-- ✅ **Scalable** — grows with demand  
-- ✅ **Grounded** — works in the real world
+- ✅ **Practical**: solves real problems
+- ✅ **Scalable**: grows with demand  
+- ✅ **Grounded**: works in the real world
 
 **Currently:** Deep in AI. Always learning. Always building. Always shipping. 🛠️
 
