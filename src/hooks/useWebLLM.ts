@@ -1,6 +1,12 @@
 import { useState, useRef, useCallback } from "react";
 
-const MODEL_ID = "Llama-3.2-3B-Instruct-q4f16_1-MLC";
+const IS_MOBILE =
+  typeof navigator !== "undefined" &&
+  /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+const MODEL_ID = IS_MOBILE
+  ? "Llama-3.2-1B-Instruct-q4f16_1-MLC"
+  : "Llama-3.2-3B-Instruct-q4f16_1-MLC";
 
 const IS_SUPPORTED = typeof navigator !== "undefined" && "gpu" in navigator;
 
@@ -21,20 +27,35 @@ if (IS_SUPPORTED) {
 
 // Custom AppConfig with ONLY our model — skips scanning 100+ models
 const CUSTOM_APP_CONFIG = {
-  model_list: [
-    {
-      model:
-        "https://huggingface.co/mlc-ai/Llama-3.2-3B-Instruct-q4f16_1-MLC",
-      model_id: MODEL_ID,
-      model_lib:
-        "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/main/web-llm-models/v0_2_83/base/Llama-3.2-3B-Instruct-q4f16_1_cs1k-webgpu.wasm",
-      vram_required_MB: 1620.0,
-      low_resource_required: true,
-      overrides: {
-        context_window_size: 4096,
-      },
-    },
-  ],
+  model_list: IS_MOBILE
+    ? [
+        {
+          model:
+            "https://huggingface.co/mlc-ai/Llama-3.2-1B-Instruct-q4f16_1-MLC",
+          model_id: "Llama-3.2-1B-Instruct-q4f16_1-MLC",
+          model_lib:
+            "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/main/web-llm-models/v0_2_83/base/Llama-3.2-1B-Instruct-q4f16_1_cs1k-webgpu.wasm",
+          vram_required_MB: 879.04,
+          low_resource_required: true,
+          overrides: {
+            context_window_size: 2048,
+          },
+        },
+      ]
+    : [
+        {
+          model:
+            "https://huggingface.co/mlc-ai/Llama-3.2-3B-Instruct-q4f16_1-MLC",
+          model_id: "Llama-3.2-3B-Instruct-q4f16_1-MLC",
+          model_lib:
+            "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/main/web-llm-models/v0_2_83/base/Llama-3.2-3B-Instruct-q4f16_1_cs1k-webgpu.wasm",
+          vram_required_MB: 1620.0,
+          low_resource_required: true,
+          overrides: {
+            context_window_size: 4096,
+          },
+        },
+      ],
 };
 
 const SYSTEM_PROMPT_BASE = `You are an AI assistant representing Gautam Vhavle's portfolio and career. You speak about Gautam in the THIRD PERSON exclusively. Never use "I" for Gautam's skills, achievements, or experiences. Always refer to him as "Gautam" or use "he/him" pronouns.
