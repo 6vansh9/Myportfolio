@@ -38,7 +38,7 @@ const CUSTOM_APP_CONFIG = {
           vram_required_MB: 879.04,
           low_resource_required: true,
           overrides: {
-            context_window_size: 2048,
+            context_window_size: 1024, // Match cs1k WASM to avoid excess GPU allocation on mobile
           },
         },
       ]
@@ -243,6 +243,12 @@ export function useWebLLM() {
     setError(null);
 
     try {
+      // Pre-check: verify GPU adapter is available before heavy allocation
+      const adapter = await navigator.gpu?.requestAdapter();
+      if (!adapter) {
+        throw new Error("No WebGPU adapter found. Your GPU may not be supported.");
+      }
+
       const { CreateMLCEngine } = await getWebLLMModule();
 
       const initProgressCallback = (report: { text: string; progress: number }) => {
@@ -272,6 +278,23 @@ export function useWebLLM() {
       engineRef.current = engine;
       setStatus("ready");
       setProgress({ text: "Model loaded", progress: 100 });
+
+      // Listen for GPU device lost — recover gracefully instead of crashing
+      try {
+        const device = await adapter.requestDevice();
+        device.lost.then((info) => {
+          console.warn("WebGPU device lost:", info.message);
+          engineRef.current = null;
+          setStatus("error");
+          setError(
+            info.reason === "destroyed"
+              ? "GPU session ended."
+              : "GPU device was lost. Please retry."
+          );
+        });
+      } catch {
+        // Non-critical — engine already loaded, just skip device-lost monitoring
+      }
     } catch (err) {
       console.error("WebLLM initialization error:", err);
       const message =
