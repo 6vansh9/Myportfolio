@@ -532,7 +532,7 @@ export default function Chatbot() {
                   : "Initializing..."
               }
               disabled={isLoading || status !== "ready"}
-              className="focus:border-primary focus:ring-primary flex-1 rounded-xl border border-zinc-700/50 bg-zinc-900/50 px-3 py-2 text-xs text-zinc-200 placeholder:text-zinc-500 focus:ring-1 focus:outline-none disabled:opacity-50 sm:text-sm"
+              className="focus:border-primary focus:ring-primary flex-1 rounded-xl border border-zinc-700/50 bg-zinc-900/50 px-3 py-2 text-base text-zinc-200 placeholder:text-zinc-500 focus:ring-1 focus:outline-none disabled:opacity-50 sm:text-sm"
             />
             <button
               type="submit"

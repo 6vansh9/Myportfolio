@@ -244,7 +244,9 @@ export function useWebLLM() {
 
     try {
       // Pre-check: verify GPU adapter is available before heavy allocation
-      const adapter = await navigator.gpu?.requestAdapter();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const gpu = (navigator as any).gpu;
+      const adapter = await gpu?.requestAdapter();
       if (!adapter) {
         throw new Error("No WebGPU adapter found. Your GPU may not be supported.");
       }
@@ -282,7 +284,7 @@ export function useWebLLM() {
       // Listen for GPU device lost — recover gracefully instead of crashing
       try {
         const device = await adapter.requestDevice();
-        device.lost.then((info) => {
+        device.lost.then((info: { message: string; reason: string }) => {
           console.warn("WebGPU device lost:", info.message);
           engineRef.current = null;
           setStatus("error");
