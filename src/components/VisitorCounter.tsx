@@ -12,6 +12,7 @@ export default function VisitorCounter() {
   const [visitCount, setVisitCount] = useState<number | null>(null);
 
   useEffect(() => {
+    if (import.meta.env.DEV) return;
     const hasVisited = sessionStorage.getItem("visited");
     const method = hasVisited ? "GET" : "POST";
 

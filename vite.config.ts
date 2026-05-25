@@ -20,6 +20,9 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  optimizeDeps: {
+    exclude: ["@mlc-ai/web-llm"],
+  },
   server: {
     proxy: {
       '/api/github-contributions': {

@@ -112,11 +112,14 @@ const useCanvasCursor = (enabled = true) => {
       ctx.globalCompositeOperation = "source-over";
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       ctx.globalCompositeOperation = "lighter";
-      ctx.strokeStyle = "hsla(" + Math.round(f.update()) + ",50%,50%,0.2)";
+      ctx.strokeStyle = f ? "hsla(" + Math.round(f.update()) + ",50%,50%,0.2)" : "hsla(250,50%,50%,0.2)";
       ctx.lineWidth = 1;
       for (var e, t = 0; t < E.trails; t++) {
-        (e = lines[t]).update();
-        e.draw();
+        e = lines[t];
+        if (e) {
+          e.update();
+          e.draw();
+        }
       }
       ctx.frame++;
       window.requestAnimationFrame(render);

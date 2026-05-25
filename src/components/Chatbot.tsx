@@ -1,9 +1,11 @@
-import { useState, useRef, useEffect } from "react";
-import { Send, Bot, User, Loader2, X } from "lucide-react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { Send, Bot, User, Loader2, X, AlertTriangle, RotateCcw } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { toast } from "sonner";
 import metadata from "@/content/metadata.json";
+import { useWebLLM } from "@/hooks/useWebLLM";
 
 interface Message {
   id: string;
@@ -13,12 +15,8 @@ interface Message {
 
 export default function Chatbot() {
   const chatbotSettings = metadata.settings?.chatbot;
-  
-  // Don't render if disabled
-  if (chatbotSettings?.enabled === false) {
-    return null;
-  }
-  
+  const { status, progress, error, isSupported, initialize, generate } = useWebLLM();
+
   const welcomeMessage = chatbotSettings?.welcomeMessage || 
     "Hi! I'm an AI assistant. Ask me anything about this portfolio!";
 
@@ -35,10 +33,43 @@ export default function Chatbot() {
   const [shiver, setShiver] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const hasInitializedRef = useRef(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const toastShownRef = useRef<{ download: boolean; ready: boolean }>({
+    download: false,
+    ready: false,
+  });
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Initialize the LLM engine on first button click
+  const handleChatButtonClick = useCallback(() => {
+    if (!hasInitializedRef.current) {
+      hasInitializedRef.current = true;
+      initialize();
+    }
+    setIsOpen((prev) => !prev);
+  }, [initialize]);
+
+  // Show toast notifications based on status changes
+  useEffect(() => {
+    if (status === "downloading" && !toastShownRef.current.download) {
+      toastShownRef.current.download = true;
+      toast.info("Downloading AI model...", {
+        description: "Feel free to explore the site — it'll be ready soon!",
+        duration: 5000,
+      });
+    }
+    if (status === "ready" && toastShownRef.current.download && !toastShownRef.current.ready) {
+      toastShownRef.current.ready = true;
+      toast.success("AI assistant is ready!", {
+        description: "Open the chat to start a conversation.",
+        duration: 4000,
+      });
+    }
+  }, [status]);
 
   useEffect(() => {
     if (isOpen) {
@@ -96,10 +127,10 @@ export default function Chatbot() {
     };
   }, [isOpen]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!input.trim() || isLoading) return;
+    if (!input.trim() || isLoading || status !== "ready") return;
 
     const userMessage: Message = {
       id: `user-${Date.now()}`,
@@ -107,70 +138,63 @@ export default function Chatbot() {
       content: input.trim(),
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    const assistantMessageId = `assistant-${Date.now()}`;
+
+    // Batch: add user message + empty assistant message in one update
+    setMessages((prev) => [
+      ...prev,
+      userMessage,
+      { id: assistantMessageId, role: "assistant", content: "" },
+    ]);
     setInput("");
     setIsLoading(true);
 
-    const requestBody = {
-      contents: [...messages, userMessage].map((m) => ({
-        role: m.role,
-        content: m.content,
-      })),
-    };
+    const abortController = new AbortController();
+    abortControllerRef.current = abortController;
 
     try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestBody),
-      });
+      // Build conversation history (exclude welcome message and empty streaming message)
+      const conversationHistory = [...messages, userMessage]
+        .filter((m) => m.id !== "welcome" && m.content.length > 0)
+        .map((m) => ({ role: m.role, content: m.content }));
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      let assistantContent = "Sorry, I couldn't process that.";
-
-      if (
-        data.content &&
-        Array.isArray(data.content) &&
-        data.content.length > 0
-      ) {
-        assistantContent = data.content
-          .filter((item: { type: string }) => item.type === "text")
-          .map((item: { text: string }) => item.text)
-          .join("\n");
-      } else if (typeof data.content === "string") {
-        assistantContent = data.content;
-      } else if (typeof data.response === "string") {
-        assistantContent = data.response;
-      } else if (typeof data.message === "string") {
-        assistantContent = data.message;
-      } else if (typeof data.text === "string") {
-        assistantContent = data.text;
-      }
-
-      const assistantMessage: Message = {
-        id: `assistant-${Date.now()}`,
-        role: "assistant",
-        content: assistantContent,
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error) {
-      console.error("Error:", error);
-      const errorMessage: Message = {
-        id: `error-${Date.now()}`,
-        role: "assistant",
-        content: "Sorry, something went wrong. Please try again.",
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      await generate(
+        conversationHistory,
+        (token) => {
+          // Stream each token into the assistant message
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === assistantMessageId
+                ? { ...m, content: m.content + token }
+                : m
+            )
+          );
+        },
+        abortController.signal
+      );
+    } catch (err) {
+      console.error("Generation error:", err);
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === assistantMessageId
+            ? {
+                ...m,
+                content:
+                  m.content || "Sorry, something went wrong. Please try again.",
+              }
+            : m
+        )
+      );
     } finally {
       setIsLoading(false);
+      abortControllerRef.current = null;
     }
-  };
+  }, [input, isLoading, status, messages, generate]);
+
+  // Don't render if disabled or WebGPU not supported
+  if (chatbotSettings?.enabled === false || !isSupported) {
+    return null;
+  }
 
   return (
     <>
@@ -197,7 +221,7 @@ export default function Chatbot() {
       </style>
       {/* Floating Toggle Button */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleChatButtonClick}
         aria-label={isOpen ? "Close chat" : "Open chat"}
         className={`fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700/50 bg-zinc-900/90 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl active:scale-95 sm:right-6 sm:bottom-6 sm:h-14 sm:w-14 ${isOpen ? "pointer-events-none rotate-90 opacity-0" : "rotate-0 opacity-100"} ${shiver ? "animate-shiver glow-shiver" : ""}`}
         style={shiver ? { animation: "shiver 1s linear" } : {}}
@@ -229,11 +253,11 @@ export default function Chatbot() {
             <span className="ml-auto flex items-center gap-3">
               <span className="flex items-center gap-1.5">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+                  <span className={`absolute inline-flex h-full w-full rounded-full opacity-75 ${status === "ready" || status === "generating" ? "animate-ping bg-green-400" : status === "error" ? "bg-red-400" : "animate-ping bg-yellow-400"}`}></span>
+                  <span className={`relative inline-flex h-2 w-2 rounded-full ${status === "ready" || status === "generating" ? "bg-green-500" : status === "error" ? "bg-red-500" : "bg-yellow-500"}`}></span>
                 </span>
                 <span className="hidden text-xs text-zinc-500 sm:inline">
-                  Online
+                  {status === "ready" || status === "generating" ? "Local AI" : status === "error" ? "Error" : status === "downloading" ? "Downloading" : status === "loading" ? "Loading" : "Initializing"}
                 </span>
               </span>
               <button
@@ -249,6 +273,80 @@ export default function Chatbot() {
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-2 sm:p-4">
             <div className="flex flex-col gap-3 sm:gap-4">
+              {/* Model Loading State */}
+              {(status === "checking" || status === "downloading" || status === "loading") && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex flex-col items-center gap-3 rounded-xl border border-zinc-700/50 bg-zinc-800/50 p-4"
+                >
+                  <div className="flex items-center gap-2">
+                    <Loader2 className="h-5 w-5 animate-spin text-blue-400" />
+                    <span className="text-sm font-medium text-zinc-200">
+                      {status === "downloading" 
+                        ? "Downloading AI Model..." 
+                        : status === "loading"
+                        ? "Loading AI Model..."
+                        : "Initializing..."}
+                    </span>
+                  </div>
+                  {/* Progress Bar */}
+                  <div className="w-full">
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-700">
+                      <motion.div
+                        className="h-full rounded-full bg-blue-500"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${progress.progress}%` }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </div>
+                    <div className="mt-1.5 flex items-center justify-between">
+                      <span className="max-w-[75%] truncate text-xs text-zinc-500">
+                        {progress.text || "Preparing..."}
+                      </span>
+                      <span className="text-xs font-mono text-zinc-400">
+                        {progress.progress}%
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-center text-xs text-zinc-500">
+                    {status === "downloading"
+                      ? "First time only. Model is cached for instant reload."
+                      : "Loading model into GPU..."}
+                  </p>
+                </motion.div>
+              )}
+
+              {/* Error State */}
+              {status === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex flex-col items-center gap-3 rounded-xl border border-red-900/50 bg-red-950/30 p-4"
+                >
+                  <div className="flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-red-400" />
+                    <span className="text-sm font-medium text-red-300">
+                      Failed to load AI model
+                    </span>
+                  </div>
+                  <p className="text-center text-xs text-red-400/80">
+                    {error || "Unknown error occurred"}
+                  </p>
+                  <button
+                    onClick={() => {
+                      hasInitializedRef.current = false;
+                      initialize();
+                      hasInitializedRef.current = true;
+                    }}
+                    className="flex items-center gap-1.5 rounded-lg bg-red-900/50 px-3 py-1.5 text-xs font-medium text-red-200 transition-colors hover:bg-red-900/70"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5" />
+                    Retry
+                  </button>
+                </motion.div>
+              )}
+
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -280,7 +378,8 @@ export default function Chatbot() {
                     }`}
                   >
                     {message.role === "assistant" ? (
-                      <div className="prose prose-sm prose-invert max-w-none text-xs sm:text-sm">
+                      message.content ? (
+                        <div className="prose prose-sm prose-invert max-w-none text-xs sm:text-sm">
                         <ReactMarkdown
                           remarkPlugins={[remarkGfm]}
                           components={{
@@ -391,6 +490,12 @@ export default function Chatbot() {
                           {message.content}
                         </ReactMarkdown>
                       </div>
+                      ) : (
+                        <div className="flex items-center gap-2">
+                          <Loader2 className="h-3.5 w-3.5 animate-spin text-zinc-400" />
+                          <span className="text-xs text-zinc-400">Generating...</span>
+                        </div>
+                      )
                     ) : (
                       <p className="text-xs whitespace-pre-wrap sm:text-sm">
                         {message.content}
@@ -400,19 +505,6 @@ export default function Chatbot() {
                 </motion.div>
               ))}
 
-              {isLoading && (
-                <div className="flex gap-2 sm:gap-3">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-700 text-zinc-300 sm:h-8 sm:w-8">
-                    <Bot className="h-4 w-4" />
-                  </div>
-                  <div className="flex items-center gap-2 rounded-2xl bg-zinc-800 px-3 py-2 sm:px-4">
-                    <Loader2 className="h-4 w-4 animate-spin text-zinc-400" />
-                    <span className="text-xs text-zinc-400 sm:text-sm">
-                      Thinking...
-                    </span>
-                  </div>
-                </div>
-              )}
 
               <div ref={messagesEndRef} />
             </div>
@@ -428,13 +520,23 @@ export default function Chatbot() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask me anything..."
-              disabled={isLoading}
+              placeholder={
+                status === "ready" || status === "generating"
+                  ? "Ask me anything..."
+                  : status === "downloading"
+                  ? "Downloading AI model..."
+                  : status === "loading"
+                  ? "Loading AI model..."
+                  : status === "error"
+                  ? "Model failed to load"
+                  : "Initializing..."
+              }
+              disabled={isLoading || status !== "ready"}
               className="focus:border-primary focus:ring-primary flex-1 rounded-xl border border-zinc-700/50 bg-zinc-900/50 px-3 py-2 text-xs text-zinc-200 placeholder:text-zinc-500 focus:ring-1 focus:outline-none disabled:opacity-50 sm:text-sm"
             />
             <button
               type="submit"
-              disabled={!input.trim() || isLoading}
+              disabled={!input.trim() || isLoading || status !== "ready"}
               className="group bg-primary hover:bg-primary/90 flex h-10 w-10 items-center justify-center rounded-full text-black transition-all duration-150 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <Send

@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useEffect, useState, useCallback, useRef } from "react";
 import { Analytics } from '@vercel/analytics/react';
+import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/Header";
 import PageRoutes from "@/pages/PageRoutes";
 import SplashScreen from "@/components/SplashScreen";
@@ -199,6 +200,7 @@ export default function App() {
       </ThemeProvider>
 
       <Analytics />
+      <Toaster position="bottom-left" richColors />
     </div>
   );
 }

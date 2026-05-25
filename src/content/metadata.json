@@ -466,7 +466,7 @@
   "settings": {
     "chatbot": {
       "enabled": true,
-      "welcomeMessage": "Hi! I'm Gautam's AI assistant. Ask me anything about his work, skills, or projects! (Sorry I may have 'COLD START' sometimes 🥹)"
+      "welcomeMessage": "Hi! I'm Gautam's AI assistant running locally on your device. Ask me anything about his work, skills, or projects! 🔒"
     },
     "splashScreen": {
       "enabled": true,
