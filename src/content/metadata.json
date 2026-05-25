@@ -155,6 +155,18 @@
         ]
       },
       {
+        "title": "BrowserLLM",
+        "description": "Run 100+ open-source LLMs entirely in your browser. Powered by WebGPU and WebLLM",
+        "image": "/assets/projects/browserllm.png",
+        "website": "https://browserllm.vercel.app",
+        "tech": [
+          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
+          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "Tailwind CSS", "icon": "/assets/tech-stack/tailwind.svg" },
+          { "name": "TypeScript", "icon": "/assets/tech-stack/typescript.svg" }
+        ]
+      },
+      {
         "title": "Universal JSON Agent MCP",
         "description": "Talk to JSON files using natural language using specialised tools right from your IDE using MCP",
         "image": "/assets/projects/universal-json-agent-mcp.png",
@@ -205,19 +217,6 @@
         "description": "A lawyer bot designed to assist with legal queries, using gpt-3",
         "image": "/assets/projects/kyra-ai.png",
         "github": "https://github.com/GautamVhavle/KYRA-AI",
-        "tech": [
-          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
-          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
-          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
-          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
-        ]
-      },
-      {
-        "title": "Old Portfolio",
-        "description": "My v1 personal website to showcase my projects, skills, and experience",
-        "image": "/assets/projects/old-portfolio.png",
-        "website": "https://gautamvhavle.vercel.app/",
         "tech": [
           { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
           { "name": "React", "icon": "/assets/tech-stack/react.svg" },
