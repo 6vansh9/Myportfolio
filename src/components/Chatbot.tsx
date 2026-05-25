@@ -58,7 +58,7 @@ export default function Chatbot() {
     if (status === "downloading" && !toastShownRef.current.download) {
       toastShownRef.current.download = true;
       toast.info("Downloading AI model...", {
-        description: "Feel free to explore the site — it'll be ready soon!",
+        description: "Feel free to explore the site, it'll be ready soon!",
         duration: 5000,
       });
     }
