@@ -241,14 +241,14 @@ export default function Chatbot() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed z-50 top-0 right-0 bottom-0 left-0 p-2 sm:top-auto sm:right-6 sm:bottom-6 sm:left-auto sm:h-[550px] sm:w-[400px] sm:p-0"
+            className="fixed z-50 top-0 right-0 bottom-0 left-0 p-2 sm:top-auto sm:right-6 sm:bottom-6 sm:left-auto sm:h-[550px] sm:w-[450px] sm:p-0"
           >
         <div className="flex h-full w-full flex-col overflow-hidden rounded-2xl border border-zinc-700/50 bg-zinc-900/95 shadow-2xl backdrop-blur-md sm:h-[550px]">
           {/* Header */}
           <div className="flex items-center gap-2 border-b border-zinc-700/50 bg-zinc-800/50 px-3 py-2 sm:px-4 sm:py-3">
             <Bot className="text-primary h-5 w-5" />
             <span className="font-mono text-xs font-medium text-zinc-200 sm:text-sm">
-              Gautam's AI Assistant
+              Gautam's AI Assistant (BETA)
             </span>
             <span className="ml-auto flex items-center gap-3">
               <span className="flex items-center gap-1.5">
