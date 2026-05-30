@@ -105,9 +105,9 @@ export default function Contact() {
 
     return (
         <section id="contact-section">
-            <p className="mb-4 text-xs uppercase tracking-widest text-zinc-600 transition-colors hover:text-white">
+            <h2 className="mb-4 text-xs uppercase tracking-widest text-zinc-600 transition-colors hover:text-white">
                 {contactSection.title || "Contact"}
-            </p>
+            </h2>
             <div className={`grid grid-cols-1 gap-5 ${hasMethodsAndForm ? "md:grid-cols-2" : ""}`}>
                 {/* Contact Methods - Only render if there are enabled methods */}
                 {enabledMethods.length > 0 && (

@@ -9,9 +9,9 @@ export default function Experience() {
 
   return (
     <section>
-      <p className="mb-4 text-xs tracking-widest text-zinc-600 uppercase transition-colors hover:text-white">
+      <h2 className="mb-4 text-xs tracking-widest text-zinc-600 uppercase transition-colors hover:text-white">
         Experience
-      </p>
+      </h2>
 
       <div className="flex flex-col gap-4 md:flex-row">
         {/* Tabs */}

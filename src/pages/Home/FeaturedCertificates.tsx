@@ -35,9 +35,9 @@ export default function FeaturedCertificates() {
   return (
     <div className="w-full" ref={containerRef}>
       {/* Section Header */}
-      <p className="mb-4 text-xs uppercase tracking-widest text-zinc-600 transition-colors hover:text-white">
+      <h2 className="mb-4 text-xs uppercase tracking-widest text-zinc-600 transition-colors hover:text-white">
         Featured Certifications
-      </p>
+      </h2>
 
       {/* Main Card Container */}
       <div className="rounded-xl border border-zinc-800/40 bg-zinc-900/25 p-4 backdrop-blur-lg sm:p-6">

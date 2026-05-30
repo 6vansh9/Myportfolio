@@ -7,7 +7,7 @@ import useSEO from "@/hooks/useSEO";
 export default function Blogs() {
   useSEO({
     title: "Blog",
-    description: "Technical articles and insights by Gautam Vhavle on Full-Stack Development, GenAI, IoT, React, Python, and cloud-native engineering.",
+    description: "Technical articles and insights by Gautam Vhavle on Full-Stack Development, Generative AI, Context Engineering, IoT, React, Python, LangChain, and cloud-native engineering.",
     path: "/blogs",
   });
 

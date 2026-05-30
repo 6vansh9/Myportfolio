@@ -7,7 +7,7 @@ import useSEO from "@/hooks/useSEO";
 export default function Apps() {
   useSEO({
     title: "Apps",
-    description: "Explore web apps and tools built by Gautam Vhavle – interactive projects showcasing Full-Stack, GenAI, and IoT skills.",
+    description: "Explore web apps and tools built by Gautam Vhavle. Interactive projects showcasing Full-Stack Development, Generative AI, and IoT engineering skills.",
     path: "/apps",
   });
 

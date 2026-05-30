@@ -1,6 +1,19 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /assets/tech-stack/
+Disallow: /assets/company-logos/
+Disallow: /assets/icons/
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
 
 # Sitemap
 Sitemap: https://gautamvhavle.xyz/sitemap.xml
@@ -8,3 +21,6 @@ Sitemap: https://gautamvhavle.xyz/sitemap.xml
 # AI/LLM context file
 # https://llmstxt.org/
 # llms.txt: https://gautamvhavle.xyz/llms.txt
+
+# Host
+Host: https://gautamvhavle.xyz

@@ -4,12 +4,14 @@ interface SEOProps {
   title?: string;
   description?: string;
   path?: string;
+  type?: string;
 }
 
 const BASE_TITLE = "Gautam Vhavle";
 const BASE_URL = "https://gautamvhavle.xyz";
 const DEFAULT_DESCRIPTION =
-  "Gautam Vhavle is a Full-Stack Developer and GenAI Engineer at Siemens, based in Bengaluru, India. Patent holder specializing in React, Python, LangChain, IoT, and cloud-native solutions.";
+  "Gautam Vhavle is a Full-Stack Developer and GenAI Engineer at Siemens, Bengaluru. Patent holder specializing in React, Python, LangChain, IoT, and cloud-native solutions.";
+const DEFAULT_IMAGE = `${BASE_URL}/assets/preview.png`;
 
 function setMeta(attr: string, key: string, content: string) {
   let el = document.querySelector(`meta[${attr}="${key}"]`);
@@ -21,9 +23,11 @@ function setMeta(attr: string, key: string, content: string) {
   el.setAttribute("content", content);
 }
 
-export default function useSEO({ title, description, path = "/" }: SEOProps = {}) {
+export default function useSEO({ title, description, path = "/", type = "website" }: SEOProps = {}) {
   useEffect(() => {
-    const fullTitle = title ? `${title} | ${BASE_TITLE}` : `${BASE_TITLE}'s Portfolio`;
+    const fullTitle = title
+      ? `${title} | ${BASE_TITLE} | Full-Stack Developer & GenAI Engineer`
+      : `${BASE_TITLE} | Full-Stack Developer & GenAI Engineer Portfolio`;
     const desc = description || DEFAULT_DESCRIPTION;
     const url = `${BASE_URL}${path}`;
 
@@ -31,17 +35,21 @@ export default function useSEO({ title, description, path = "/" }: SEOProps = {}
     document.title = fullTitle;
 
     // Standard meta
+    setMeta("name", "title", fullTitle);
     setMeta("name", "description", desc);
 
     // Open Graph
     setMeta("property", "og:title", fullTitle);
     setMeta("property", "og:description", desc);
     setMeta("property", "og:url", url);
+    setMeta("property", "og:type", type);
+    setMeta("property", "og:image", DEFAULT_IMAGE);
 
     // Twitter
     setMeta("name", "twitter:title", fullTitle);
     setMeta("name", "twitter:description", desc);
     setMeta("name", "twitter:url", url);
+    setMeta("name", "twitter:image", DEFAULT_IMAGE);
 
     // Canonical
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -51,5 +59,5 @@ export default function useSEO({ title, description, path = "/" }: SEOProps = {}
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", url);
-  }, [title, description, path]);
+  }, [title, description, path, type]);
 }

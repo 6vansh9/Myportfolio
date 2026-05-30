@@ -13,8 +13,9 @@ import useSEO from "@/hooks/useSEO";
 export default function About() {
   useSEO({
     title: "About",
-    description: "Learn about Gautam Vhavle – his journey from curious tinkerer to Full-Stack Developer & GenAI Engineer at Siemens. IoT enthusiast, patent holder, and builder at heart.",
+    description: "Learn about Gautam Vhavle, his journey from curious tinkerer to Full-Stack Developer & GenAI Engineer at Siemens, Bengaluru. IoT enthusiast, patent holder, and builder crafting intelligent systems with React, Python, and LangChain.",
     path: "/about",
+    type: "profile",
   });
 
   return (
@@ -29,9 +30,9 @@ export default function About() {
           <div className="mb-4 flex flex-col">
             {/* Page Title */}
             <div className="flex flex-col gap-2">
-              <p className="mb-4 text-xs tracking-widest text-zinc-300 uppercase transition-colors hover:text-white">
-                A little bit about who I am and what I do
-              </p>
+              <h1 className="mb-4 text-xs tracking-widest text-zinc-300 uppercase transition-colors hover:text-white">
+                About Gautam Vhavle
+              </h1>
             </div>
 
             {/* Markdown Viewer */}

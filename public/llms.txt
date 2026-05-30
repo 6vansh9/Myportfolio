@@ -1,10 +1,10 @@
-# Gautam Vhavle - Portfolio
+# Gautam Vhavle | Full-Stack Developer & GenAI Engineer
 
-> Full-Stack Developer, GenAI Engineer, and IoT Specialist
+> Full-Stack Developer, GenAI Engineer, IoT Specialist, and Patent Holder at Siemens, Bengaluru, India
 
 ## About
 
-Gautam Vhavle is a Full-Stack Developer and GenAI Engineer currently working at Siemens in Bengaluru, India. He is a patent holder specializing in building intelligent systems using modern web technologies, Generative AI, and IoT solutions.
+Gautam Vhavle is a Full-Stack Developer and GenAI Engineer currently working at Siemens in Bengaluru, India. He is a patent holder specializing in building intelligent systems using modern web technologies, Generative AI, Context Engineering, and IoT solutions.
 
 ## Contact
 
@@ -17,14 +17,20 @@ Gautam Vhavle is a Full-Stack Developer and GenAI Engineer currently working at 
 - **Languages**: Python, TypeScript, JavaScript, C++, Bash
 - **Frontend**: React, Vite, Tailwind CSS, ShadCN
 - **Backend**: FastAPI, Flask, Node.js
-- **AI/ML**: LangChain, LangGraph, GenAI, Context Engineering
+- **AI/ML**: LangChain, LangGraph, GenAI, Context Engineering, Computer Vision
 - **DevOps**: Docker, Kubernetes, Helm
 - **Databases**: PostgreSQL, MongoDB, MSSQL
-- **IoT**: Raspberry Pi, Embedded Systems, Hardware Integration
+- **IoT**: Raspberry Pi, Espressif, Embedded Systems, Hardware Integration
 
 ## Experience
 
-Currently working as a Full-Stack Developer and GenAI Engineer at Siemens, where he designs and implements AI-powered orchestration workflows using LangChain, LangGraph, and Vision models.
+Currently working as a Graduate Engineer Trainee (Full-Stack Developer and GenAI Engineer) at Siemens, where he designs and implements AI-powered orchestration workflows using LangChain, LangGraph, and Vision models for threat and risk assessment automation.
+
+### Previous Roles
+- IoT Developer Intern at Brand Context (Dec 2024 - Mar 2025)
+- Full Stack IoT Developer at GRIG Technologies (Aug 2023 - Jan 2025)
+- IoT Developer Intern at Golain (Jun 2024 - Aug 2024)
+- Embedded Developer Intern at E4A Solutions (Apr 2023 - Jul 2023)
 
 ## Notable Achievements
 

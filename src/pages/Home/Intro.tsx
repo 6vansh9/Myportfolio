@@ -76,9 +76,9 @@ export default function Intro() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
             >
-              <p className="text-left font-sans text-3xl font-semibold sm:text-4xl">
+              <h1 className="text-left font-sans text-3xl font-semibold sm:text-4xl">
                 {intro.name}
-              </p>
+              </h1>
               <div className="w-full text-left">
                 <AnimatedTextSlider texts={intro.roles} />
               </div>

@@ -7,9 +7,9 @@ export default function TechStack() {
 
 	return (
 		<div className="flex w-full min-w-0 flex-col items-start justify-start gap-5 overflow-visible">
-			<p className="text-xs text-zinc-600 uppercase tracking-widest hover:text-white transition-colors">
-				TECH STACK
-			</p>
+			<h2 className="text-xs text-zinc-600 uppercase tracking-widest hover:text-white transition-colors">
+				Tech Stack
+			</h2>
 			<StaggerChildren
 				className="flex w-full min-w-0 flex-wrap gap-3 sm:gap-4 justify-start"
 				stagger={0.03}
