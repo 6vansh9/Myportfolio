@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Home from "./Home";
 import ScrollProgress from "@/components/ScrollProgress";
 import metadata from "@/content/metadata.json";
@@ -31,6 +31,14 @@ const pageTransition = {
   ease: [0.25, 0.1, 0.25, 1] as const,
 };
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 export default function PageRoutes() {
   const location = useLocation();
   
@@ -39,6 +47,7 @@ export default function PageRoutes() {
 
   return (
     <>
+      <ScrollToTop />
       <ScrollProgress />
       <AnimatePresence mode="wait">
         <motion.div
