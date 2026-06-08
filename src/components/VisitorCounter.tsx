@@ -13,16 +13,25 @@ export default function VisitorCounter() {
 
   useEffect(() => {
     if (import.meta.env.DEV) return;
+
     const hasVisited = sessionStorage.getItem("visited");
     const method = hasVisited ? "GET" : "POST";
 
     fetch("/api/visit-count", { method })
-      .then((res) => res.json())
-      .then((data) => {
-        setVisitCount(data.count);
-        if (!hasVisited) sessionStorage.setItem("visited", "1");
+      .then((res) => {
+        if (!res.ok) return null;
+        return res.json();
       })
-      .catch(() => {});
+      .then((data) => {
+        if (data && typeof data.count === "number") {
+          setVisitCount(data.count);
+          if (!hasVisited) sessionStorage.setItem("visited", "1");
+        }
+        // If count is missing or not a number, stay hidden (visitCount stays null)
+      })
+      .catch(() => {
+        // Network error — stay hidden silently
+      });
   }, []);
 
   return (
@@ -34,7 +43,6 @@ export default function VisitorCounter() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="relative flex items-center justify-center gap-3 overflow-hidden rounded-xl border border-zinc-800/40 bg-zinc-900/20 px-5 py-3 backdrop-blur-lg select-none"
         >
-          {/* Subtle animated shimmer */}
           <div className="pointer-events-none absolute inset-0">
             <div
               className="absolute left-0 top-0 h-1/2 w-1/2 animate-card-reflection rounded-t-full bg-gradient-to-br from-white/40 via-white/5 to-transparent blur-lg"
