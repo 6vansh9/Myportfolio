@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLastFmNowPlaying, type LastFmTrack } from "@/hooks/useLastFmNowPlaying";
 import metadata from "@/content/metadata.json";
 
@@ -8,7 +9,6 @@ const lastFmSettings = (metadata.settings as Record<string, unknown>)?.lastFmNow
 // Apple Music-style pink/red accent
 const ACCENT = "#fc3c44";
 
-// Shown when the API returns nothing (empty scrobble history)
 const FALLBACK_TRACK: LastFmTrack = {
   title: "Blinding Lights",
   artist: "The Weeknd",
@@ -18,29 +18,39 @@ const FALLBACK_TRACK: LastFmTrack = {
   is_playing: false,
 };
 
-export default function SpotifyNowPlaying() {
-  // Hook must always be called — no early returns before this line
-  const { track, loading } = useLastFmNowPlaying();
+function proxyUrl(src: string): string {
+  if (!src) return '';
+  return `/api/album-art?url=${encodeURIComponent(src)}`;
+}
 
-  // Disabled in config → hide
-  if (lastFmSettings?.enabled === false) return null;
+function AlbumArt({ src, title }: { src: string; title: string }) {
+  const [failed, setFailed] = useState(false);
 
-  if (loading) {
+  if (!src || failed) {
     return (
-      <div className="group relative w-full overflow-hidden rounded-xl border border-zinc-800/40 bg-zinc-900/30 p-3 backdrop-blur-xl sm:p-4">
-        <div className="flex items-center gap-3 sm:gap-4">
-          <div className="h-12 w-12 animate-pulse rounded-lg bg-zinc-800 sm:h-14 sm:w-14" />
-          <div className="min-w-0 flex-1 space-y-2">
-            <div className="h-3 w-20 animate-pulse rounded bg-zinc-800" />
-            <div className="h-4 w-32 animate-pulse rounded bg-zinc-800" />
-            <div className="h-3 w-24 animate-pulse rounded bg-zinc-800" />
-          </div>
-        </div>
+      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-zinc-800 ring-1 ring-white/5 sm:h-14 sm:w-14">
+        <MusicIcon size={24} color={ACCENT} />
       </div>
     );
   }
 
-  // Fall back to placeholder if API returned nothing
+  return (
+    <img
+      className="h-12 w-12 rounded-lg object-cover ring-1 ring-white/5 sm:h-14 sm:w-14"
+      src={proxyUrl(src)}
+      alt={title}
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
+export default function SpotifyNowPlaying() {
+  // Hook always called first — no early returns before this
+  const { track } = useLastFmNowPlaying();
+
+  if (lastFmSettings?.enabled === false) return null;
+
+  // Render immediately with fallback; real data swaps in when API responds
   const displayTrack = track ?? FALLBACK_TRACK;
   const label = displayTrack.is_playing ? "Now Playing" : "Last Played";
   const profileUrl = `https://www.last.fm/user/${lastFmSettings?.username ?? "vanshaggarwal69"}`;
@@ -55,17 +65,7 @@ export default function SpotifyNowPlaying() {
       <div className="flex items-center gap-3 sm:gap-4">
         {/* Album Art */}
         <div className="relative shrink-0">
-          {displayTrack.image_url ? (
-            <img
-              className="h-12 w-12 rounded-lg object-cover ring-1 ring-white/5 sm:h-14 sm:w-14"
-              src={displayTrack.image_url}
-              alt={displayTrack.title}
-            />
-          ) : (
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-zinc-800 ring-1 ring-white/5 sm:h-14 sm:w-14">
-              <MusicIcon size={24} color={ACCENT} />
-            </div>
-          )}
+          <AlbumArt src={displayTrack.image_url} title={displayTrack.title} />
 
           {/* Animated equalizer bars when currently playing */}
           {displayTrack.is_playing && (

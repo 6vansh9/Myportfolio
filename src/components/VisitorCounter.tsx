@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { FiEye } from "react-icons/fi";
 
 function getOrdinal(n: number): string {
+  if (typeof n !== "number" || !Number.isFinite(n) || n < 1) return "1st";
   const s = ["th", "st", "nd", "rd"];
   const v = n % 100;
   return n.toLocaleString() + (s[(v - 20) % 10] || s[v] || s[0]);
@@ -36,7 +37,7 @@ export default function VisitorCounter() {
 
   return (
     <AnimatePresence>
-      {visitCount !== null && (
+      {visitCount !== null && visitCount > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
