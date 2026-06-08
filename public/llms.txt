@@ -1,52 +1,51 @@
-# Gautam Vhavle | Full-Stack Developer & GenAI Engineer
+# Vansh Aggarwal | Front-End Web Developer
 
-> Full-Stack Developer, GenAI Engineer, IoT Specialist, and Patent Holder at Siemens, Bengaluru, India
+> Front-End Web Developer and B.Tech CSE student at Manipal University Jaipur, Faridabad, India
 
 ## About
 
-Gautam Vhavle is a Full-Stack Developer and GenAI Engineer currently working at Siemens in Bengaluru, India. He is a patent holder specializing in building intelligent systems using modern web technologies, Generative AI, Context Engineering, and IoT solutions.
+Vansh Aggarwal is a Front-End Web Developer and Computer Science student at Manipal University Jaipur (2022–2026). He specializes in building full-stack web applications using React, JavaScript, HTML/CSS, and has hands-on experience integrating real-world features in live projects. He thinks about users, systems, and business problems — not just code.
 
 ## Contact
 
-- Email: gautamvhavle@gmail.com
-- Website: https://gautamvhavle.xyz
-- Location: Bengaluru, Karnataka, India
+- Email: 6vansh9@gmail.com
+- GitHub: https://github.com/6vansh9
+- LinkedIn: https://www.linkedin.com/in/6vansh9
+- Location: Faridabad, Haryana, India
 
 ## Key Skills
 
-- **Languages**: Python, TypeScript, JavaScript, C++, Bash
-- **Frontend**: React, Vite, Tailwind CSS, ShadCN
-- **Backend**: FastAPI, Flask, Node.js
-- **AI/ML**: LangChain, LangGraph, GenAI, Context Engineering, Computer Vision
-- **DevOps**: Docker, Kubernetes, Helm
-- **Databases**: PostgreSQL, MongoDB, MSSQL
-- **IoT**: Raspberry Pi, Espressif, Embedded Systems, Hardware Integration
+- **Languages**: HTML5, CSS3, JavaScript (ES6+), TypeScript, PHP, SQL, Python
+- **Frontend**: React, Next.js, Tailwind CSS, ShadCN, Responsive Design
+- **Backend**: REST APIs, PHP, Supabase
+- **Tools**: Git, Power BI, Figma, Postman, Razorpay
 
 ## Experience
 
-Currently working as a Graduate Engineer Trainee (Full-Stack Developer and GenAI Engineer) at Siemens, where he designs and implements AI-powered orchestration workflows using LangChain, LangGraph, and Vision models for threat and risk assessment automation.
+### Pinnacle Labs | Web Developer | June 2025 – July 2025
+Designed and developed a full-stack restaurant website for a London-based café client using HTML, CSS, JavaScript, and PHP. Built a live table reservation and event booking system. Collaborated directly with the client to deliver the final product on schedule.
 
-### Previous Roles
-- IoT Developer Intern at Brand Context (Dec 2024 - Mar 2025)
-- Full Stack IoT Developer at GRIG Technologies (Aug 2023 - Jan 2025)
-- IoT Developer Intern at Golain (Jun 2024 - Aug 2024)
-- Embedded Developer Intern at E4A Solutions (Apr 2023 - Jul 2023)
+## Education
 
-## Notable Achievements
+- Manipal University Jaipur | B.Tech CSE | 2022 – 2026
+- Delhi Public School (DPS) | 2008 – 2022
 
-- Patent holder in AI/IoT domain
-- Built intelligent systems for industrial automation
-- Developed AI-powered monitoring solutions using computer vision
-- Created production-ready GenAI applications
+## Featured Projects
+
+- **TaskPay** (https://taskpay69.vercel.app) — AI-powered freelance marketplace for Indian college students. Built with Next.js 14, TypeScript, Tailwind CSS, Supabase, Razorpay, and Groq AI.
+
+## Certifications
+
+- Introduction to UI Design
+- Scientific Computing with Python (freeCodeCamp)
+- Front End Development Libraries (freeCodeCamp)
+- Business Analysis & Process Management
+- Building Custom Regional Reports with Google Analytics
 
 ## Social Profiles
 
-- GitHub: https://github.com/gautamvhavle
-- LinkedIn: https://www.linkedin.com/in/gautamvhavle
-- Twitter/X: https://x.com/gautamvvvv
-- Dev.to: https://dev.to/gautamvhavle
-- YouTube: https://youtube.com/@gautamvhavle
-- Instagram: https://instagram.com/gautam_vhavle
+- GitHub: https://github.com/6vansh9
+- LinkedIn: https://www.linkedin.com/in/6vansh9
 
 ## Site Structure
 
@@ -54,16 +53,16 @@ Currently working as a Graduate Engineer Trainee (Full-Stack Developer and GenAI
 - About (/about) - Detailed background, journey, and personal story
 - Blog (/blogs) - Technical articles and insights
 - Apps (/apps) - Interactive web applications and projects
-- Sitemap: https://gautamvhavle.xyz/sitemap.xml
+- Sitemap: https://vanshaggarwal.dev/sitemap.xml
 
 ## Purpose
 
-This portfolio showcases Gautam's expertise in Full-Stack Development, Generative AI, and IoT engineering. It features his projects, blog posts, work experience, certifications, and ways to connect with him.
+This portfolio showcases Vansh's expertise in Front-End Web Development. It features his projects, work experience, certifications, and ways to connect with him.
 
 ## License
 
-Personal portfolio website. All content belongs to Gautam Vhavle unless otherwise specified.
+Personal portfolio website. All content belongs to Vansh Aggarwal unless otherwise specified.
 
 ---
 
-Last updated: February 15, 2026
+Last updated: June 9, 2026

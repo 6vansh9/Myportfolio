@@ -7,10 +7,10 @@ interface SEOProps {
   type?: string;
 }
 
-const BASE_TITLE = "Gautam Vhavle";
-const BASE_URL = "https://gautamvhavle.xyz";
+const BASE_TITLE = "Vansh Aggarwal";
+const BASE_URL = "https://vanshaggarwal.dev";
 const DEFAULT_DESCRIPTION =
-  "Gautam Vhavle is a Full-Stack Developer and GenAI Engineer at Siemens, Bengaluru. Patent holder specializing in React, Python, LangChain, IoT, and cloud-native solutions.";
+  "Vansh Aggarwal is a Front-End Web Developer and B.Tech CSE student at Manipal University Jaipur. Specializing in React, JavaScript, HTML/CSS, and building scalable, user-centric web applications.";
 const DEFAULT_IMAGE = `${BASE_URL}/assets/preview.png`;
 
 function setMeta(attr: string, key: string, content: string) {
@@ -26,8 +26,8 @@ function setMeta(attr: string, key: string, content: string) {
 export default function useSEO({ title, description, path = "/", type = "website" }: SEOProps = {}) {
   useEffect(() => {
     const fullTitle = title
-      ? `${title} | ${BASE_TITLE} | Full-Stack Developer & GenAI Engineer`
-      : `${BASE_TITLE} | Full-Stack Developer & GenAI Engineer Portfolio`;
+      ? `${title} | ${BASE_TITLE} | Front-End Web Developer`
+      : `${BASE_TITLE} | Front-End Web Developer Portfolio`;
     const desc = description || DEFAULT_DESCRIPTION;
     const url = `${BASE_URL}${path}`;
 

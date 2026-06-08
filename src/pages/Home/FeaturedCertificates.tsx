@@ -118,7 +118,7 @@ export default function FeaturedCertificates() {
           </div>
 
           <a
-            href="https://www.linkedin.com/in/gautamvhavle/details/certifications"
+            href="https://www.linkedin.com/in/6vansh9/details/certifications"
             target="_blank"
             rel="noopener noreferrer"
             className="group/link flex items-center gap-1.5 text-xs text-zinc-500 transition-colors hover:text-zinc-300"

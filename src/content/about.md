@@ -2,21 +2,21 @@
 
 ---
 
-# Hey, I'm Gautam 👋
+# Hey, I'm Vansh 👋
 
-**TL;DR:** I build things, break things, and ship things that actually work. Currently deep in the **AI rabbit hole** and absolutely *loving* it. 🤖✨
+**TL;DR:** I build things, break things, and ship things that actually work. Currently deep in the **web dev rabbit hole** and absolutely *loving* it. ⚡✨
 
 ---
 
-## 🧒 The Kid Who Couldn't Leave Things Alone
+## 🧒 The Kid Who Wouldn't Stop Clicking
 
-Before I knew what *engineering* even meant, I was already taking things apart.
+Before I wrote a single line of code, I was already obsessed with how websites worked.
 
-Remote controls. Wall switches. Random Electronics. Broken toys. If it had screws, it was getting opened. Did everything survive reassembly? **Absolutely not.** Did I learn something every time? **Every. Single. Time.**
+View source. Inspect element. Break things in the browser DevTools. If a webpage had a button, I was figuring out what happened when you clicked it.
 
 > **Curiosity wasn't a phase. It was the whole personality.** 🔧
 
-I didn't have fancy tools or tutorials back then, just an endless need to understand *how things worked*. That instinct? Still runs the show today.
+I didn't have fancy mentors or bootcamps back then — just an endless need to understand *how the web works*. That instinct? Still runs the show today.
 
 ---
 
@@ -24,9 +24,9 @@ I didn't have fancy tools or tutorials back then, just an endless need to unders
 
 None of this happens without the people who believed in me before I believed in myself.
 
-**👨‍👩‍👦 Parents**
+**👨‍👩‍👦 Family**
 
-They never shut down my experiments. Broken remotes, dismantled gadgets, questionable *"inventions"*. They let me explore, fail, and figure things out. That freedom shaped everything.
+They never shut down my screen-time experiments. Long hours debugging, late-night side projects, questionable *"it's almost done"* promises. They let me explore and figure things out. That freedom shaped everything.
 
 **👥 Friends**
 
@@ -36,9 +36,9 @@ The ones who pushed me when I doubted myself. Hyped me up when I shipped somethi
 
 ---
 
-## 🎓 College: Where It All Clicked
+## 🎓 College: Where It All Got Serious
 
-College wasn't just academics. It was where I found **my people** and **my purpose**.
+Manipal University Jaipur wasn't just academics. It was where I found **my people** and **my purpose**.
 
 **What I Expected vs What I Actually Got:**
 
@@ -56,35 +56,35 @@ Surrounded by curious minds, everything accelerated. Casual conversations turned
 
 ---
 
-## ⚡ The IoT Rabbit Hole
+## ⚡ The Front-End Rabbit Hole
 
-Then I discovered **IoT**, and everything changed.
+Then I really dug into **front-end development**, and everything changed.
 
-Suddenly, code wasn't just pixels on a screen. It could *sense* the real world, *react* to it, and *automate* it.
+Suddenly, code wasn't just logic — it was *visual*. It could move, respond, delight, and communicate.
 
 My brain immediately went:
 
-> *"Wait... I can make my entire room smart? Say less."* 💡
+> *"Wait... I can make the web beautiful AND functional? Say less."* 💡
 
-**Home automation became my playground:**
+**HTML/CSS/JS became my playground:**
 
-- 🔌 **Smart lighting**: because manual switches are inefficient
-- 🌡️ **Sensors everywhere**: temperature, motion, presence
-- ⚙️ **Custom automations**: if it can be automated, it will be
+- 🎨 **Layouts**: because pixel-perfect design matters
+- ⚡ **Interactivity**: JavaScript making things come alive
+- 📱 **Responsive design**: every screen size, handled
 
 **This rabbit hole pulled me deeper into:**
 
-- 🔩 **Embedded Systems**: Writing code that runs on *actual hardware*
-- 🔗 **Hardware Integration**: Making software talk to the physical world
-- ⚠️ **Real-World Constraints**: Latency, power, reliability, things that *have* to work
+- ⚛️ **React**: building component-driven UIs at scale
+- 🔗 **REST APIs**: connecting frontends to real data
+- 🎯 **UI/UX thinking**: because code that ships must feel good to use
 
-> **Building for the physical world hits different when failure isn't just a console error.** 🔥
+> **Building for users hits different when you care about their experience.** 🔥
 
 ---
 
 ## 🔧 Full-Stack: Connecting Everything
 
-I didn't want to build pieces. I wanted to build **complete systems**.
+I didn't want to just style things. I wanted to build **complete systems**.
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -92,36 +92,34 @@ I didn't want to build pieces. I wanted to build **complete systems**.
 └─────────────────────────────────────────────────┘
 ```
 
-Full-stack development taught me how **everything connects**. Then came DevOps: CI/CD pipelines, production debugging, and finally understanding why *"it works on my machine"* is never enough.
+Full-stack experience taught me how **everything connects**. Building a restaurant booking system end-to-end — HTML, CSS, JS, PHP, and a real client — shifted my mindset entirely.
 
 **The mindset shift:**
 
-> Think in **systems**, not just features.
-> Ship **solutions**, not just code.
+> Think in **systems**, not just pages.
+> Ship **solutions**, not just components.
 
 ---
 
-## 🤖 Current Obsession: AI
+## 🚀 Current Focus
 
-Okay, real talk, **AI has completely taken over my brain** and I'm not even mad about it.
+Real talk — I'm deep in the **Next.js + TypeScript + Supabase** ecosystem and I'm not even mad about it.
 
-LLMs. Agents. RAG pipelines. MCP servers. Orchestration frameworks.
+React. Tailwind. AI integrations. Razorpay. Real users.
 
-The idea that you can layer *intelligence* on top of software and hardware? That systems can **reason**, **adapt**, and **decide**?
+The idea that you can build a product, put it live, and have real people use it?
 
-```python
-while curious:
-    learn()
-    build()
-    experiment()
-    ship()
+```javascript
+while (learning) {
+  build();
+  ship();
+  iterate();
+}
 ```
 
 > **This isn't just exciting. This is the future being built in real-time.** 🚀
 
-Every spare moment goes into this space. Watching agents collaborate, pipelines reason, and models evolve feels like witnessing the **next layer of computing** being written, and I get to be part of it.
-
-AI isn't a pivot. It's the **natural evolution** of everything I've been building toward.
+Every project goes into making real things that solve real problems. Not toy apps — actual platforms people can use.
 
 ---
 
@@ -130,14 +128,10 @@ AI isn't a pivot. It's the **natural evolution** of everything I've been buildin
 Even my downtime is lowkey nerdy, ngl:
 
 - 🎮 **Gaming**: Competitive + story-driven. Yes, I get *way* too invested.
-- 🎧 **Music**: Hypertechno, EDM, lossless audio. Sound should be *felt*, not just heard.
-- 📺 **Anime**: No explanation needed. You either get it or you don't.
+- 🎧 **Music**: Vibes-first playlist. Sound should be *felt*, not just heard.
+- 📺 **Anime & Series**: No explanation needed. You either get it or you don't.
 - 🚗 **Drives**: Long drives + good music = free therapy.
-- 📚 **Books**: Some knowledge just hits better on paper.
-
-Even my **home setup** reflects this philosophy:
-
-> *Build smart systems once, so life runs smoother every day.* 🏠✨
+- 📚 **Tech Blogs**: Some knowledge just hits better when you read it at 2am.
 
 ---
 
@@ -147,22 +141,21 @@ Today, I work at the intersection of:
 
 ```
 ╔═══════════════════════════════════════════╗
-║   Software  ×  Hardware  ×  Intelligence  ║
+║   Design  ×  Engineering  ×  Product      ║
 ╚═══════════════════════════════════════════╝
 ```
 
-**Building systems that are:**
+**Building things that are:**
 
-- ✅ **Practical**: solves real problems
-- ✅ **Scalable**: grows with demand  
-- ✅ **Grounded**: works in the real world
+- ✅ **User-first**: solves real problems elegantly
+- ✅ **Scalable**: grows with demand
+- ✅ **Shipped**: actually live, not just in figma
 
-**Currently:** Deep in AI. Always learning. Always building. Always shipping. 🛠️
+**Currently:** Final year B.Tech CSE. Always learning. Always building. Always shipping. 🛠️
 
 
 ### Thanks for scrolling this far. ✨
 
-*Let’s build cool stuff and leave the world better than we found it* 🚀
-![Go Beyond, PLUS ULTRA!](https://c.tenor.com/1outT5amFpYAAAAC/tenor.gif)
+*Let's build cool stuff and leave the web better than we found it* 🚀
 
 > *"Go Beyond, PLUS ULTRA!"*

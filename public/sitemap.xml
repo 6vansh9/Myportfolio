@@ -6,26 +6,26 @@
     http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <url>
-    <loc>https://gautamvhavle.xyz/</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://vanshaggarwal.dev/</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gautamvhavle.xyz/about</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://vanshaggarwal.dev/about</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gautamvhavle.xyz/blogs</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://vanshaggarwal.dev/blogs</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gautamvhavle.xyz/apps</loc>
-    <lastmod>2026-05-30</lastmod>
+    <loc>https://vanshaggarwal.dev/apps</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

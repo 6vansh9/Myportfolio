@@ -1,201 +1,76 @@
 [
     {
         "id": 1,
-        "name": "Retrieval Augmented Generation (RAG)",
-        "issuer": "DeepLearning.AI",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/C560BAQEHKffoI8RwIQ/company-logo_100_100/company-logo_100_100/0/1630672537710/deeplearningai_logo?e=1769040000&v=beta&t=3pHURCMWrr-G6uT51tv7lA9uTjo-uMqarn86wwjXZ-Y",
-        "credentialId": "Retrieval Augmented Generation (RAG)",
-        "issuedDate": "Dec 2025",
+        "name": "Introduction to UI Design",
+        "issuer": "Coursera",
+        "issuerLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQHiNkbMyn0hRA/company-logo_100_100/company-logo_100_100/0/1630591472718/coursera_logo?e=1769040000&v=beta&t=placeholder",
+        "credentialId": "ui-design-intro",
+        "issuedDate": "2024",
         "skills": [
-            "Retrieval-Augmented Generation (RAG)",
-            "Retrieval Techniques",
-            "Chunking Strategies",
-            "Intelligent Agents"
+            "UI Design",
+            "User Experience",
+            "Visual Design",
+            "Prototyping"
         ],
-        "credentialUrl": "https://coursera.org/share/78ea2fd0831171b2b6b78bb9bf978c05"
+        "credentialUrl": "#"
     },
     {
         "id": 2,
-        "name": "Quickstart: LangGraph Essentials - Python",
-        "issuer": "LangChain",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/D560BAQFo2IrXO1-LCg/company-logo_100_100/B56ZoB_xEeJsAQ-/0/1760970084952/langchain_logo?e=1769040000&v=beta&t=UXxTqhLweWuhmGcF08-4HjOJSc5xUU8gekPDjKebfBc",
-        "credentialId": "ndqtwkxtu0",
-        "issuedDate": "Nov 2025",
+        "name": "Scientific Computing with Python",
+        "issuer": "freeCodeCamp",
+        "issuerLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQGLSMjuOeGhfQ/company-logo_100_100/company-logo_100_100/0/1630614967597/freecodecamp_logo?e=1769040000&v=beta&t=placeholder",
+        "credentialId": "fcc-python",
+        "issuedDate": "2024",
         "skills": [
-            "Agentic AI",
-            "Graph-Based Data Modeling",
-            "Human In The Loop",
-            "Agent Memory"
+            "Python",
+            "Scientific Computing",
+            "Data Structures",
+            "Algorithms"
         ],
-        "credentialUrl": "https://academy.langchain.com/certificates/ndqtwkxtu0"
+        "credentialUrl": "https://www.freecodecamp.org/certification/6vansh9/scientific-computing-with-python-v7"
     },
     {
         "id": 3,
-        "name": "Quickstart: LangChain Essentials - Python",
-        "issuer": "LangChain",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/D560BAQFo2IrXO1-LCg/company-logo_100_100/B56ZoB_xEeJsAQ-/0/1760970084952/langchain_logo?e=1769040000&v=beta&t=UXxTqhLweWuhmGcF08-4HjOJSc5xUU8gekPDjKebfBc",
-        "credentialId": "cyjulhh0ma",
-        "issuedDate": "Oct 2025",
+        "name": "Front End Development Libraries",
+        "issuer": "freeCodeCamp",
+        "issuerLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQGLSMjuOeGhfQ/company-logo_100_100/company-logo_100_100/0/1630614967597/freecodecamp_logo?e=1769040000&v=beta&t=placeholder",
+        "credentialId": "fcc-frontend-libs",
+        "issuedDate": "2024",
         "skills": [
-            "Agentic AI",
-            "Agent Tools",
-            "AI orchestration",
-            "AI Context Management"
+            "React",
+            "Redux",
+            "Bootstrap",
+            "jQuery",
+            "Sass"
         ],
-        "credentialUrl": "https://academy.langchain.com/certificates/cyjulhh0ma"
+        "credentialUrl": "https://www.freecodecamp.org/certification/6vansh9/front-end-development-libraries"
     },
     {
         "id": 4,
-        "name": "ChatGPT Prompt Engineering for Developers",
-        "issuer": "DeepLearning.AI",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/C560BAQEHKffoI8RwIQ/company-logo_100_100/company-logo_100_100/0/1630672537710/deeplearningai_logo?e=1769040000&v=beta&t=3pHURCMWrr-G6uT51tv7lA9uTjo-uMqarn86wwjXZ-Y",
-        "credentialId": "109eb03d-bf30-49a5-99cd-1a08514940cc",
-        "issuedDate": "Sep 2025",
+        "name": "Business Analysis & Process Management",
+        "issuer": "Coursera",
+        "issuerLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQHiNkbMyn0hRA/company-logo_100_100/company-logo_100_100/0/1630591472718/coursera_logo?e=1769040000&v=beta&t=placeholder",
+        "credentialId": "ba-process-mgmt",
+        "issuedDate": "2023",
         "skills": [
-            "Chatbot Development",
-            "GenAI Applications",
-            "Prompt Engineering",
-            "XML Prompts"
+            "Business Analysis",
+            "Process Management",
+            "Requirements Gathering"
         ],
-        "credentialUrl": "https://learn.deeplearning.ai/accomplishments/109eb03d-bf30-49a5-99cd-1a08514940cc"
+        "credentialUrl": "#"
     },
     {
         "id": 5,
-        "name": "Foundation: Introduction to LangGraph",
-        "issuer": "LangChain",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/D560BAQFo2IrXO1-LCg/company-logo_100_100/B56ZoB_xEeJsAQ-/0/1760970084952/langchain_logo?e=1769040000&v=beta&t=UXxTqhLweWuhmGcF08-4HjOJSc5xUU8gekPDjKebfBc",
-        "credentialId": "xok3d0t5ig",
-        "issuedDate": "Sep 2025",
-        "skills": [
-            "Graphs",
-            "Langchain",
-            "Code Structuring",
-            "Time Machine"
-        ],
-        "credentialUrl": "https://academy.langchain.com/certificates/xok3d0t5ig"
-    },
-    {
-        "id": 7,
-        "name": "Generative AI: Working with Large Language Models",
-        "issuer": "LinkedIn",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/C560BAQHaVYd13rRz3A/company-logo_100_100/company-logo_100_100/0/1638831590218/linkedin_logo?e=1769040000&v=beta&t=VFVlMMsYsr1FqPaeHi0y2kpg7jdBXIHYwdmIp2KYrtI",
-        "credentialId": "559b5a260a0f44154094bce1d5648adaa9a8440d9e8878235766448d846b5da2",
-        "issuedDate": "Sep 2025",
-        "skills": [
-            "Natural Language Processing (NLP)",
-            "Transformer Models",
-            "Tokens",
-            "LLMs"
-        ],
-        "credentialUrl": "https://www.linkedin.com/learning/certificates/559b5a260a0f44154094bce1d5648adaa9a8440d9e8878235766448d846b5da2"
-    },
-    {
-        "id": 8,
-        "name": "Introduction to Generative AI",
+        "name": "Building Custom Regional Reports with Google Analytics",
         "issuer": "Google",
         "issuerLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQGv3cqOuUMY7g/company-logo_100_100/B4EZmhegXHGcAU-/0/1759350753990/google_logo?e=1769040000&v=beta&t=vsybj0Ma3o8Pbp5PWrBnp0Y11FBfIgUJnuM9MubLh2w",
-        "credentialId": "250W63NDY3MK",
-        "issuedDate": "Sep 2025",
-        "skills": [],
-        "credentialUrl": "https://www.coursera.org/account/accomplishments/verify/250W63NDY3MK"
-    },
-    {
-        "id": 10,
-        "name": "Advanced AI: Transformers for Computer Vision",
-        "issuer": "LinkedIn",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/C560BAQHaVYd13rRz3A/company-logo_100_100/company-logo_100_100/0/1638831590218/linkedin_logo?e=1769040000&v=beta&t=VFVlMMsYsr1FqPaeHi0y2kpg7jdBXIHYwdmIp2KYrtI",
-        "credentialId": "15694683211d1a2f4c7fa4b47a7d25795099a53a34c6199e8fcde5cd8f5d407f",
-        "issuedDate": "Jun 2025",
+        "credentialId": "google-analytics-custom",
+        "issuedDate": "2023",
         "skills": [
-            "Transformer Models",
-            "Generative Adversarial Networks (GANs)"
+            "Google Analytics",
+            "Data Reporting",
+            "Web Analytics"
         ],
-        "credentialUrl": "https://www.linkedin.com/learning/certificates/15694683211d1a2f4c7fa4b47a7d25795099a53a34c6199e8fcde5cd8f5d407f"
-    },
-    {
-        "id": 11,
-        "name": "Hands-On Generative AI with Multi-Agent LangChain: Building Real-World Applications",
-        "issuer": "LinkedIn",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/C560BAQHaVYd13rRz3A/company-logo_100_100/company-logo_100_100/0/1638831590218/linkedin_logo?e=1769040000&v=beta&t=VFVlMMsYsr1FqPaeHi0y2kpg7jdBXIHYwdmIp2KYrtI",
-        "credentialId": "a32498e2f5f258365e4a66cd7acd08c6b389552c8af17b1d103a9a42801c4e1f",
-        "issuedDate": "May 2025",
-        "skills": [
-            "Application Development",
-            "LangChain",
-            "Generative AI"
-        ],
-        "credentialUrl": "https://www.linkedin.com/learning/certificates/a32498e2f5f258365e4a66cd7acd08c6b389552c8af17b1d103a9a42801c4e1f"
-    },
-    {
-        "id": 12,
-        "name": "Advanced Prompt Engineering Techniques",
-        "issuer": "LinkedIn",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/C560BAQHaVYd13rRz3A/company-logo_100_100/company-logo_100_100/0/1638831590218/linkedin_logo?e=1769040000&v=beta&t=VFVlMMsYsr1FqPaeHi0y2kpg7jdBXIHYwdmIp2KYrtI",
-        "credentialId": "c5da172389710fa740c9d70d7b52d2e51fde6d7784c6750e3f70be52bca9efec",
-        "issuedDate": "Apr 2025",
-        "skills": [
-            "Artificial Intelligence (AI)"
-        ],
-        "credentialUrl": "https://www.linkedin.com/learning/certificates/c5da172389710fa740c9d70d7b52d2e51fde6d7784c6750e3f70be52bca9efec"
-    },
-    {
-        "id": 14,
-        "name": "Data Analysis and Visualization Foundations",
-        "issuer": "IBM",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/D560BAQGiz5ecgpCtkA/company-logo_100_100/company-logo_100_100/0/1688684715866/ibm_logo?e=1769040000&v=beta&t=29j_rtwbFw9NE_dpiumkmDo02E3yH9xWtuDgcCXONcI",
-        "credentialId": "ca6e32cece9fc170783744ad00387069",
-        "issuedDate": "Dec 2024",
-        "skills": [],
-        "credentialUrl": "https://coursera.org/share/ca6e32cece9fc170783744ad00387069"
-    },
-    {
-        "id": 15,
-        "name": "Network Security",
-        "issuer": "Cisco Networking Academy",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/D4D0BAQEkiQ8pB1hYow/company-logo_100_100/B4DZcSgOD1HMAU-/0/1748362125886/cisco_networking_academy1_logo?e=1769040000&v=beta&t=P2BHfMyfX0zNerG10Ji0sZMcmDLOE0n7DkZQFQg8x5I",
-        "credentialId": "2ccfca1309e8fb91c39512629f479d72",
-        "issuedDate": "Nov 2024",
-        "skills": [],
-        "credentialUrl": "https://coursera.org/share/2ccfca1309e8fb91c39512629f479d72"
-    },
-    {
-        "id": 16,
-        "name": "Advanced Data Structures in Java",
-        "issuer": "UC San Diego",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/C560BAQHQYa-3EY_aaQ/company-logo_100_100/company-logo_100_100/0/1630633790917/university_of_california_at_san_diego_logo?e=1769040000&v=beta&t=aTm1gyTpNjihZqHIPN3yjAyjAbugGLvtdQwV1jHlQ-Y",
-        "credentialId": "58e29c5cbf54e4c28a707017557aee4e",
-        "issuedDate": "Nov 2024",
-        "skills": [],
-        "credentialUrl": "https://coursera.org/share/58e29c5cbf54e4c28a707017557aee4e"
-    },
-    {
-        "id": 17,
-        "name": "The Complete 2024 Web Development Bootcamp",
-        "issuer": "Udemy",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/D560BAQEf_NHzN2yVQg/company-logo_100_100/company-logo_100_100/0/1723593046388/udemy_logo?e=1769040000&v=beta&t=8I0sc-UxQ1n-tZjCPhXuAcTkZOemZ0SeMlFsyrjy4ic",
-        "credentialId": "UC-2aa8c26a-ae6f-45ed-aab1-6ad460d75067",
-        "issuedDate": "Sep 2024",
-        "skills": [],
-        "credentialUrl": "https://www.udemy.com/certificate/UC-2aa8c26a-ae6f-45ed-aab1-6ad460d75067/"
-    },
-    {
-        "id": 23,
-        "name": "Namaste JavaScript",
-        "issuer": "NamasteDev.com",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/C4D0BAQFd9H6cxFC3wQ/company-logo_100_100/company-logo_100_100/0/1630549313166?e=1769040000&v=beta&t=IiAGzJik0XaQVmyl45_T6J3R5bhUAQocqJornkFSvho",
-        "credentialId": "CQNT5A",
-        "issuedDate": "May 2023",
-        "skills": [],
-        "credentialUrl": "https://www.linkedin.com/in/gautamvhavle/details/certifications/1761978876804/single-media-viewer?type=DOCUMENT&profileId=ACoAAC6E1WYBWokDe2wF2sZ9e5PzyPvtjjYc45w"
-    },
-    {
-        "id": 28,
-        "name": "Foundations of Project Management",
-        "issuer": "Google",
-        "issuerLogo": "https://media.licdn.com/dms/image/v2/D4E0BAQGv3cqOuUMY7g/company-logo_100_100/B4EZmhegXHGcAU-/0/1759350753990/google_logo?e=1769040000&v=beta&t=vsybj0Ma3o8Pbp5PWrBnp0Y11FBfIgUJnuM9MubLh2w",
-        "credentialId": "609f1e59c0c0e3e22c915ca54ae7ee92",
-        "issuedDate": "Dec 2022",
-        "skills": [],
-        "credentialUrl": "https://coursera.org/share/609f1e59c0c0e3e22c915ca54ae7ee92"
+        "credentialUrl": "#"
     }
 ]

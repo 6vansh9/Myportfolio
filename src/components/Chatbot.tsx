@@ -248,7 +248,7 @@ export default function Chatbot() {
           <div className="flex items-center gap-2 border-b border-zinc-700/50 bg-zinc-800/50 px-3 py-2 sm:px-4 sm:py-3">
             <Bot className="text-primary h-5 w-5" />
             <span className="font-mono text-xs font-medium text-zinc-200 sm:text-sm">
-              Gautam's AI Assistant (BETA)
+              Vansh's AI Assistant (BETA)
             </span>
             <span className="ml-auto flex items-center gap-3">
               <span className="flex items-center gap-1.5">

@@ -1,27 +1,29 @@
-import { useSpotifyNowPlaying } from "@/hooks/useSpotifyNowPlaying";
+import { useLastFmNowPlaying, type LastFmTrack } from "@/hooks/useLastFmNowPlaying";
 import metadata from "@/content/metadata.json";
 
-// Get settings from metadata
-const spotifySettings = metadata.settings?.spotifyNowPlaying;
+const lastFmSettings = (metadata.settings as Record<string, unknown>)?.lastFmNowPlaying as
+  | { enabled: boolean; username: string; apiKey: string }
+  | undefined;
 
-// Fallback track when nothing is playing and no recently played
-const FALLBACK_TRACK = {
+// Apple Music-style pink/red accent
+const ACCENT = "#fc3c44";
+
+// Shown when the API returns nothing (empty scrobble history)
+const FALLBACK_TRACK: LastFmTrack = {
+  title: "Blinding Lights",
+  artist: "The Weeknd",
+  album: "After Hours",
+  image_url: "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36",
+  url: "https://www.last.fm/user/vanshaggarwal69",
   is_playing: false,
-  title: spotifySettings?.fallbackTrack?.title || "Doomsday",
-  artiste: spotifySettings?.fallbackTrack?.artist || "MF DOOM",
-  image_url: spotifySettings?.fallbackTrack?.imageUrl || "https://i.scdn.co/image/ab67616d0000b2736ce90ec627a0198a8efd127f",
-  url: spotifySettings?.fallbackTrack?.url || "https://open.spotify.com/track/7EQvdUJqZ2i7SWvSB2VqGA",
 };
 
 export default function SpotifyNowPlaying() {
-  // Don't render if disabled
-  if (spotifySettings?.enabled === false) {
-    return null;
-  }
+  // Hook must always be called — no early returns before this line
+  const { track, loading } = useLastFmNowPlaying();
 
-  const { track, loading } = useSpotifyNowPlaying();
-
-  const displayTrack = track || FALLBACK_TRACK;
+  // Disabled in config → hide
+  if (lastFmSettings?.enabled === false) return null;
 
   if (loading) {
     return (
@@ -38,9 +40,14 @@ export default function SpotifyNowPlaying() {
     );
   }
 
+  // Fall back to placeholder if API returned nothing
+  const displayTrack = track ?? FALLBACK_TRACK;
+  const label = displayTrack.is_playing ? "Now Playing" : "Last Played";
+  const profileUrl = `https://www.last.fm/user/${lastFmSettings?.username ?? "vanshaggarwal69"}`;
+
   return (
     <a
-      href={displayTrack.url}
+      href={displayTrack.url || profileUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="group relative block overflow-hidden rounded-xl border border-zinc-800/40 bg-zinc-900/30 p-3 backdrop-blur-xl transition-all duration-300 hover:border-zinc-700/35 hover:bg-zinc-900/35 sm:p-4"
@@ -48,26 +55,29 @@ export default function SpotifyNowPlaying() {
       <div className="flex items-center gap-3 sm:gap-4">
         {/* Album Art */}
         <div className="relative shrink-0">
-          <img
-            className="h-12 w-12 rounded-lg object-cover ring-1 ring-white/5 sm:h-14 sm:w-14"
-            src={displayTrack.image_url}
-            alt={displayTrack.title}
-          />
+          {displayTrack.image_url ? (
+            <img
+              className="h-12 w-12 rounded-lg object-cover ring-1 ring-white/5 sm:h-14 sm:w-14"
+              src={displayTrack.image_url}
+              alt={displayTrack.title}
+            />
+          ) : (
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-zinc-800 ring-1 ring-white/5 sm:h-14 sm:w-14">
+              <MusicIcon size={24} color={ACCENT} />
+            </div>
+          )}
+
+          {/* Animated equalizer bars when currently playing */}
           {displayTrack.is_playing && (
             <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/20">
               <div className="flex h-4 items-end gap-0.5">
-                <span
-                  className="animate-equalizer w-1 rounded-full bg-[#1DB954]"
-                  style={{ animationDelay: "0s" }}
-                />
-                <span
-                  className="animate-equalizer w-1 rounded-full bg-[#1DB954]"
-                  style={{ animationDelay: "0.1s" }}
-                />
-                <span
-                  className="animate-equalizer w-1 rounded-full bg-[#1DB954]"
-                  style={{ animationDelay: "0.2s" }}
-                />
+                {[0, 0.1, 0.2].map((delay) => (
+                  <span
+                    key={delay}
+                    className="animate-equalizer w-1 rounded-full"
+                    style={{ animationDelay: `${delay}s`, backgroundColor: ACCENT }}
+                  />
+                ))}
               </div>
             </div>
           )}
@@ -75,47 +85,52 @@ export default function SpotifyNowPlaying() {
 
         {/* Track Info */}
         <div className="min-w-0 flex-1 flex flex-col gap-1">
-          <div className="flex h-3.5 items-center gap-1.5 ">
-            <svg
-              className="h-3 w-3 shrink-0 text-[#1DB954]"
-              viewBox="0 0 24 24"
-              fill="currentColor"
+          {/* Label row */}
+          <div className="flex h-3.5 items-center gap-1.5">
+            <MusicIcon size={12} color={ACCENT} />
+            <span
+              className="text-[9px] font-semibold tracking-wider uppercase md:text-[10px]"
+              style={{ color: ACCENT }}
             >
-              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-            </svg>
-            <span className="text-[9px] font-medium tracking-wider text-[#1DB954] uppercase md:text-[10px] md:font-semibold">
-              {displayTrack.is_playing
-                ? "Now Playing"
-                : track
-                  ? "Last Played"
-                  : "Favorite"}
+              {label}
             </span>
           </div>
+
+          {/* Track name */}
           <p className="truncate text-xs leading-[1.1] font-semibold text-zinc-100 group-hover:underline sm:text-sm">
             {displayTrack.title}
           </p>
+
+          {/* Artist · Album */}
           <p className="truncate text-[10px] leading-tight text-zinc-400 sm:text-xs">
-            {displayTrack.artiste}
+            {displayTrack.artist}
+            {displayTrack.album ? ` · ${displayTrack.album}` : ""}
           </p>
         </div>
 
-        {/* Spotify Link Icon */}
+        {/* Last.fm icon */}
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-400 backdrop-blur-md transition-all duration-200 group-hover:scale-105 group-hover:text-zinc-100 sm:h-9 sm:w-9">
-          <svg
-            className="h-4 w-4"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-            <polyline points="15 3 21 3 21 9" />
-            <line x1="10" y1="14" x2="21" y2="3" />
-          </svg>
+          <LastFmIcon size={18} />
         </div>
       </div>
     </a>
+  );
+}
+
+/* ── Inline SVG icons ─────────────────────────────────────── */
+
+function MusicIcon({ size, color }: { size: number; color: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+      <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z" />
+    </svg>
+  );
+}
+
+function LastFmIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M10.584 17.21l-.88-2.392s-1.43 1.596-3.573 1.596c-1.896 0-3.244-1.648-3.244-4.284 0-3.376 1.7-4.59 3.38-4.59 2.42 0 3.19 1.567 3.85 3.59l.877 2.74c.877 2.67 2.53 4.81 7.298 4.81 3.41 0 5.72-1.047 5.72-3.81 0-2.228-1.272-3.38-3.63-3.928l-1.757-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.935.742-1.485 1.954-1.485 1.322 0 2.035.495 2.145 1.68l2.75-.33c-.22-2.475-1.926-3.49-4.73-3.49-2.476 0-4.84.935-4.84 3.93 0 1.87.907 3.05 3.19 3.6l1.87.44c1.375.33 1.87.88 1.87 1.76 0 1.047-.99 1.486-2.86 1.486-2.77 0-3.926-1.457-4.59-3.46l-.9-2.75C12.18 7.47 10.48 5.53 6.94 5.53 3.046 5.53.83 7.98.83 12.24c0 4.1 2.09 6.38 5.94 6.38 3.08 0 3.814-1.41 3.814-1.41z" />
+    </svg>
   );
 }

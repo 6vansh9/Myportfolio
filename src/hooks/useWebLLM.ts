@@ -58,34 +58,33 @@ const CUSTOM_APP_CONFIG = {
       ],
 };
 
-const SYSTEM_PROMPT_BASE = `You are an AI assistant representing Gautam Vhavle's portfolio and career. You speak about Gautam in the THIRD PERSON exclusively. Never use "I" for Gautam's skills, achievements, or experiences. Always refer to him as "Gautam" or use "he/him" pronouns.
+const SYSTEM_PROMPT_BASE = `You are an AI assistant representing Vansh Aggarwal's portfolio and career. You speak about Vansh in the THIRD PERSON exclusively. Never use "I" for Vansh's skills, achievements, or experiences. Always refer to him as "Vansh" or use "he/him" pronouns.
 
 ## Personality & Tone
 - Enthusiastic, knowledgeable, and persuasive. You're selling his expertise to potential employers, collaborators, and visitors.
 - Concise but substantive. Keep most answers to 2-4 sentences unless the question demands more detail.
-- Highlight patterns: his evolution from IoT → full-stack → AI/GenAI, his ability to ship production code, his patent work.
-- When asked about skills, connect them to real projects or outcomes ("Gautam uses LangChain extensively in his Threat & Risk Assessment system at Siemens").
+- Highlight patterns: his front-end focus, his ability to ship production code, and his full-stack experience.
+- When asked about skills, connect them to real projects or outcomes ("Vansh built TaskPay using Next.js and Supabase with real Razorpay payment integration").
 
 ## Response Strategy
 **For greetings ("hello", "hi", "hey"):**
-Respond warmly and inquisitive. Example: "Hey! I'm Gautam's portfolio assistant. Curious about his work in AI, IoT, full-stack dev, or ready to hire? What can I help with?"
+Respond warmly and inquisitive. Example: "Hey! I'm Vansh's portfolio assistant. Curious about his work in React, JavaScript, front-end dev, or ready to hire? What can I help with?"
 
 **For specific questions:**
 Use provided context to answer directly. Don't info-dump. For example:
-- Q: "Does he know n8n?" → "Yes! Gautam is expert with n8n for workflow automation. He's used it extensively in integration projects."
+- Q: "Does he know React?" → "Yes! Vansh uses React daily — he's built production UIs and understands component-driven development deeply."
 - Q: "What's his tech stack?" → Focus on the TOP relevant techs for the question, not a massive list.
 
 **For hiring/availability:**
-Emphasize: Patent holder, Siemens engineer, ships production code, bridges AI and full-stack, available for work, responds within 24 hours.
+Emphasize: ships production code, thinks about users and systems, available for work, responds within 24 hours, B.Tech CSE final year.
 
 **For off-topic or unclear questions:**
-Politely redirect. Example: "Not my area, but Gautam might interest you in AI systems, IoT, or full-stack development!"
+Politely redirect. Example: "Not my area, but Vansh might interest you in React, JavaScript, or full-stack web development!"
 
 ## Important Rules
-- NEVER say "I'm familiar with..." or "I built..." or "I work on...". Use "Gautam is familiar...", "Gautam built...", "He works on..."
-- NEVER pretend to have personal experiences. If context doesn't have specific info, say something like "Gautam's a fast learner" or "That's not his primary focus, but he explores new tech regularly."
-- NEVER list all certifications, projects, or tech unless directly asked for a full list.
-- This chatbot is built on BrowserLLM (his own tech!). Mention this if it comes up naturally, but don't force it.`;
+- NEVER say "I'm familiar with..." or "I built..." or "I work on...". Use "Vansh is familiar...", "Vansh built...", "He works on..."
+- NEVER pretend to have personal experiences. If context doesn't have specific info, say something like "Vansh is a fast learner" or "That's not his primary focus, but he explores new tech regularly."
+- NEVER list all certifications, projects, or tech unless directly asked for a full list.`;
 
 // ── Dynamic Context Chunks ──────────────────────────────────
 // Instead of a giant static system prompt, we match the user's question
@@ -101,88 +100,67 @@ const CONTEXT_CHUNKS: ContextChunk[] = [
   {
     keywords: [
       "tech", "stack", "skill", "know", "use", "familiar", "proficient", "tools", "language",
-      "python", "typescript", "javascript", "c++", "bash",
-      "react", "vite", "tailwind", "shadcn", "sass",
-      "fastapi", "flask", "node", "express",
-      "langchain", "langgraph", "llamaindex", "rag", "mcp", "ollama", "n8n", "langfuse", "docling",
-      "docker", "kubernetes", "helm", "ci/cd", "github actions", "devops",
-      "postgresql", "postgres", "mongodb", "mssql", "sql", "supabase",
-      "raspberry pi", "esp32", "iot", "embedded", "mqtt", "thread protocol",
-      "playwright", "postman", "figma", "canva", "git",
-      "openrouter", "copilot", "cursor", "vscode",
-      "prompt engineering", "context engineering", "genai", "ai", "ml", "machine learning",
-      "gemini", "claude", "novnc", "razorpay",
+      "html", "css", "javascript", "typescript", "python", "php", "sql",
+      "react", "next", "nextjs", "next.js", "tailwind", "shadcn", "vite",
+      "supabase", "razorpay", "rest", "api", "responsive",
+      "git", "postman", "figma", "power bi", "ui", "ux",
     ],
     content: `## Tech Stack
-**Languages:** Python, TypeScript, JavaScript, C++, Bash
-**Frontend:** React, Vite, Tailwind CSS, ShadCN, SASS
-**Backend:** FastAPI, Flask, Node.js
-**AI/GenAI:** LangChain, LangGraph, LlamaIndex, RAG, Context Engineering, Prompt Engineering, MCP, Ollama, n8n, LangFuse, Docling, OpenRouter
-**DevOps:** Docker, Kubernetes, Helm, CI/CD, GitHub Actions
-**Databases:** PostgreSQL, MongoDB, MSSQL, Supabase
-**IoT:** Raspberry Pi, ESP32, Embedded Systems, Thread Protocol, MQTT
-**Tools:** Playwright, Postman, Figma, Canva, Git, VS Code, Cursor, Copilot`,
+**Languages:** HTML5, CSS3, JavaScript (ES6+), TypeScript, PHP, SQL, Python
+**Frontend:** React, Next.js, Tailwind CSS, ShadCN, Responsive Design, UI/UX
+**Backend & APIs:** REST APIs, PHP, Supabase, Razorpay
+**Tools:** Git, Postman, Figma, Power BI, VS Code`,
   },
   {
     keywords: [
-      "experience", "work", "job", "company", "career", "intern", "engineer", "employ",
-      "siemens", "brand context", "grig", "golain", "e4a",
-      "threat", "risk", "assessment", "manufacturing", "kiosk",
+      "experience", "work", "job", "company", "career", "intern", "internship",
+      "pinnacle", "restaurant", "booking", "reservation",
     ],
     content: `## Experience
-1. **Siemens** (Apr 2025–Present) – Graduate Engineer Trainee. Building AI-powered Threat & Risk Assessment assistant using LangChain, LangGraph, Vision models. Full-stack with React + FastAPI. Risk categorization dashboard.
-2. **Brand Context** (Dec 2024–Mar 2025) – IoT Developer Intern. AI-driven modular bot for manufacturing. Smart helmet with Raspberry Pi + computer vision.
-3. **GRIG Technologies** (Aug 2023–Jan 2025) – Full Stack IoT Developer. Built Ventory.in inventory management. CI/CD pipelines. Raspberry Pi kiosk R&D.
-4. **Golain** (Jun–Aug 2024) – IoT Developer Intern. ESP32 SDKs, TensorFlow Lite facial recognition, Smart Bedside Table, WLED automation.
-5. **E4A Solutions** (Apr–Jul 2023) – Embedded Developer Intern. Hospital IoT with NRF52, Thread Protocol mesh networking, MQTT.`,
+1. **Pinnacle Labs** (Jun–Jul 2025) – Web Developer. Designed and developed a full-stack restaurant website for a London-based café client using HTML, CSS, JavaScript, and PHP. Built a live table reservation and event booking system. Delivered on schedule working directly with the client.`,
   },
   {
     keywords: [
       "project", "built", "build", "portfolio", "open source", "github", "demo", "app",
-      "learnerverse", "catgpt", "browserllm", "browser llm", "json agent", "ventory", "parkive", "kyra",
-      "edtech", "inventory", "parking",
+      "taskpay", "freelance", "marketplace", "college students",
     ],
     content: `## Projects
-- **LearnerVerse** – AI-native EdTech platform turning playlists into courses (Python, FastAPI, LangChain, React, Supabase). Live at learnerverse.xyz
-- **CatGPT Gateway** – Reverse-engineered ChatGPT UI into OpenAI-compatible API (Python, FastAPI, Playwright, NoVNC)
-- **BrowserLLM** – Run 100+ LLMs in-browser via WebGPU (React, TypeScript, WebLLM). Live at browserllm.vercel.app
-- **Universal JSON Agent MCP** – Talk to JSON files via natural language using MCP (Python, LangChain, published on PyPI)
-- **Ventory.in** – Inventory management for MSMEs (React, FastAPI, Supabase, Docker). Live at ventory.in
-- **Parkive** – Smart parking IoT solution with ESP32 and real-time data visualization
-- **KYRA-AI** – AI lawyer bot for legal queries using GPT-3`,
+- **TaskPay** (https://taskpay69.vercel.app) – AI-powered freelance marketplace for Indian college students. Find work, get paid, build your career. Built with Next.js 14, TypeScript, Tailwind CSS, Supabase, Razorpay, and Groq AI. GitHub: github.com/6vansh9/claudecodetaskpay`,
   },
   {
     keywords: [
-      "certificate", "certification", "course", "learning", "credential", "deeplearning", "certified",
+      "certificate", "certification", "course", "learning", "credential", "freecodecamp", "certified",
     ],
     content: `## Certifications
-- RAG (Retrieval Augmented Generation) – DeepLearning.AI (Dec 2025)
-- LangGraph Essentials – LangChain Academy (Nov 2025)
-- LangChain Essentials – LangChain Academy (Oct 2025)
-- ChatGPT Prompt Engineering for Developers – DeepLearning.AI`,
+- Introduction to UI Design
+- Scientific Computing with Python – freeCodeCamp
+- Front End Development Libraries – freeCodeCamp
+- Business Analysis & Process Management
+- Building Custom Regional Reports with Google Analytics`,
   },
   {
     keywords: [
-      "contact", "email", "hire", "schedule", "call", "reach", "connect", "linkedin", "resume", "cv",
+      "contact", "email", "hire", "reach", "connect", "linkedin", "resume", "cv",
       "available", "freelance", "work together",
     ],
     content: `## Contact
-Email: gautamvhavle@gmail.com | Web: gautamvhavle.xyz | GitHub: github.com/gautamvhavle | LinkedIn: linkedin.com/in/gautamvhavle | Schedule a call: cal.com/gautamvhavle/30min | Available for work | Response within 24 hours`,
+Email: 6vansh9@gmail.com | GitHub: github.com/6vansh9 | LinkedIn: linkedin.com/in/6vansh9 | Phone: +91 9015522223 | Available for work | Response within 24 hours`,
   },
   {
     keywords: [
       "about", "personal", "hobby", "hobbies", "interest", "who is", "tell me about",
-      "gaming", "music", "anime", "drive", "book", "story", "background", "journey",
+      "gaming", "music", "anime", "drive", "book", "story", "background", "journey", "education", "college", "manipal",
     ],
-    content: `## About Gautam
-Software engineer. Patent holder. Builder at heart. Started by taking apart gadgets as a kid — curiosity never stopped. College is where it clicked: late-night coding, hands-on projects, a squad of builders.
-**Journey:** Curiosity → IoT rabbit hole → Full-stack mastery → AI obsession
-**Interests:** Gaming (competitive + story-driven), Hypertechno/EDM, Anime, Long drives, Books, Smart home automation
-**Philosophy:** "Build things that ship, scale, and actually matter."`,
+    content: `## About Vansh
+Front-end web developer and CS student at Manipal University Jaipur (B.Tech CSE, 2022–2026). Started by obsessively inspecting web pages as a kid. College is where it clicked: late-night coding, hands-on projects, a squad of builders.
+**Journey:** Curiosity → HTML/CSS/JS → React mastery → Full-stack shipping
+**Education:** Manipal University Jaipur (B.Tech CSE, 2022–2026), Delhi Public School (2008–2022)
+**Interests:** Gaming (competitive + story-driven), Music, Anime, Long drives, Tech blogs
+**Philosophy:** "I don't just build what's asked — I think about the user, the system, and the business problem it solves."`,
   },
 ];
 
-const GENERAL_CONTEXT = `Gautam is a Full-Stack Developer & GenAI Engineer at Siemens. Patent holder. Skilled in React, FastAPI, LangChain, Docker, IoT. Projects: LearnerVerse (AI EdTech), BrowserLLM (in-browser LLMs), CatGPT Gateway. Available for work. Email: gautamvhavle@gmail.com`;
+const GENERAL_CONTEXT = `Vansh is a Front-End Web Developer and B.Tech CSE student at Manipal University Jaipur. Skilled in React, JavaScript, HTML/CSS, TypeScript, Next.js, Tailwind CSS, Supabase. Project: TaskPay (AI-powered freelance marketplace for college students). Experience: Web Developer at Pinnacle Labs. Available for work. Email: 6vansh9@gmail.com`;
 
 function buildSystemPrompt(userMessage: string): string {
   const msg = userMessage.toLowerCase();

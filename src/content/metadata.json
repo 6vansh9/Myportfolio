@@ -1,13 +1,13 @@
 {
   "home": {
     "intro": {
-      "name": "Gautam Vhavle",
+      "name": "Vansh Aggarwal",
       "avatar": "/assets/me.png",
       "roles": [
-        "Full-Stack Developer",
-        "GenAI Developer",
-        "IoT Developer",
-        "Context Engineering"
+        "Front-End Web Developer",
+        "React Developer",
+        "JavaScript Developer",
+        "UI/UX Enthusiast"
       ],
       "availability": {
         "enabled": true,
@@ -15,299 +15,98 @@
         "text": "Available for work"
       },
       "contact": {
-        "role": "Full-Stack Developer",
-        "location": "Bengaluru, Karnataka, India",
-        "email": "gautamvhavle@gmail.com",
-        "website": "grigtechnologies.com",
-        "websiteUrl": "https://grigtechnologies.com",
+        "role": "Front-End Web Developer",
+        "location": "Faridabad, Haryana, India",
+        "email": "6vansh9@gmail.com",
+        "website": "github.com/6vansh9",
+        "websiteUrl": "https://github.com/6vansh9",
         "timezone": "IST",
         "pronouns": "he/him"
       }
     },
     "bio": {
-      "description": "Software engineer. Patent holder. Builder at heart. I craft intelligent systems that bridge the gap between cutting-edge tech and real-world impact. Currently engineering GenAI solutions at",
+      "description": "Front-end web developer and CS student with hands-on experience building full-stack web apps from scratch. I write HTML, CSS, and JavaScript daily, build UIs with React, and have integrated real-world features in live projects. Currently pursuing B.Tech CSE at",
       "company": {
-        "name": "Siemens",
-        "url": "https://siemens.com"
+        "name": "Manipal University Jaipur",
+        "url": "https://jaipur.manipal.edu/"
       },
-      "descriptionEnd": ", where I turn complex AI concepts into production-ready products. I build things that ship, scale, and actually matter.",
-      "resumeUrl": "https://drive.google.com/file/d/11226IywvimrBUydAPa9DVyvfE1thKh2b/view?usp=sharing",
+      "descriptionEnd": ". I don't just build what's asked — I think about the user, the system, and the business problem it solves.",
+      "resumeUrl": "/assets/resume.pdf",
       "contactSectionId": "contact-section",
       "socials": [
         {
           "name": "Github",
-          "url": "https://github.com/gautamvhavle"
+          "url": "https://github.com/6vansh9"
         },
         {
           "name": "LinkedIn",
-          "url": "https://www.linkedin.com/in/gautamvhavle"
-        },
-        {
-          "name": "X",
-          "url": "https://x.com/gautamvvvv"
-        },
-        {
-          "name": "Mail",
-          "url": "mailto:gautamvhavle@gmail.com"
+          "url": "https://www.linkedin.com/in/6vansh9"
         },
         {
           "name": "Instagram",
-          "url": "https://instagram.com/gautam_vhavle"
+          "url": "https://www.instagram.com/6vansh9/"
         },
         {
           "name": "YouTube",
-          "url": "https://youtube.com/@gautamvhavle"
+          "url": "https://www.youtube.com/@ZapitinoProduction"
         },
         {
-          "name": "Dev",
-          "url": "https://dev.to/gautamvhavle"
-        },
-        {
-          "name": "Spotify",
-          "url": "https://open.spotify.com/user/31pd44dwu42evyskhwyb3fh7t2yy"
+          "name": "Mail",
+          "url": "mailto:6vansh9@gmail.com"
         }
       ]
     },
     "github": {
       "enabled": true,
-      "username": "GautamVhavle",
+      "username": "6vansh9",
       "year": 2025
     },
     "techStack": [
-      { "name": "Python", "url": "https://www.python.org/", "icon": "python.svg" },
-      { "name": "TypeScript", "url": "https://www.typescriptlang.org/", "icon": "typescript.svg" },
+      { "name": "HTML5", "url": "https://developer.mozilla.org/en-US/docs/Web/HTML", "icon": "javascript.svg" },
       { "name": "JavaScript", "url": "https://www.javascript.com/", "icon": "javascript.svg" },
-      { "name": "C++", "url": "https://isocpp.org/", "icon": "cpp.svg" },
-      { "name": "Bash", "url": "https://www.gnu.org/software/bash/", "icon": "bash.svg" },
+      { "name": "TypeScript", "url": "https://www.typescriptlang.org/", "icon": "typescript.svg" },
+      { "name": "Python", "url": "https://www.python.org/", "icon": "python.svg" },
       { "name": "ReactJS", "url": "https://react.dev/", "icon": "react.svg" },
-      { "name": "Vite", "url": "https://vitejs.dev/", "icon": "vite.svg" },
-      { "name": "Sass", "url": "https://sass-lang.com/", "icon": "sass.svg" },
+      { "name": "Next.js", "url": "https://nextjs.org/", "icon": "vite.svg" },
       { "name": "Tailwind CSS", "url": "https://tailwindcss.com/", "icon": "tailwind.svg" },
+      { "name": "Vite", "url": "https://vitejs.dev/", "icon": "vite.svg" },
       { "name": "ShadCN", "url": "https://ui.shadcn.com/", "icon": "shadcn.svg" },
-      { "name": "Postman", "url": "https://www.postman.com/", "icon": "postman.svg" },
-      { "name": "PostgreSQL", "url": "https://www.postgresql.org/", "icon": "postgres.svg" },
       { "name": "Supabase", "url": "https://supabase.com/", "icon": "supabase.svg" },
-      { "name": "MSSQL", "url": "https://www.microsoft.com/en-us/sql-server/", "icon": "mssql.svg" },
-      { "name": "MongoDB", "url": "https://www.mongodb.com/", "icon": "mongodb.svg" },
-      { "name": "FastAPI", "url": "https://fastapi.tiangolo.com/", "icon": "fastapi.svg" },
-      { "name": "Pypi", "url": "https://pypi.org/", "icon": "pypi.svg" },
-      { "name": "Git", "url": "https://git-scm.com/", "icon": "git.svg" },
-      { "name": "GitHub", "url": "https://github.com/", "icon": "github.svg" },
-      { "name": "Docker", "url": "https://www.docker.com/", "icon": "docker.svg" },
-      { "name": "Kubernetes", "url": "https://kubernetes.io/", "icon": "kubernetes.svg" },
-      { "name": "Helm", "url": "https://helm.sh/", "icon": "helm.svg" },
-      { "name": "n8n", "url": "https://n8n.io/", "icon": "n8n.svg" },
-      { "name": "LangChain", "url": "https://langchain.com/", "icon": "langchain.svg" },
-      { "name": "MCP", "url": "https://modelcontextprotocol.io/", "icon": "mcp.svg" },
-      { "name": "Copilot", "url": "https://docs.github.com/en/copilot", "icon": "copilot.svg" },
-      { "name": "Docling", "url": "https://www.docling.ai/", "icon": "docling.svg" },
-      { "name": "LangFuse", "url": "https://www.langfuse.com/", "icon": "langfuse.svg" },
-      { "name": "Ollama", "url": "https://www.ollama.com/", "icon": "ollama.svg" },
-      { "name": "LlamaIndex", "url": "https://www.llamaindex.ai/", "icon": "llamaindex.svg" },
-      { "name": "OpenRouter", "url": "https://openrouter.ai/", "icon": "openrouter.svg" },
-      { "name": "Raspberry Pi", "url": "https://www.raspberrypi.com/", "icon": "raspberrypi.svg" },
-      { "name": "Espressif", "url": "https://www.espressif.com/", "icon": "espressif.svg" },
-      { "name": "Gemini", "url": "https://www.gemini.com/", "icon": "gemini.svg" },
-      { "name": "Claude", "url": "https://claude.ai/", "icon": "claude.svg" },
-      { "name": "NoVNC", "url": "https://novnc.com/", "icon": "novnc.svg" },
       { "name": "Razorpay", "url": "https://razorpay.com/", "icon": "razorpay.svg" },
-      { "name": "Playwright", "url": "https://playwright.dev/", "icon": "playwright.svg" },
-      { "name": "Canva", "url": "https://www.canva.com/", "icon": "canva.svg" },
+      { "name": "PostgreSQL", "url": "https://www.postgresql.org/", "icon": "postgres.svg" },
+      { "name": "Git", "url": "https://git-scm.com/", "icon": "vscode.svg" },
+      { "name": "Postman", "url": "https://www.postman.com/", "icon": "postman.svg" },
       { "name": "Figma", "url": "https://www.figma.com/", "icon": "figma.svg" },
-      { "name": "Cursor", "url": "https://www.cursor.so/", "icon": "cursor.svg" },
       { "name": "VS Code", "url": "https://code.visualstudio.com/", "icon": "vscode.svg" }
-      
     ],
     "featuredProjects": [
       {
-        "title": "LearnerVerse",
-        "description": "An AI-Native EdTech platform where you can turn any playlist into a real course",
-        "image": "/assets/projects/learnerverse.png",
-        "website": "https://learnerverse.xyz",
-        "github": "https://github.com/GautamVhavle/learner-verse",
+        "title": "TaskPay",
+        "description": "AI-powered freelance marketplace for Indian college students — find work, get paid, build your career.",
+        "image": "/assets/projects/taskpay.png",
+        "website": "https://taskpay69.vercel.app",
+        "github": "https://github.com/6vansh9/claudecodetaskpay",
         "tech": [
-          { "name": "Python", "icon": "/assets/tech-stack/python.svg" },
-          { "name": "FastAPI", "icon": "/assets/tech-stack/fastapi.svg" },
-          { "name": "LangChain", "icon": "/assets/tech-stack/langchain.svg" },
-          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
+          { "name": "Next.js", "icon": "/assets/tech-stack/vite.svg" },
           { "name": "TypeScript", "icon": "/assets/tech-stack/typescript.svg" },
           { "name": "Tailwind CSS", "icon": "/assets/tech-stack/tailwind.svg" },
           { "name": "Supabase", "icon": "/assets/tech-stack/supabase.svg" },
           { "name": "Razorpay", "icon": "/assets/tech-stack/razorpay.svg" }
-
-        ]
-      },
-      {
-        "title": "CatGPT Gateway",
-        "description": "Turn your ChatGPT or Claude WebUI into a fully working OpenAI-compatible API",
-        "image": "/assets/projects/catgpt.png",
-        "github": "https://github.com/GautamVhavle/CatGPT-Gateway",
-        "website": "https://dev.to/gautamvhavle/i-reverse-engineered-chatgpts-ui-into-an-openai-compatible-api-and-heres-why-you-shouldnt-ch",
-        "tech": [
-          { "name": "Python", "icon": "/assets/tech-stack/python.svg" },
-          { "name": "FastAPI", "icon": "/assets/tech-stack/fastapi.svg" },
-          { "name": "LangChain", "icon": "/assets/tech-stack/langchain.svg" },
-          { "name": "Bash", "icon": "/assets/tech-stack/bash.svg" },
-          { "name": "Playwright", "icon": "/assets/tech-stack/playwright.svg" },
-          { "name": "VS Code", "icon": "/assets/tech-stack/vscode.svg" },
-          { "name": "NoVNC", "icon": "/assets/tech-stack/novnc.svg" }
-        ]
-      },
-      {
-        "title": "BrowserLLM",
-        "description": "Run 100+ open-source LLMs entirely in your browser. Powered by WebGPU and WebLLM",
-        "image": "/assets/projects/browserllm.png",
-        "website": "https://browserllm.vercel.app",
-        "tech": [
-          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
-          { "name": "Tailwind CSS", "icon": "/assets/tech-stack/tailwind.svg" },
-          { "name": "TypeScript", "icon": "/assets/tech-stack/typescript.svg" }
-        ]
-      },
-      {
-        "title": "Universal JSON Agent MCP",
-        "description": "Talk to JSON files using natural language using specialised tools right from your IDE using MCP",
-        "image": "/assets/projects/universal-json-agent-mcp.png",
-        "github": "https://github.com/GautamVhavle/universal-json-agent",
-        "website": "https://dev.to/gautamvhavle/my-json-was-too-big-for-my-ai-so-i-built-an-mcp-server-to-fix-it-43m2",
-        "tech": [
-          { "name": "Pypi", "icon": "/assets/tech-stack/pypi.svg" },
-          { "name": "Python", "icon": "/assets/tech-stack/python.svg" },
-          { "name": "MCP", "icon": "/assets/tech-stack/mcp.svg" },
-          { "name": "LangChain", "icon": "/assets/tech-stack/langchain.svg" },
-          { "name": "LangFuse", "icon": "/assets/tech-stack/langfuse.svg" },
-          { "name": "Copilot", "icon": "/assets/tech-stack/copilot.svg" },
-          { "name": "VS Code", "icon": "/assets/tech-stack/vscode.svg" }
-        ]
-      },
-      {
-        "title": "Ventory.in",
-        "description": "An easy-to-use inventory management software for MSMEs",
-        "image": "/assets/projects/ventory.png",
-        "website": "https://ventory.in",
-        "tech": [
-          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
-          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
-          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
-          { "name": "Python", "icon": "/assets/tech-stack/python.svg" },
-          { "name": "FastAPI", "icon": "/assets/tech-stack/fastapi.svg" },
-          { "name": "Supabase", "icon": "/assets/tech-stack/supabase.svg" },
-          { "name": "Docker", "icon": "/assets/tech-stack/docker.svg" },
-          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
-        ]
-      },
-      {
-        "title": "GrigTechnologies.com",
-        "description": "A simple and modern homepage for a technology company",
-        "image": "/assets/projects/grig.png",
-        "website": "https://grigtechnologies.com",
-        "tech": [
-          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
-          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
-          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
-          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
-        ]
-      },
-      {
-        "title": "KYRA-AI",
-        "description": "A lawyer bot designed to assist with legal queries, using gpt-3",
-        "image": "/assets/projects/kyra-ai.png",
-        "github": "https://github.com/GautamVhavle/KYRA-AI",
-        "tech": [
-          { "name": "Vite", "icon": "/assets/tech-stack/vite.svg" },
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
-          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
-          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
-          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
-        ]
-      },
-      {
-        "title": "Parkive",
-        "description": "A smart parking solution with real time data visualisation using IoT technology",
-        "image": "/assets/projects/parkive.png",
-        "website": "https://gautamvhavle.wixsite.com/website",
-        "github": "https://github.com/GautamVhavle/parkive",
-        "tech": [
-          { "name": "React", "icon": "/assets/tech-stack/react.svg" },
-          { "name": "SASS", "icon": "/assets/tech-stack/sass.svg" },
-          { "name": "JavaScript", "icon": "/assets/tech-stack/javascript.svg" },
-          { "name": "Espressif", "icon": "/assets/tech-stack/espressif.svg" },
-          { "name": "Figma", "icon": "/assets/tech-stack/figma.svg" }
         ]
       }
     ],
     "experiences": [
       {
-        "company": "Siemens",
-        "companyUrl": "https://www.siemens.com/",
-        "logo": "/assets/company-logos/siemens.jpeg",
-        "title": "Graduate Engineer Trainee",
-        "range": "April 2025 - Present",
-        "location": "Bangalore, India",
-        "bullets": [
-          "Developing a Threat and Risk Assessment AI Assistant aimed at automating cyber risk analysis and mitigation workflows for industrial applications.",
-          "Designing and implementing AI-powered orchestration workflows using LangChain, LangGraph, and Vision models, enabling dynamic decision-making and intelligent task automation.",
-          "Developing a full-stack web application with React frontend and FastAPI backend, integrating complex AI pipelines with intuitive UI for seamless user experience.",
-          "Building a dashboard to deliver risk categorization, scoring, and mitigation suggestions based on threat analysis, improving usability and supporting scalable assessments."
-        ]
-      },
-      {
-        "company": "Brand Context",
-        "companyUrl": "https://brandcontext.ai/",
-        "logo": "/assets/company-logos/brandcontext.jpeg",
-        "title": "IoT Developer Intern",
-        "range": "December 2024 - March 2025",
-        "location": "Remote",
-        "bullets": [
-          "Developed a prototype of an AI-driven modular bot for real-time manufacturing updates, enabling video streaming, barcode scanning, UI interaction, and operational monitoring.",
-          "Assisted in CAD modelling and component selection, collaborating with the team to optimize the bot's design and functionality.",
-          "Developed an AI-powered camera using Raspberry Pi for dashboard panel monitoring, and enhanced the hardware to create a smart helmet for factory workers."
-        ]
-      },
-      {
-        "company": "GRIG Technologies",
-        "companyUrl": "https://grigtechnologies.in",
+        "company": "Pinnacle Labs",
+        "companyUrl": "https://www.pinnaclelabs.in/",
         "logo": "/assets/company-logos/grig.jpeg",
-        "title": "Full Stack IoT Developer",
-        "range": "August 2023 - January 2025",
-        "location": "Pune, India",
-        "bullets": [
-          "Building a modern full-stack business management solution for mid-tier stores, managing all aspects of design, development, and implementation.",
-          "Maintaining CI/CD Pipelines and GitHub for Organizations, managing deployments, workflows and team, and other DevOps related tasks.",
-          "Leading R&D for a lightweight, hands-free Linux based kiosk using Raspberry Pi Zero 2W, engineered to provide a cost-effective and flexible display solution.",
-          "Developing frontend of an alert dashboard to automate workflows, enabling the seamless sending of automated and promotional emails."
-        ]
-      },
-      {
-        "company": "Golain",
-        "companyUrl": "https://golain.io/",
-        "logo": "/assets/company-logos/golain.jpeg",
-        "title": "IoT Developer Intern",
-        "range": "June 2024 – August 2024",
+        "title": "Web Developer",
+        "range": "June 2025 – July 2025",
         "location": "Remote",
         "bullets": [
-          "Migrated Platform IO SDKs to Arduino IDE, improving development efficiency and cross-platform compatibility.",
-          "Developed Espressif microcontroller SDKs for integration with Golain Cloud.",
-          "Enhanced data serialization and efficiency using Protocol Buffers and Arduino JSON.",
-          "Developed client projects, including a Smart Bedside Table and WLED-based LED automation system.",
-          "Trained a TensorFlow Lite model for Vision AI v2 for facial recognition, enabling AI-powered door lock automation."
-        ]
-      },
-      {
-        "company": "E4A Solutions",
-        "companyUrl": "https://e4asolution.com/",
-        "logo": "/assets/company-logos/e4a.jpeg",
-        "title": "Embedded Developer Intern",
-        "range": "April 2023 – July 2023",
-        "location": "Mumbai, India",
-        "bullets": [
-          "Developed a hospital software solution using NRF52 DK and Raspberry Pi, with mesh network topology via Thread Protocol and seamless MQTT communication.",
-          "Integrated GPIO inputs for real-time alert triggers. Optimized battery management by leveraging NRF chip capabilities.",
-          "Created a basic web-based GUI for responsive alert management and control. Implemented NoSQL-backed data logging and analysis."
+          "Designed and developed a full-stack restaurant website for a London-based café client using HTML, CSS, JavaScript, and PHP.",
+          "Built a live table reservation and event booking system integrated with the restaurant's operational workflow.",
+          "Collaborated directly with the client through the full project lifecycle to deliver the final product on schedule."
         ]
       }
     ],
@@ -316,24 +115,17 @@
       "methods": [
         {
           "enabled": true,
-          "type": "calendar",
-          "title": "Schedule a free call",
-          "description": "30-minute strategy session",
-          "url": "https://cal.com/gautamvhavle/30min"
-        },
-        {
-          "enabled": true,
           "type": "email",
           "title": "Send Email",
           "description": "Quick inquiries & questions",
-          "url": "mailto:gautam.vhavle@grigtechnologies.com"
+          "url": "mailto:6vansh9@gmail.com"
         },
         {
           "enabled": true,
           "type": "linkedin",
           "title": "Connect on LinkedIn",
           "description": "Follow for updates & insights",
-          "url": "https://linkedin.com/in/gautamvhavle"
+          "url": "https://www.linkedin.com/in/6vansh9"
         }
       ],
       "form": {
@@ -410,10 +202,6 @@
         "author": "Doug Linder"
       },
       {
-        "text": "The trouble with the world is that the stupid are cocksure and the intelligent are full of doubt — and software engineering amplifies this effect. Doubt forces us to test, validate, and verify.",
-        "author": "Bertrand Russell"
-      },
-      {
         "text": "Make it work, make it right, make it fast. In that order. Skipping the middle step is the fastest way to guarantee technical debt.",
         "author": "Kent Beck"
       },
@@ -426,7 +214,7 @@
   "header": {
     "logo": {
       "prefix": "~/",
-      "text": "gautam_vhavle",
+      "text": "vansh_aggarwal",
       "href": "/"
     },
     "navLinks": [
@@ -439,26 +227,26 @@
   "footer": {
     "text": "Made with ❤️ by",
     "author": {
-      "name": "Gautam Vhavle",
-      "url": "https://github.com/gautamvhavle"
+      "name": "Vansh Aggarwal",
+      "url": "https://github.com/6vansh9"
     },
     "socials": [
       {
         "enabled": true,
         "name": "GitHub",
-        "url": "https://github.com/gautamvhavle",
+        "url": "https://github.com/6vansh9",
         "icon": "github"
       },
       {
         "enabled": true,
         "name": "LinkedIn",
-        "url": "https://linkedin.com/in/gautamvhavle",
+        "url": "https://www.linkedin.com/in/6vansh9",
         "icon": "linkedin"
       },
       {
         "enabled": true,
         "name": "Email",
-        "url": "mailto:gautamvhavle@gmail.com",
+        "url": "mailto:6vansh9@gmail.com",
         "icon": "email"
       }
     ]
@@ -466,7 +254,7 @@
   "settings": {
     "chatbot": {
       "enabled": true,
-      "welcomeMessage": "Hi! I'm Gautam's AI assistant running locally on your device. Ask me anything about his work, skills, or projects! 🔒"
+      "welcomeMessage": "Hi! I'm Vansh's AI assistant running locally on your device. Ask me anything about his work, skills, or projects! 🔒"
     },
     "splashScreen": {
       "enabled": true,
@@ -476,40 +264,41 @@
       "messages": [
         "Booting up the dev environment...",
         "Compiling React components...",
-        "Loading GenAI models...",
-        "Connecting to IoT sensors...",
+        "Loading JavaScript modules...",
         "Fetching GitHub contributions...",
         "Spinning up serverless functions...",
         "Initializing the starfield...",
-        "Training the neural network...",
-        "Deploying containers to K8s...",
-        "Building the full-stack pipeline...",
-        "Calibrating LLM parameters...",
+        "Building the UI pipeline...",
         "Syncing with the cloud...",
         "Rendering the portfolio...",
         "Almost there..."
       ]
     },
     "blogs": {
+      "enabled": false,
+      "devToUsername": "6vansh9"
+    },
+    "lastFmNowPlaying": {
       "enabled": true,
-      "devToUsername": "gautamvhavle"
+      "username": "vanshaggarwal69",
+      "apiKey": "55acf11947597d96519210e239ee0897"
     },
     "spotifyNowPlaying": {
-      "enabled": true,
+      "enabled": false,
       "fallbackTrack": {
-        "title": "Doomsday",
-        "artist": "MF DOOM",
-        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2736ce90ec627a0198a8efd127f",
-        "url": "https://open.spotify.com/track/7EQvdUJqZ2i7SWvSB2VqGA"
+        "title": "Blinding Lights",
+        "artist": "The Weeknd",
+        "imageUrl": "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36",
+        "url": "https://open.spotify.com/track/0VjIjW4GlUZAMYd2vXMi3b"
       }
     },
     "spotifyPlaylist": {
-      "enabled": true,
-      "embedUrl": "https://open.spotify.com/embed/playlist/4GwBHykYDpARfWFjYPzF5Q?utm_source=generator&theme=0"
+      "enabled": false,
+      "embedUrl": ""
     },
     "live2dCharacter": {
-      "enabled": true,
-      "modelJsonPath": "https://cdn.jsdelivr.net/gh/evrstr/live2d-widget-models/live2d_evrstr/gelina/model.json",
+      "enabled": false,
+      "modelJsonPath": "",
       "position": "right",
       "width": 250,
       "height": 500

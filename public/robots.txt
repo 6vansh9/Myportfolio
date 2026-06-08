@@ -16,11 +16,11 @@ Allow: /
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://gautamvhavle.xyz/sitemap.xml
+Sitemap: https://vanshaggarwal.dev/sitemap.xml
 
 # AI/LLM context file
 # https://llmstxt.org/
-# llms.txt: https://gautamvhavle.xyz/llms.txt
+# llms.txt: https://vanshaggarwal.dev/llms.txt
 
 # Host
-Host: https://gautamvhavle.xyz
+Host: https://vanshaggarwal.dev
