@@ -9,6 +9,8 @@ const ALLOWED_HOSTS = [
 ];
 
 export default async function handler(req, res) {
+  console.log('[album-art] called with url:', req.query?.url);
+
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
 
@@ -23,46 +25,61 @@ export default async function handler(req, res) {
   const { url } = req.query;
 
   if (!url) {
-    return res.status(400).end();
+    console.log('[album-art] missing url param');
+    return res.status(400).json({ error: 'missing url param' });
   }
 
   let parsed;
   try {
     parsed = new URL(url);
   } catch {
-    return res.status(400).end();
+    console.log('[album-art] invalid url:', url);
+    return res.status(400).json({ error: 'invalid url' });
   }
 
-  // Only proxy known image CDN hosts — prevents open-proxy abuse
   const allowed = ALLOWED_HOSTS.some(
     (host) => parsed.hostname === host || parsed.hostname.endsWith('.' + host)
   );
   if (!allowed) {
-    return res.status(403).end();
+    console.log('[album-art] blocked host:', parsed.hostname);
+    return res.status(403).json({ error: 'host not allowed', host: parsed.hostname });
   }
 
   try {
+    console.log('[album-art] fetching upstream:', parsed.href);
+
     const upstream = await fetch(parsed.href, {
       headers: {
-        // Mimic a browser request without a Referer so Fastly doesn't hotlink-block
-        'User-Agent': 'Mozilla/5.0 (compatible; portfolio-proxy/1.0)',
-        Accept: 'image/*,*/*',
+        // Spoof a last.fm referrer so Fastly's hotlink protection passes
+        Referer: 'https://www.last.fm/',
+        Origin: 'https://www.last.fm',
+        'User-Agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        Accept: 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
       },
     });
 
+    console.log('[album-art] upstream status:', upstream.status);
+
     if (!upstream.ok) {
-      return res.status(upstream.status).end();
+      return res.status(upstream.status).json({
+        error: 'upstream error',
+        status: upstream.status,
+      });
     }
 
     const contentType = upstream.headers.get('content-type') || 'image/jpeg';
-    const buffer = await upstream.arrayBuffer();
+    const arrayBuf = await upstream.arrayBuffer();
+    const buffer = Buffer.from(arrayBuf);
+
+    console.log('[album-art] returning', buffer.byteLength, 'bytes,', contentType);
 
     res.setHeader('Content-Type', contentType);
-    // Cache for 24 hours on the client, 1 week on Vercel's edge
+    res.setHeader('Content-Length', buffer.byteLength);
     res.setHeader('Cache-Control', 'public, max-age=86400, s-maxage=604800');
-    res.status(200).send(Buffer.from(buffer));
+    res.status(200).end(buffer);
   } catch (err) {
-    console.error('album-art proxy error:', err);
-    res.status(502).end();
+    console.error('[album-art] fetch error:', err);
+    return res.status(502).json({ error: 'upstream fetch failed', message: err.message });
   }
 }
